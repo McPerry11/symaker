@@ -9,7 +9,18 @@
 	@yield('styles')
 </head>
 <body>
-	@yield('body')
+	<div class="columns">
+		@if(!Request::is('login'))
+		<div id="sidebar" class="column is-2 has-background-white">
+			@include('_sidebar')
+		</div>
+		@endif
+		<div class="column">
+			<div class="box">
+				@yield('body')
+			</div>
+		</div>
+	</div>
 
 	@include('_scripts')
 	@yield('scripts')
