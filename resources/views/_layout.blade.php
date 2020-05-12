@@ -9,7 +9,7 @@
 	@yield('styles')
 </head>
 <body>
-	<div class="columns">
+	<div id="layout" class="columns">
 		@if(!Request::is('login'))
 		<div id="sidebar" class="column is-2 has-background-white">
 			@include('_sidebar')

@@ -1,5 +1,5 @@
 html {
-	background: lightgrey;
+	background: #3273dc;
 	max-width: 100vw;
 	max-height: 100vh;
 }
@@ -8,20 +8,27 @@ body {
 	height: 100%;
 }
 
-.columns {
+#layout {
 	margin-bottom: 0;
 	margin-top: 0;
 }
 
 #sidebar {
 	height: 100vh;
-	position: fixed;
+	position: sticky;
+	top: 0;
+	bottom: 0;
 	padding-bottom: 0;
+	z-index: -1;
 }
 
 aside {
 	padding-top: 75px;
 	padding-left: 20px;
+}
+
+.menu-list .is-active {
+	width: 110%;
 }
 
 #admin {
@@ -34,7 +41,7 @@ aside {
 
 .box {
 	margin-top: 85px;
-	margin-left: 220px;
+	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
