@@ -9,8 +9,7 @@ body {
 }
 
 #layout {
-	margin-bottom: 0;
-	margin-top: 0;
+	margin: 0;
 }
 
 #sidebar {
@@ -19,16 +18,22 @@ body {
 	top: 0;
 	bottom: 0;
 	padding-bottom: 0;
+	padding-left: 5px;
+	padding-right: 0;
 	z-index: -1;
 }
 
 aside {
 	padding-top: 75px;
-	padding-left: 20px;
+	padding-left: 10px;
+}
+
+.menu-list a {
+	padding-right: 0;
 }
 
 .menu-list .is-active {
-	width: 110%;
+	width: 130%;
 }
 
 #admin {

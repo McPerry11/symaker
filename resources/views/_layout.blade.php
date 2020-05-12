@@ -9,9 +9,9 @@
 	@yield('styles')
 </head>
 <body>
-	<div id="layout" class="columns">
+	<div id="layout" class="columns is-mobile">
 		@if(!Request::is('login'))
-		<div id="sidebar" class="column is-2 has-background-white">
+		<div id="sidebar" class="column is-2-desktop is-3-tablet has-background-white">
 			@include('_sidebar')
 		</div>
 		@endif
