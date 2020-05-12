@@ -1,6 +1,6 @@
 <nav class="navbar box-shadow-y">
 	<div class="navbar-brand">
-		<a href="#" class="navbar-item is-size-3 has-text-weight-bold has-text-primary">SyMaker 2.0</a>
+		<a href="#" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">SyMaker 2.0</a>
 		<a href="#" class="navbar-burger nav-toggler">
 			<span></span>
 			<span></span>
@@ -21,11 +21,16 @@
 			</div>
 		</div>
 		<div class="navbar-end">
-			<h1 class="navbar-item is-paddingless">Username</h1>
-			<div class="navbar-item">
+			<h1 class="navbar-item">Username</h1>
+			<!-- <div class="navbar-item">
 				<a href="#">
-					<img src="https://bulma.io/images/placeholders/128x128.png" style="border-radius: 9001px;">
+					<img src="https://bulma.io/images/placeholders/128x128.png" style="border-radius: 100px;">
 				</a>
+			</div> -->
+			<div class="level">
+				<div class="level-item image is-32x32 right-margin">
+					<img src="https://bulma.io/images/placeholders/128x128.png" alt="" class="is-rounded">
+				</div>
 			</div>
 		</div>
 	</div>
