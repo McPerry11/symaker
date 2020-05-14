@@ -1,7 +1,17 @@
-<nav class="navbar box-shadow-y">
+<nav class="navbar is-fixed-top">
 	<div class="navbar-brand">
-		<a href="#" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">SyMaker 2.0</a>
-		<a href="#" class="navbar-burger nav-toggler">
+		<a id="title" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">Symaker 2.0</a>
+		<a id="user" class="level is-hidden-desktop is-hidden-mobile is-mobile">
+			<div class="level-item">
+				<p>Username</p>
+			</div>
+			<div class="level-item">
+				<figure class="image is-32x32">
+					<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
+				</figure>
+			</div>
+		</a>
+		<a class="navbar-burger is-hidden-tablet">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -9,29 +19,22 @@
 	</div>
 	<div class="navbar-menu">
 		<div class="navbar-start">
-			<div class="navbar-item breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+			<div class="navbar-item breadcrumb has-succeeds-separator">
 				<ul>
-					<li><a href="#"></a></li>
+					<li></li>
 					<li class="is-active">
-						<a href="#" aria-current="page" class="is-paddingless">
-						<span class="icon is-medium"><i class="fas fa-columns has-text-primary"></i></span>
-						Dashboard</a>
+						<a><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<div class="navbar-end">
-			<h1 class="navbar-item">Username</h1>
-			<!-- <div class="navbar-item">
-				<a href="#">
-					<img src="https://bulma.io/images/placeholders/128x128.png" style="border-radius: 100px;">
-				</a>
-			</div> -->
-			<div class="level">
-				<div class="level-item image is-32x32 right-margin">
-					<img src="https://bulma.io/images/placeholders/128x128.png" alt="" class="is-rounded">
-				</div>
-			</div>
+			<a class="navbar-item">
+				<p>Username</p>
+				<figure id="avatar" class="image is-32x32">
+					<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
+				</figure>
+			</a>
 		</div>
 	</div>
 </nav>
