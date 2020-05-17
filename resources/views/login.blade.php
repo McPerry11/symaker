@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-<section class="hero is-fullheight">
+<section class="hero is-info is-fullheight">
     <div class="hero-body">
         <div class="container">
             <div class="columns is-centered">
@@ -14,7 +14,7 @@
                     <form action="" class="box">
 
                         <div class="field has-text-centered content">
-                            <h1 class="title">SYMAKER 2.0</h1>
+                            <h1 class="title has-text-primary">SYMAKER 2.0</h1>
                         </div>
 
                         <div class="field">
@@ -28,7 +28,7 @@
 
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input type="text" class="input" placeholder="Password">
+                                <input type="password" class="input" placeholder="Password">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-key"></i>
                                 </span>
@@ -36,10 +36,10 @@
                                     <i class="fas fa-eye"></i>
                                 </span>
                             </p>
-                            <a href="" class="has-text-right help">Forgot Password?</a>
+                            <a href="" class="has-text-right has-text-dark help">Forgot Password?</a>
                         </div>
 
-                        <div class="field has-text-centered">
+                        <div class="field is-info has-text-centered">
                             <button class="button" type="submit" name="login">
                                 LOGIN
                             </button>
