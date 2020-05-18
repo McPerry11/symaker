@@ -1,32 +1,19 @@
-section {
-    background-color: #bdc3c7;
-    font-family: Arial;
+.columns {
+    height: 100%;
 }
 
 .box {
-    width: 320px;
-    border-radius: 0;
     padding-left: 35px;
     padding-right: 35px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.title {
-    padding-bottom: 30px;
-    letter-spacing: 0.075em;
-    color: #0099ff;
+#pass-controls {
+    width: 100%;
 }
 
-.button {
-    width: 200px;
-    background-color: #33cc99;
-    color: white;
-    margin-top: 25px;
-    border-radius: 2px;
-    font-weight: 550;
-}
-
-.button:hover {
-    color: black;
+#login {
+    width: 100%;
+    margin-top: 15px;
 }

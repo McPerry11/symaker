@@ -10,7 +10,7 @@
 	<ul class="menu-list">
 		<li><a><span class="icon"><i class="fas fa-users"></i></span>Accounts</a></li>
 		<li><a><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a></li>
-		<li><a><span class="icon"><i class="fas fa-plus-square"></i></span>Other Contents</a></li>
+		<li><a><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a></li>
 		<li><a><span class="icon"><i class="fas fa-stream"></i></span>Logs</a></li>
 	</ul>
 </aside>

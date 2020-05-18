@@ -14,16 +14,19 @@
 	<div id="layout" class="columns is-mobile is-marginless">
 		@include('_navbar')
 		{{-- #sidebar is hidden on mobile viewport --}}
-		<div id="sidebar" class="column is-2-desktop is-3-tablet has-background-white">
+		<div id="sidebar" class="column is-2-desktop is-3-tablet is-hidden-mobile has-background-white">
 			@include('_sidebar')
 		</div>
 		{{-- Content goes in .box --}}
 		<div class="column">
-			<div class="box">
+			<div id="content" class="box">
 				@yield('body')
 			</div>
 		</div>
 	</div>
+	@else
+	{{-- This part is for login page only --}}
+	@yield('body')
 	@endif
 
 	@include('_scripts')
