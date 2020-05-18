@@ -1,6 +1,7 @@
 <nav class="navbar is-fixed-top">
 	<div class="navbar-brand">
 		<a id="title" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">Symaker 2.0</a>
+		{{-- #user is only visible on tablet viewport --}}
 		<a id="user" class="level is-hidden-desktop is-hidden-mobile is-mobile">
 			<div class="level-item">
 				<p>Username</p>
@@ -11,12 +12,14 @@
 				</figure>
 			</div>
 		</a>
+		{{-- .navbar-burger is only visible on mobile viewport --}}
 		<a class="navbar-burger is-hidden-tablet">
 			<span></span>
 			<span></span>
 			<span></span>
 		</a>
 	</div>
+	{{-- .navbar-menu is only visible on desktop viewport --}}
 	<div class="navbar-menu">
 		<div class="navbar-start">
 			<div class="navbar-item breadcrumb has-succeeds-separator">

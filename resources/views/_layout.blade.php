@@ -9,19 +9,22 @@
 	@yield('styles')
 </head>
 <body>
+	@if(!Request::is('login'))
+	{{-- #layout is hidden on login module --}}
 	<div id="layout" class="columns is-mobile is-marginless">
-		@if(!Request::is('login'))
 		@include('_navbar')
+		{{-- #sidebar is hidden on mobile viewport --}}
 		<div id="sidebar" class="column is-2-desktop is-3-tablet has-background-white">
 			@include('_sidebar')
 		</div>
-		@endif
+		{{-- Content goes in .box --}}
 		<div class="column">
 			<div class="box">
 				@yield('body')
 			</div>
 		</div>
 	</div>
+	@endif
 
 	@include('_scripts')
 	@yield('scripts')
