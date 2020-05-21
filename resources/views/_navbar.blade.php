@@ -1,6 +1,6 @@
 <nav class="navbar is-fixed-top">
 	<div class="navbar-brand">
-		<a id="title" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">Symaker 2.0</a>
+		<div id="title" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">Symaker 2.0</div>
 		{{-- #user is only visible on tablet viewport --}}
 		<a id="user" class="level is-hidden-desktop is-hidden-mobile is-mobile">
 			<div class="level-item">
