@@ -21,7 +21,7 @@
 		</div>
 		<div class="column">
 			<a href="#" class="title is-6 is-spaced">Email Notification</a>
-			<p class="subtitle is-7 has-text-grey">Get notifications on your email.</p>
+			<p class="subtitle is-7 has-text-grey">Get notifications on	 your email.</p>
 		</div>
 	</div>
 
