@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', 'IndexController@login');
 
 Route::get('', 'IndexController@dashboard');
+
+Route::get('logs', 'LoginController@logs');
