@@ -1,7 +1,37 @@
+form {
+	width: 95%;
+}
+
 #search {
 	width: 100%;
 }
 
+#filter {
+	height: 100%;
+}
+
 #filter .icon {
-	margin: 0;
+	margin: auto;
+	height: 100%;
+}
+
+/* Desktop Viewport*/
+@media screen and (max-width: 1215px) and (min-width: 1024px) {
+	form {
+		width: 90%;
+	}
+}
+
+/* Mobile to Tablet Viewport */
+@media screen and (max-width: 1023px) {
+	form {
+		width: 85%;
+	}
+}
+
+/* Mobile Viewport */
+@media screen and (max-width: 768px) {
+	#filter {
+		margin-top: 10px;
+	}
 }

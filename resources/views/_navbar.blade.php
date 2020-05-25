@@ -51,14 +51,14 @@
 	{{-- #mobile will be shown in mobile viewport after clicking navbar-burger --}}
 	<div id="mobile" class="navbar-menu is-hidden-tablet">
 		<div class="navbar-start">
-			<a class="navbar-item"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a>
-			<a class="navbar-item"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
+			<a id="nb-dashboard" class="navbar-item"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
+			<a id="nb-courses" class="navbar-item"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
+			<a id="nb-settings" class="navbar-item"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
+			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
+			<a id="nb-accounts" class="navbar-item"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
+			<a id="nb-colleges" class="navbar-item"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
+			<a id="nb-others" class="navbar-item"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a>
+			<a id="nb-logs" class="navbar-item"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
 		</div>
 		<div class="navbar-end">
 			<div class="navbar-item columns is-mobile">

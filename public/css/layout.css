@@ -39,6 +39,15 @@ body {
 	height: 100%;
 }
 
+#mobile .is-active {
+	border-left: #3273dc;
+}
+
+#mobile {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
 /* Sidebar */
 #sidebar {
 	height: 100vh;

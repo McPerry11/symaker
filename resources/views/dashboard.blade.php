@@ -12,7 +12,7 @@
 		</div>
 	</div>
 	<div class="column">
-		<form>
+		<form class="is-inline-block">
 			<div class="field has-addons">
 				<div id="search" class="control">
 					<input type="text" class="input" placeholder="Search course or username...">
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</form>
-		<a id="filter"><span class="icon"><i class="fas fa-chevron-down"></i></span></a>
+		<a id="filter" class="is-inline-block is-pulled-right"><span class="icon"><i class="fas fa-chevron-down"></i></span></a>
 	</div>
 </div>
 @endsection
