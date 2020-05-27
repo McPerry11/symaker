@@ -1,5 +1,4 @@
 html {
-	background: #3273dc;
 	max-width: 100vw;
 	max-height: 100vh;
 	height: 100%;
@@ -37,10 +36,6 @@ body {
 	object-fit: cover;
 	max-height: 100%;
 	height: 100%;
-}
-
-#mobile .is-active {
-	border-left: #3273dc;
 }
 
 #mobile {
