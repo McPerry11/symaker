@@ -12,27 +12,33 @@
 			<div class="has-text-centered content">
 				<h1 class="title has-text-primary">SYMAKER 2.0</h1>
 			</div>
-			{{-- Username --}}
-			<div class="field">
-				<div class="control has-icons-left">
-					<input type="text" class="input" placeholder="Username" name="username" required>
-					<span class="icon is-left"><i class="fas fa-user"></i></span>
-				</div>
+			<div id="nojs" class="has-text-centered">
+				<h3 class="subtitle is-3">JavaScript is off</h3>
+				<p>Symaker requires JavaScript to fully operate. Turn on JavaScript and try again.</p>
 			</div>
-			{{-- Password --}}
-			<div class="field has-addons is-marginless">
-				<p id="pass-control" class="control has-icons-left">
-					<input type="password" class="input" placeholder="Password" name="password" required>
-					<span class="icon is-left"><i class="fas fa-key"></i></span>
-				</p>
-				<div class="control">
-					<button class="button has-background-grey-lighter"><i class="fas fa-eye"></i></button>
+			<div id="js">
+				{{-- Username --}}
+				<div class="field">
+					<div class="control has-icons-left">
+						<input type="text" class="input" placeholder="Username" name="username" required>
+						<span class="icon is-left"><i class="fas fa-user"></i></span>
+					</div>
 				</div>
-			</div>
-			<a class="has-text-right has-text-dark help">Forgot Password?</a>
-			{{-- Login --}}
-			<div class="field has-text-centered">
-				<button id="login" class="button is-primary" type="submit">LOGIN</button>
+				{{-- Password --}}
+				<div class="field has-addons is-marginless">
+					<p id="pass-control" class="control has-icons-left">
+						<input type="password" class="input" placeholder="Password" name="password" required>
+						<span class="icon is-left"><i class="fas fa-key"></i></span>
+					</p>
+					<div class="control">
+						<button class="button has-background-grey-lighter"><i class="fas fa-eye"></i></button>
+					</div>
+				</div>
+				<a class="has-text-right has-text-dark help">Forgot Password?</a>
+				{{-- Login --}}
+				<div class="field has-text-centered">
+					<button id="login" class="button is-primary" type="submit">LOGIN</button>
+				</div>
 			</div>
 		</form>
 	</div>
