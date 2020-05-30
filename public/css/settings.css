@@ -11,3 +11,14 @@
 .settings-container {
 	margin-bottom: 1.5rem;
 }
+
+.switch-m-top {
+	margin-top: 0.75rem;
+}
+
+{{-- adjusts the value of .switch-m-top for mobile viewport --}}
+@media (max-width: 768px) {
+	.switch-m-top {
+		margin-top: 0.4rem;
+	}
+}
