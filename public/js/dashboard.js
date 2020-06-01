@@ -7,10 +7,10 @@ $(function() {
 	$('#nb-dashboard').css('border-left', '3px solid ' + color);
 
 	// Since CSS cannot retrieve the theme color for the hover pseudo-class, JS will handle the hover event
-	$('.tile.is-child').hover(function() {
-		$(this).css('border-left', '5px solid ' + color);
+	$('#tiles .box').hover(function() {
+		$(this).css('border', '1px solid ' + color).css('border-left', '5px solid ' + color);
 	}, function() {
-		$(this).css('border-left', '');
+		$(this).css({'border':'', 'border-left':''});
 	});
 
 	// If the viewport is mobile, #filter will flex to provide better UI

@@ -2,6 +2,7 @@
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bulma-ribbon.min.css') }}">
 @endsection
 
 @section('body')
@@ -24,13 +25,13 @@
 							<input type="text" class="input" placeholder="Search course or username...">
 						</div>
 						<div class="control">
-							<button class="button is-info">
+							<button class="button is-info" title="Search">
 								<span class="icon"><i class="fas fa-search"></i></span>
 							</button>
 						</div>
 					</div>
 				</form>
-				<button id="btnfilter" class="button is-white is-inline-block is-pulled-right"><span class="icon"><i class="fas fa-chevron-down"></i></span></button>
+				<button id="btnfilter" class="button is-white is-inline-block is-pulled-right" title="Sort/Filter"><span class="icon"><i class="fas fa-chevron-down"></i></span></button>
 			</div>
 		</div>
 		<div id="filter">
@@ -61,55 +62,45 @@
 			</div>
 		</div>
 	</div>
-	<div class="tile is-ancestor is-hidden-touch">
-		<div class="tile is-parent">
-			<a class="tile is-child box">
+	<div id="tiles" class="columns">
+		<div class="column is-4-desktop">
+			<div class="box has-ribbon">
+				<div class="ribbon is-success">CCSS</div>
 				<p class="title">AAA 1101</p>
 				<p class="subtitle">Subject Description</p>
-				<p>CCSS</p>
-			</a>
+				<div class="buttons is-right">
+					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
+					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
+					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
+					<button class="button is-danger is-inverted" type="button" title="Delete"><span class="icon"><i class="fas fa-trash"></i></span></button>
+				</div>
+			</div>
 		</div>
-		<div class="tile is-parent">
-			<a class="tile is-child box">
+		<div class="column is-4-desktop">
+			<div class="box has-ribbon">
+				<div class="ribbon is-primary">CAS</div>
 				<p class="title">BBB 2202</p>
 				<p class="subtitle">Subject Description</p>
-				<p>CAS</p>
-			</a>
+				<div class="buttons is-right">
+					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
+					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
+					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
+					<button class="button is-danger is-inverted" type="button" title="Delete"><span class="icon"><i class="fas fa-trash"></i></span></button>
+				</div>
+			</div>
 		</div>
-		<div class="tile is-parent">
-			<a class="tile is-child box">
+		<div class="column is-4-desktop">
+			<div class="box has-ribbon">
+				<div class="ribbon is-link">CEduc</div>
 				<p class="title">CCC 3303</p>
-				<p class="subtitle">Subject Description</p>
-				<p>CEduc</p>
-			</a>
-		</div>
-	</div>
-	<div id="touch" class="is-hidden-desktop">
-		<div class="tile is-ancestor">
-			<div class="tile is-parent">
-				<a class="tile is-child box">
-					<p class="title">AAA 1101</p>
-					<p class="subtitle">Subject Description</p>
-					<p>CCSS</p>
-				</a>
+				<p class="subtitle">Subject Description More Description Here and There</p>
+				<div class="buttons is-right">
+					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
+					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
+					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
+					<button class="button is-danger is-inverted" type="button" title="Delete"><span class="icon"><i class="fas fa-trash"></i></span></button>
+				</div>
 			</div>
-			<div class="tile is-parent">
-				<a class="tile is-child box">
-					<p class="title">BBB 2202</p>
-					<p class="subtitle">Subject Description</p>
-					<p>CAS</p>
-				</a>
-			</div>
-		</div>
-		<div class="is-ancestor">
-			<div class="tile is-parent">
-				<a class="tile is-child box">
-					<p class="title">CCC 3303</p>
-					<p class="subtitle">Subject Description</p>
-					<p>CEduc</p>
-				</a>
-			</div>
-			<div class="tile is-parent"></div>
 		</div>
 	</div>
 </div>
