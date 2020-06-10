@@ -76,7 +76,7 @@
 				</figure>
 			</div>
 			<div class="column">
-				<p class="title is-size-6 is-spaced">About SyMaker</p>
+				<p class="title is-size-6 is-spaced">SyMaker 2.0</p>
 				<p class="subtitle is-7 has-text-grey">SyMaker 2.0 is a revision of the first SyMaker developed by previous R&D Unit team leader, Clive Fuentebella. The Syllabus Maker dubbed as &quot;SyMaker&quot; is a web application developed to promote a paperless environment in the College of Computer Studies and Systems, and soon to the University of the East.</p>
 			</div>
 		</div>
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 </div>
-<div class="help has-text-centered has-text-grey-light">V0.10.0</div>
+<div class="help has-text-centered has-text-grey-light">V0.10.1</div>
 @endsection
 
 @section('scripts')
