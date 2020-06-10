@@ -3,13 +3,4 @@
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <noscript>
-	<style>
-		#nojs {
-			display: block;
-		}
-
-		#js {
-			display: none;
-		}
-	</style>
 </noscript>

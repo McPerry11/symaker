@@ -14,9 +14,9 @@ $(function() {
 	});
 
 	// If the viewport is mobile, #filter will flex to provide better UI
-	if (window.matchMedia('only screen and (max-width: 600px)').matches) $('#filter .field').removeClass('is-grouped is-grouped-right');
+	if (window.matchMedia('only screen and (max-width: 550px)').matches) $('#filter .field').removeClass('is-grouped is-grouped-right');
 	$(window).resize(function() {
-		window.matchMedia('only screen and (max-width: 600px)').matches ? $('#filter .field').removeClass('is-grouped is-grouped-right') : $('#filter .field').hasClass('is-grouped is-grouped-right') ? null : $('#filter .field').addClass('is-grouped is-grouped-right');
+		window.matchMedia('only screen and (max-width: 550px)').matches ? $('#filter .field').removeClass('is-grouped is-grouped-right') : $('#filter .field').hasClass('is-grouped is-grouped-right') ? null : $('#filter .field').addClass('is-grouped is-grouped-right');
 	});
 
 	// Once #btnfilter is clicked, #filter will be visible; otherwise hidden.
