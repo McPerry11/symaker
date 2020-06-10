@@ -3,10 +3,7 @@
 }
 
 .box {
-	padding-left: 35px;
-	padding-right: 35px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding: 50px 35px;
 }
 
 #pass-control {

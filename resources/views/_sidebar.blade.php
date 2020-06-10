@@ -1,9 +1,9 @@
 <aside class="menu">
 	<p class="menu-label">General</p>
 	<ul class="menu-list">
-		<li><a id="sb-dashboard"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a></li>
+		<li><a id="sb-dashboard" href="{{ url('') }}"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a></li>
 		<li><a id="sb-courses"><span class="icon"><i class="fas fa-book"></i></span>Courses</a></li>
-		<li><a id="sb-settings"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a></li>
+		<li><a id="sb-settings" href="{{ url('settings') }}"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a></li>
 		<li><a id="sb-help"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a></li>
 	</ul>
 	<p id="admin" class="menu-label">Administration</p>

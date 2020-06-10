@@ -51,9 +51,9 @@
 	{{-- #mobile will be shown in mobile viewport after clicking navbar-burger --}}
 	<div id="mobile" class="navbar-menu is-hidden-tablet">
 		<div class="navbar-start">
-			<a id="nb-dashboard" class="navbar-item"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
+			<a id="nb-dashboard" class="navbar-item" href="{{ url('') }}"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
 			<a id="nb-courses" class="navbar-item"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
-			<a id="nb-settings" class="navbar-item"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
+			<a id="nb-settings" class="navbar-item" href="{{ url('settings') }}"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
 			<a id="nb-accounts" class="navbar-item"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
 			<a id="nb-colleges" class="navbar-item"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
@@ -61,7 +61,7 @@
 			<a id="nb-logs" class="navbar-item"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
 		</div>
 		<div class="navbar-end">
-			<div class="navbar-item columns is-mobile">
+			<a class="navbar-item columns is-mobile">
 				<div class="column is-1">
 					<figure class="image is-24x24">
 						<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
@@ -70,7 +70,7 @@
 				<div class="column">
 					<p>Username</p>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 </nav>
