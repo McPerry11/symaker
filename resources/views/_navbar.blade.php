@@ -1,6 +1,6 @@
 <nav class="navbar is-fixed-top">
 	<div class="navbar-brand">
-		<div id="title" class="navbar-item is-size-4 has-text-weight-bold has-text-primary">Symaker 2.0</div>
+		<img id="logo" src="{{ asset('img/SyMakerExtended.PNG') }}" alt="SyMaker 2.0 Logo">
 		{{-- #user is only visible on tablet viewport --}}
 		<a id="user" class="level is-hidden-desktop is-hidden-mobile is-mobile">
 			<div class="level-item">
@@ -26,9 +26,6 @@
 			<div class="navbar-item breadcrumb has-succeeds-separator">
 				<ul>
 					<li></li>
-					<li class="is-active">
-						<a><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a>
-					</li>
 				</ul>
 			</div>
 		</div>

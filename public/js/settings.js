@@ -4,6 +4,8 @@ $(function() {
 	let color = $('html').css('background-color');
 	$('#nb-settings').css('border-left', '3px solid ' + color);
 
+	$('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-cog"></i></span>Settings</a></li>');
+
 	// Moved all mobile viewport adjustments to JQuery for cleaner codes
 	if (window.matchMedia('only screen and (max-width: 768px)').matches) {
 		$('.switch').addClass('is-small');

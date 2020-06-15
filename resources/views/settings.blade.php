@@ -65,14 +65,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="settings container">
+	<div class="settings-container">
 		<h2 class="subtitle is-size-4 is-marginless">About</h2>
 		<hr class="settings-hr">
 		{{-- About --}}
 		<div class="columns is-mobile is-centered is-gapless">
 			<div class="column is-narrow">
 				<figure class="image is-32x32">
-					<img src="{{ asset('img/Blank.JPG') }}" alt="SyMaker Logo">
+					<img id="about-logo" src="{{ asset('img/SyMakerLogoName.PNG') }}" alt="SyMaker Logo">
 				</figure>
 			</div>
 			<div class="column">
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 </div>
-<div class="help has-text-centered has-text-grey-light">V0.10.1</div>
+<div class="help has-text-centered has-text-grey-light">V0.10.2</div>
 @endsection
 
 @section('scripts')
