@@ -1,0 +1,59 @@
+#header {
+	margin-bottom: 15px;
+}
+
+form {
+	width: 90%;
+}
+
+#search {
+	width: 100%;
+}
+
+#btnfilter {
+	height: 100%;
+}
+
+#btnfilter .icon {
+	margin: auto;
+	height: 100%;
+}
+
+#filter {
+	padding-bottom: 10px;
+	display: none;
+}
+
+#view {
+	margin-left: 20px;
+	padding-top: 7px;
+}
+
+#filter .label {
+	margin-right: 10px;
+	padding-top: 7px;
+}
+
+.db-content .box {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+}
+
+.db-content .subtitle {
+	flex-grow: 1;
+}
+
+/* Desktop Viewport*/
+@media screen and (max-width: 1215px) and (min-width: 1024px) {
+	form {
+		width: 85%;
+	}
+}
+
+/* Mobile to Tablet Viewport */
+@media screen and (max-width: 1023px) {
+	form {
+		width: 77%;
+	}
+}

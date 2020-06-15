@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-link">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,25 @@
 	@yield('styles')
 </head>
 <body>
+	@if(!Request::is('login'))
+	{{-- #layout is hidden on login module --}}
+	@include('_navbar')
+	<div id="layout" class="columns is-mobile is-marginless">
+		{{-- #sidebar is hidden on mobile viewport --}}
+		<div id="sidebar" class="column is-2-desktop is-3-tablet is-hidden-mobile has-background-white">
+			@include('_sidebar')
+		</div>
+		{{-- Content goes in .box --}}
+		<div id="body" class="column">
+			<div id="content" class="box">
+				@yield('body')
+			</div>
+		</div>
+	</div>
+	@else
+	{{-- This part is for login page only --}}
 	@yield('body')
+	@endif
 
 	@include('_scripts')
 	@yield('scripts')
