@@ -17,4 +17,8 @@ class IndexController extends Controller
 	public function settings() {
 		return view('settings');
 	}
+
+	public function logs() {
+		return view('logs');
+	}
 }

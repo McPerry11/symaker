@@ -77,7 +77,7 @@
 			</div>
 			<div class="column">
 				<p class="title is-size-6 is-spaced">SyMaker 2.0</p>
-				<p class="subtitle is-7 has-text-grey">SyMaker 2.0 is a revision of the first SyMaker developed by previous R&D Unit team leader, Clive Fuentebella. The Syllabus Maker dubbed as &quot;SyMaker&quot; is a web application developed to promote a paperless environment in the College of Computer Studies and Systems, and soon to the University of the East.</p>
+				<p class="subtitle is-7 has-text-grey">SyMaker 2.0 is a revision of the first SyMaker developed by previous R&D Unit team leader, Clive Fuentebella. The Syllabus Maker dubbed as &quot;SyMaker&quot; is a web application developed to promote a paperless environment in the College of Computer Studies and Systems, and soon to the University of the East. It was recently redeveloped by the UE CCSS Research and Development Unit in order to provide a better user interface and user experience with the application of consistent & mobile-friendly layouts, and sleek & modern design.</p>
 			</div>
 		</div>
 		<div class="columns is-mobile is-centered is-gapless">
@@ -88,12 +88,12 @@
 			</div>
 			<div class="column">
 				<p class="title is-size-6 is-spaced">Developers</p>
-				<p class="subtitle is-7 has-text-grey">SyMaker 2.0 was developed by the UE CCSS Research and Development Unit (R&D). The R&D Unit team leader and project leader of SyMaker 2.0, Mack Perry Co (3rd yr. BSCS), along with members of the R&D Unit Systems Division, Louis Altoveros (2nd yr. BSCS) and Virgilio Lopez Jr. (2nd yr. BSCS), developed the revisioned Syllabus Maker, dubbed as SyMaker 2.0.</p>
+				<p class="subtitle is-7 has-text-grey">The UE CCSS Research and Development Unit System Division redeveloped and redesigned the revisioned Syllabus Maker, dubbed as SyMaker 2.0. The developers: Mack Perry Co, Virgilio Lopez Jr., and Louis Altoveros aimed to provide a suitable design improving the user experience and user interface after reviewing the structure and suggestions from the first SyMaker.</p>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="help has-text-centered has-text-grey-light">V0.10.2</div>
+<div class="help has-text-centered has-text-grey-light">V0.11.0</div>
 @endsection
 
 @section('scripts')

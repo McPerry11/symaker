@@ -9,13 +9,10 @@
 <div id="header">
 	<div class="columns">
 		<div class="column is-5-tablet is-4-widescreen">
-			<div class="subtitle is-3">
-				Dashboard
-			</div>
+			<div class="subtitle is-3">Dashboard</div>
 		</div>
 		<div class="column">
 			<form class="is-inline-block">
-				@csrf
 				<div class="field has-addons">
 					<div id="search" class="control">
 						<input type="text" class="input" placeholder="Search course or username...">

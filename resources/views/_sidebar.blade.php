@@ -11,6 +11,6 @@
 		<li><a id="sb-accounts"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a></li>
 		<li><a id="sb-colleges"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a></li>
 		<li><a id="sb-others"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a></li>
-		<li><a id="sb-logs"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a></li>
+		<li><a id="sb-logs" href="{{ url('logs') }}"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a></li>
 	</ul>
 </aside>

@@ -55,7 +55,7 @@
 			<a id="nb-accounts" class="navbar-item"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
 			<a id="nb-colleges" class="navbar-item"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
 			<a id="nb-others" class="navbar-item"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a>
-			<a id="nb-logs" class="navbar-item"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
+			<a id="nb-logs" class="navbar-item" href="{{ url('logs') }}"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
 		</div>
 		<div class="navbar-end">
 			<a class="navbar-item columns is-mobile">

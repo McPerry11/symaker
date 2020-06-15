@@ -3,7 +3,6 @@ $(function() {
 	$('#nb-settings').addClass('is-active');
 	let color = $('html').css('background-color');
 	$('#nb-settings').css('border-left', '3px solid ' + color);
-
 	$('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-cog"></i></span>Settings</a></li>');
 
 	// Moved all mobile viewport adjustments to JQuery for cleaner codes
@@ -25,6 +24,7 @@ $(function() {
 		}
 	});
 
+	// To determine whether the switches assigned in the settings were turned on or turned off
 	$('.switch').click(function() {
 		$(this).attr('checked') ? $(this).removeAttr('checked') : $(this).attr('checked', true);
 		$(this).attr('checked') ? alert($(this).attr('id') + ' turned on.') : alert($(this).attr('id') + ' turned off.');
