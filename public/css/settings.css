@@ -1,0 +1,40 @@
+.settings-hr {
+	border: 1px solid lightgrey;
+	margin: 0.5rem 0 1rem;
+}
+
+.settings-container {
+	margin-bottom: 1rem;
+}
+
+#settings .title {
+	margin-bottom: 5px;
+}
+
+.switch-m-top {
+	margin-top: 0.75rem;
+}
+
+#settings figure {
+	margin: 0 7px;
+}
+
+#settings img {
+	object-fit: cover;
+	height: 100%;
+}
+
+#settings #about-logo {
+	object-fit: contain;
+}
+
+.help {
+	margin-top: 20px;
+}
+
+/* adjusts the value of .switch-m-top for mobile viewport */
+@media screen and (max-width: 768px) {
+	.switch-m-top {
+		margin-top: 0.4rem;
+	}
+}
