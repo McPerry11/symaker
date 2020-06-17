@@ -21,4 +21,8 @@ class IndexController extends Controller
 	public function logs() {
 		return view('logs');
 	}
+
+	public function accounts() {
+		return view('accounts');
+	}
 }
