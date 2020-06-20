@@ -1,0 +1,29 @@
+#header {
+	margin-bottom: 15px;
+}
+
+form {
+	width: 100%;
+}
+
+#search {
+	width: 100%;
+}
+
+.addCollegeMobile {
+	padding-right: 0.2em;
+}
+
+/* Desktop Viewport*/
+@media screen and (max-width: 1215px) and (min-width: 1024px) {
+	form {
+		width: 85%;
+	}
+}
+
+/* Mobile to Tablet Viewport */
+@media screen and (max-width: 1023px) {
+	form {
+		width: 77%;
+	}
+}

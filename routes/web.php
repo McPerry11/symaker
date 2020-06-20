@@ -20,3 +20,7 @@ Route::get('', 'IndexController@dashboard');
 Route::get('settings', 'IndexController@settings');
 
 Route::get('logs', 'IndexController@logs');
+
+Route::get('colleges', 'IndexController@colleges');
+
+
