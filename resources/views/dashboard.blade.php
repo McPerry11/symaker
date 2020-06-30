@@ -61,9 +61,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-success">CCSS</div>
 				<p class="title">AAA 1101</p>
-				<p class="subtitle">Subject Description</p>
+				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
@@ -73,9 +72,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-primary">CAS</div>
 				<p class="title">BBB 2202</p>
-				<p class="subtitle">Subject Description</p>
+				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
@@ -85,9 +83,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-link">CEduc</div>
 				<p class="title">CCC 3303</p>
-				<p class="subtitle">Subject Description More Description Here and There</p>
+				<p class="subtitle">Subject Title More Title Here and There</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-users-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
@@ -101,9 +98,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-success">CCSS</div>
 				<p class="title">AAA 1101</p>
-				<p class="subtitle">Subject Description</p>
+				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-user-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
@@ -113,9 +109,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-primary">CAS</div>
 				<p class="title">BBB 2202</p>
-				<p class="subtitle">Subject Description</p>
+				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-user-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
@@ -127,9 +122,8 @@
 			<div class="box has-ribbon">
 				<div class="ribbon is-link">CEduc</div>
 				<p class="title">CCC 3303</p>
-				<p class="subtitle">Subject Description More Description Here and There</p>
+				<p class="subtitle">Subject Title More Title Here and There</p>
 				<div class="buttons is-right">
-					<button class="button" type="button" title="Manage Access"><span class="icon"><i class="fas fa-user-cog"></i></span></button>
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>

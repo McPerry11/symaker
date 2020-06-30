@@ -20,3 +20,5 @@ Route::get('', 'IndexController@dashboard');
 Route::get('settings', 'IndexController@settings');
 
 Route::get('logs', 'IndexController@logs');
+
+Route::get('courses', 'CoursesController@index');

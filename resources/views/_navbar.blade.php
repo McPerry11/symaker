@@ -49,7 +49,7 @@
 	<div id="mobile" class="navbar-menu is-hidden-tablet">
 		<div class="navbar-start">
 			<a id="nb-dashboard" class="navbar-item" href="{{ url('') }}"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
-			<a id="nb-courses" class="navbar-item"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
+			<a id="nb-courses" class="navbar-item" href="{{ url('courses') }}"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
 			<a id="nb-settings" class="navbar-item" href="{{ url('settings') }}"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
 			<a id="nb-accounts" class="navbar-item"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
