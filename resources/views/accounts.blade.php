@@ -34,9 +34,7 @@
         <th>Username</th>
         <th>Name</th>
         <th>
-          <button class="button is-info is-pulled-right">
-            <span class="icon"><i class="fas fa-plus"></i></span>Add Account
-          </button>
+          <button class="button is-info is-fullwidth"><span class="icon"><i class="fas fa-plus"></i></span>Add Account</button>
         </th>
       </tr>
     </thead>
@@ -47,10 +45,10 @@
         <td>Last Name, First Name M.I.</td>
         <td>
           <div class="buttons is-right">
-            <button class="button">
+            <button class="button" title="Edit">
               <span class="icon"><i class="icon fas fa-user-edit"></i></span>
             </button>
-            <button class="button is-danger is-inverted">
+            <button class="button is-danger is-inverted" title="Delete">
               <span class="icon"><i class="icon fas fa-user-times"></i></span>
             </button>
           </div>
@@ -62,10 +60,10 @@
         <td>Last Name, First Name M.I.</td>
         <td>
           <div class="buttons is-right">
-            <button class="button">
+            <button class="button" title="Edit">
               <span class="icon"><i class="icon fas fa-user-edit"></i></span>
             </button>
-            <button class="button is-danger is-inverted">
+            <button class="button is-danger is-inverted" title="Delete">
               <span class="icon"><i class="icon fas fa-user-times"></i></span>
             </button>
           </div>

@@ -24,3 +24,5 @@ Route::get('logs', 'IndexController@logs');
 Route::get('courses', 'CoursesController@index');
 
 Route::get('accounts', 'UsersController@index');
+
+Route::get('colleges', 'CollegesController@index');

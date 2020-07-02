@@ -53,7 +53,7 @@
 			<a id="nb-settings" class="navbar-item" href="{{ url('settings') }}"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
 			<a id="nb-accounts" class="navbar-item" href="{{ url('accounts') }}"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
-			<a id="nb-colleges" class="navbar-item"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
+			<a id="nb-colleges" class="navbar-item" href="{{ url('colleges') }}"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
 			<a id="nb-others" class="navbar-item"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a>
 			<a id="nb-logs" class="navbar-item" href="{{ url('logs') }}"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
 		</div>

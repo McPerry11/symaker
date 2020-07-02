@@ -44,7 +44,6 @@ th .button .icon:first-child:last-child {
 
 	th:nth-child(3) {
 		min-width: 165px;
-		width: 165px;
 	}
 
 	th:nth-child(4) {
