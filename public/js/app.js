@@ -9,8 +9,8 @@ $(function() {
 	// If nabar-burger has the class 'is-active', it will remove it; otherwise, it will add it.
 	$('.navbar-burger').click(function() {
 		$(this).toggleClass('is-active');
-		$('#mobile').slideToggle('fast', function() {
-			$('#mobile').toggleClass('is-active');
+		$('.navbar-mobile').slideToggle('fast', function() {
+			$('.navbar-mobile').toggleClass('is-active');
 		});
 	});
 

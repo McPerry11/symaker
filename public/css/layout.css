@@ -35,14 +35,22 @@ body {
 	height: 45px;
 }
 
+.breadcrumb ul, .breadcrumb li {
+	height: 100%;
+}
+
 #user {
 	position: fixed;
 	padding: 10px 0;
 	right: 0;
 }
 
-#user figure, #mobile figure {
+#user figure {
 	margin-right: 10px;
+}
+
+#mobile figure {
+	margin-right: 5px;
 }
 
 #avatar {
@@ -58,6 +66,10 @@ body {
 #mobile {
 	overflow-y: hidden;
 	overflow-x: hidden;
+}
+
+.navbar-menu button .icon:first-child:last-child {
+	margin-right: 5px;
 }
 
 /* Sidebar */
@@ -77,18 +89,18 @@ aside {
 	padding-left: 10px;
 }
 
-.menu-list a {
-	padding-right: 0;
-}
-
 .menu-list .is-active {
-	width: 130%;
+	width: 105%;
 }
 
-#admin {
+#admin, .menu-list:nth-child(2) {
 	padding-top: 20px;
 }
 
 .navbar-item .icon:only-child, .menu .icon {
 	margin-right: 5px;
+}
+
+#sb-back {
+	margin-bottom: 20px;
 }

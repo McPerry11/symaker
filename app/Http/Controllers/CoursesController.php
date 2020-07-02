@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\Route;
 
 class CoursesController extends Controller
 {
@@ -54,9 +56,17 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        // To be used for determining if edit event was from dashboard or courses module
+        // return redirect(url()->previous());
+
+        // In this part, we will use the Illuminate\Support\Facades\Route to determine which module is in view
+        // This will prevent us from making more controller functions with the same motive.
+        if (Route::current()->uri() == 'subjectcode/edit/learning_outcomes') {
+            return view('learning_outcomes');
+        }
+        // Add an else if for your module
     }
 
     /**

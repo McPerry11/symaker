@@ -46,7 +46,30 @@
 	</div>
 
 	{{-- #mobile will be shown in mobile viewport after clicking navbar-burger --}}
-	<div id="mobile" class="navbar-menu is-hidden-tablet">
+	@if (Request::is('subjectcode/edit/*'))
+	{{-- This navbar-menu will only appear for the course syllabus modification modules --}}
+	<div class="navbar-menu is-hidden-tablet navbar-mobile">
+		<div class="navbar-start">
+			<a id="nb-course-info" class="navbar-item"><span class="icon"><i class="fas fa-info"></i></span>Course Information</a>
+			<a id="nb-learning-outcomes" class="navbar-item" href="{{ url('subjectcode/edit/learning_outcomes') }}"><span class="icon"><i class="fas fa-lightbulb"></i></span>Learning Outcomes</a>
+			<a id="nb-course-content" class="navbar-item"><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a>
+			<a id="nb-rcm" class="navbar-item"><span class="icon"><i class="fas fa-bookmark"></i></span>Reference & Classroom Management</a>
+			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question"></i></span>Help</a>
+		</div>
+		<div class="navbar-end">
+			<div class="navbar-divider"></div>
+			<div class="navbar-item">
+				<div class="buttons is-centered">
+					<button class="button is-success"><span class="icon"><i class="fas fa-check"></i></span>Submit</button>
+					<button class="button"><span class="icon"><i class="fas fa-times"></i></span>Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@else
+	{{-- #mobile is the main navbar-menu --}}
+	<div id="mobile" class="navbar-menu is-hidden-tablet navbar-mobile">
 		<div class="navbar-start">
 			<a id="nb-dashboard" class="navbar-item" href="{{ url('') }}"><span class="icon"><i class="fas fa-columns"></i></span>Dashboard</a>
 			<a id="nb-courses" class="navbar-item" href="{{ url('courses') }}"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
@@ -58,16 +81,13 @@
 			<a id="nb-logs" class="navbar-item" href="{{ url('logs') }}"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
 		</div>
 		<div class="navbar-end">
-			<a class="navbar-item columns is-mobile">
-				<div class="column is-1">
-					<figure class="image is-24x24">
-						<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
-					</figure>
-				</div>
-				<div class="column">
-					<p>Username</p>
-				</div>
+			<a class="navbar-item">
+				<figure class="image is-24x24 is-inline-block">
+					<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
+				</figure>
+				<span>Username</span>
 			</a>
 		</div>
 	</div>
+	@endif
 </nav>
