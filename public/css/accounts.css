@@ -7,25 +7,15 @@ form, #search {
 }
 
 .table th {
-	vertical-align: bottom
+	vertical-align: bottom;
 }
 
 th:nth-child(1) {
 	width: 80px;
 }
 
-th:nth-child(2) {
-	min-width: 125px;
-	width: 125px;
-}
-
 th:nth-child(3) {
 	min-width: 200px;
-}
-
-th:nth-child(4) {
-	min-width: 220px;
-	width: 220px;
 }
 
 th .button .icon:first-child:last-child {
@@ -37,18 +27,7 @@ th .button .icon:first-child:last-child {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
-	th:nth-child(2) {
-		min-width: 95px;
-		width: 95px;
-	}
-
 	th:nth-child(3) {
-		min-width: 165px;
-		width: 165px;
-	}
-
-	th:nth-child(4) {
-		min-width: 128px;
-		width: 128px;
+		min-width: 120px;
 	}
 }

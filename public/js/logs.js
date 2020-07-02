@@ -1,6 +1,6 @@
 $(function() {
-	$('#sb-logs').addClass('is-active');
-	$('#nb-logs').addClass('is-active');
+	$('#sb-logs').addClass('is-active').removeAttr('href');
+	$('#nb-logs').addClass('is-active').removeAttr('href');
 	let color = $('html').css('background-color');
 	$('#header').css('border-bottom', '2px solid ' + color);
 	$('#nb-logs').css('border-left', '3px solid ' + color);

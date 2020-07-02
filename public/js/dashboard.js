@@ -1,6 +1,6 @@
 $(function() {
-	$('#sb-dashboard').addClass('is-active');
-	$('#nb-dashboard').addClass('is-active');
+	$('#sb-dashboard').addClass('is-active').removeAttr('href');
+	$('#nb-dashboard').addClass('is-active').removeAttr('href');
 	// Fetches the color set in the background to match the theme color
 	let color = $('html').css('background-color');
 	$('#header').css('border-bottom', '2px solid ' + color);
