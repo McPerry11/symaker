@@ -27,21 +27,24 @@
 </div>
 {{-- Logs Table--}}
 <div class="table-container">
-  <table class="table is-fullwidth is-striped">
+  <table class="table is-fullwidth">
     <thead>
       <tr>
         <th>Log #</th>
         <th>Details</th>
+        <th>Date & Time</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1001</td>
         <td>user1 added the course: CIT 1102</td>
+        <td>6/30/2020 6:09PM</td>
       </tr>
       <tr>
         <td>1002</td>
         <td>user2 added a user: user1</td>
+        <td>4/15/2020 7:15AM</td>
       </tr>
     </tbody>
   </table>
@@ -51,15 +54,19 @@
 <nav class="pagination is-right">
   <a class="pagination-previous">Previous</a>
   <a class="pagination-next">Next</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link">1</a></li>
-    <li><a class="pagination-ellipsis">&hellip;</a></li>
-    <li><a class="pagination-link">34</a></li>
-    <li><a class="pagination-link">35</a></li>
-    <li><a class="pagination-link">36</a></li>
-    <li><a class="pagination-ellipsis">&hellip;</a></li>
-    <li><a class="pagination-link">69</a></li>
-  </ul>
+  <form class="pagination-list">
+    <div class="field has-addons">
+      <div class="control">
+        <button class="button is-info">Go to</button>
+      </div>
+      <div class="control">
+        <input type="number" id="page" class="input" placeholder="Page #">
+      </div>
+      <div class="control">
+        <a class="button is-static">/ 69</a>
+      </div>
+    </div>
+  </form>
 </nav>
 @endsection
 

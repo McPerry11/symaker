@@ -1,0 +1,30 @@
+#header {
+	margin-bottom: 15px;
+}
+
+form, #search {
+	width: 100%;
+}
+
+.table th {
+	vertical-align: bottom;
+}
+
+th:nth-child(1) {
+	min-width: 85px;
+	width: 85px;
+}
+
+th:nth-child(3) {
+	min-width: 120px;
+	width: 120px;
+}
+
+th:nth-child(4) {
+	min-width: 130px;
+	width: 130px;
+}
+
+th .button .icon:first-child:last-child {
+	margin-right: 5px;
+}

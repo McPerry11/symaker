@@ -72,7 +72,7 @@
 		<div class="columns is-mobile is-centered is-gapless">
 			<div class="column is-narrow">
 				<figure class="image is-32x32">
-					<img id="about-logo" src="{{ asset('img/SyMakerLogoName.PNG') }}" alt="SyMaker Logo">
+					<img id="about-logo" src="{{ asset('img/SyMakerLogo.PNG') }}" alt="SyMaker Logo">
 				</figure>
 			</div>
 			<div class="column">
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 </div>
-<div class="help has-text-centered has-text-grey-light">V0.11.0</div>
+<div class="help has-text-centered has-text-grey-light">V1.16.0</div>
 @endsection
 
 @section('scripts')
