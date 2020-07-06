@@ -2,15 +2,18 @@
 {{-- This will only appear on course syllabus modification modules --}}
 <aside class="menu">
 	<ul class="menu-list">
+		<li><a id="sb-back"><span class="icon"><i class="fas fa-chevron-left"></i></span>Back</a></li>
+	</ul>
+	<ul class="menu-list">
 		<li><a id="sb-course-info"><span class="icon"><i class="fas fa-info"></i></span><span class="sb-li">Course Information</span></a></li>
 		<li><a id="sb-learning-outcomes" href="{{ url('subjectcode/edit/learning_outcomes') }}"><span class="icon"><i class="fas fa-lightbulb"></i></span><span class="sb-li">Learning Outcomes</span></a></li>
 		<li><a id="sb-course-content"><span class="icon"><i class="fas fa-clipboard-list"></i></span><span class="sb-li">Course Content</span></a></li>
-		<li><a id="sb-rcm"><span class="icon"><i class="fas fa-bookmark"></i></span><span class="sb-li">References & Content Management</span></a></li>
+		<li><a id="sb-rcm"><span class="icon"><i class="fas fa-bookmark"></i></span><span class="sb-li">References & Classroom Management</span></a></li>
 		<li><a id="sb-help"><span class="icon"><i class="fas fa-question"></i></span><span class="sb-li">Help</span></a></li>
 	</ul>
-	<ul class="menu-list">
-		<li><a id="sb-submit"><span class="icon"><i class="fas fa-check"></i></span>Submit</a></li>
-		<li><a id="sb-cancel"><span class="icon"><i class="fas fa-times"></i></span>Cancel</a></li>
+	<ul id="edit_timestamp" class="menu-list">
+		<li class="help">Last modifed by Username</li>
+		<li class="help">July 6, 2020 - 6:00PM</li>
 	</ul>
 </aside>
 

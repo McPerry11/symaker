@@ -93,7 +93,7 @@ aside {
 	width: 105%;
 }
 
-#admin, .menu-list:nth-child(2) {
+#admin, #edit_timestamp {
 	padding-top: 20px;
 }
 

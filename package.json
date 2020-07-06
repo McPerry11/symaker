@@ -20,6 +20,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@creativebulma/bulma-badge": "^1.0.1",
         "bulma": "^0.8.2",
         "bulma-extensions": "^6.2.7",
         "bulma-switch": "^2.0.0"
