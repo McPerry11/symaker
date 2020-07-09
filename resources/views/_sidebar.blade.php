@@ -2,7 +2,7 @@
 {{-- This will only appear on course syllabus modification modules --}}
 <aside class="menu">
 	<ul class="menu-list">
-		<li><a id="sb-course-info"><span class="icon"><i class="fas fa-info"></i></span><span class="sb-li">Course Information</span></a></li>
+		<li><a id="sb-course-info" href="{{ url('subjectcode/edit/course_information') }}"><span class="icon"><i class="fas fa-info"></i></span><span class="sb-li">Course Information</span></a></li>
 		<li><a id="sb-learning-outcomes" href="{{ url('subjectcode/edit/learning_outcomes') }}"><span class="icon"><i class="fas fa-lightbulb"></i></span><span class="sb-li">Learning Outcomes</span></a></li>
 		<li><a id="sb-course-content"><span class="icon"><i class="fas fa-clipboard-list"></i></span><span class="sb-li">Course Content</span></a></li>
 		<li><a id="sb-rcm"><span class="icon"><i class="fas fa-bookmark"></i></span><span class="sb-li">References & Content Management</span></a></li>

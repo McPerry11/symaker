@@ -1,0 +1,31 @@
+h1 {
+	padding-bottom: 15px;
+}
+
+#courseCode {
+	flex-grow: 0;
+	width: 15%;
+}
+
+
+.w-100 {
+    width: 100%;
+}
+
+/*.field.has-addons {
+    flex-wrap: wrap;
+}*/
+/*
+.input {
+	margin-bottom: 5px;
+}*/
+
+.x-icon {
+	cursor: pointer;
+    pointer-events: initial !important;
+}
+
+.x-icon-disabled {
+	cursor: not-allowed;
+	pointer-events: all !important;
+}
