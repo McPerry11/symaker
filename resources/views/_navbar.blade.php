@@ -52,7 +52,7 @@
 		<div class="navbar-start">
 			<a id="nb-course-info" class="navbar-item"><span class="icon"><i class="fas fa-info"></i></span>Course Information</a>
 			<a id="nb-learning-outcomes" class="navbar-item" href="{{ url('subjectcode/edit/learning_outcomes') }}"><span class="icon"><i class="fas fa-lightbulb"></i></span>Learning Outcomes</a>
-			<a id="nb-course-content" class="navbar-item"><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a>
+			<a id="nb-course-content" class="navbar-item" href="{{ url('subjectcode/edit/course_content') }}"><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a>
 			<a id="nb-rcm" class="navbar-item"><span class="icon"><i class="fas fa-bookmark"></i></span>Reference & Classroom Management</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question"></i></span>Help</a>
 		</div>
