@@ -6,6 +6,7 @@ $(function() {
 	$('#nb-course-info').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
 	$('.breadcrumb ul').append('<li><a href="localhost/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><a>AAA 1101</a></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
 
+
 	$('.input, .textarea').val(''); //Clears all fields at the start
 
 	$('#addPrerequisite').click(function() { //Adds field when clicking add pre-requisite btn
@@ -34,7 +35,6 @@ $(function() {
 				$outcomeInput.after('<p class="help is-danger">This field is required.</p>');
 			}
 		} else {
-			
 			$outcomeInput.removeClass('is-danger');
 			$outcomeInput.next('.help').remove();
 			$('#outcomeButtonDiv').prev().clone(true).insertBefore('#outcomeButtonDiv')
@@ -46,14 +46,13 @@ $(function() {
 
 
 	$('.control.has-icons-right').hover(function() { //Toggles the 'x' icon when hovering
-		$(this).find('span.icon').toggleClass('is-hidden'); 
+		$(this).find('span.icon').toggleClass('is-hidden-desktop'); 
 		
-		if($(this).parents('.outcomeField').length) { //For the course outcome
+		if($(this).parents('.outcomeField').length) { //Removes course outcome field
 			if($(this).parents('.outcomeField').siblings('.outcomeField').length === 0) {
 				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one 
 			} else {
 				$(this).find('span.icon').removeClass('x-icon-disabled').addClass('x-icon');
-
 				$('span.icon').click(function() {
 					var $newNumber = 1;
 					$(this).parents('.outcomeField').remove();
@@ -64,7 +63,7 @@ $(function() {
 					$counter = $newNumber;
 				});
 			}
-		} else { //For the pre-requisite
+		} else { //Removes pre-requisite field
 			if($(this).siblings('.control.has-icons-right').length === 0) {
 				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of pre-requisite field when there is only one 
 			} else {
@@ -76,14 +75,4 @@ $(function() {
 		}
 	});
 
-	if($('#prerequisiteField .input').is(':focus')) {
-		$(document).on('keypress',function(e) {
-		    if(e.which == 13) {
-		        alert('You pressed enter!');
-		    }
-		});
-	}
-
-
-	
 });

@@ -7,7 +7,7 @@
 @section('body')
 <h1 class="subtitle is-3">Course Information</h1>
 
-<div class="columns">
+<div class="columns is-hidden-touch">
 	<div class="column is-9">
 		<h2 class="subtitle is-5">Course Info</h2>
 	</div>
@@ -16,8 +16,12 @@
 	</div>
 </div>
 
-<div class="columns">
-	<div class="column is-9">
+
+<div class="columns is-desktop">
+	<div class="column is-9-desktop">
+		<div class="field is-hidden-desktop">
+			<h2 class="subtitle is-5">Course Info</h2>
+		</div>
 		<div class="field is-horizontal">
 			<div class="field-body">
 				<div id="courseCode" class="field">
@@ -29,13 +33,16 @@
 				<div class="field">
 					<p class="control">
 						<label class="label">Course Title</label>
-						<input type="text" class="input" placeholder="">
+						<input type="text" class="input">
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="column">
+		<div class="field is-hidden-desktop">
+			<h2 class="subtitle is-5">Credit Units</h2>
+		</div>
 		<div class="field is-horizontal">
 			<div class="field-body">
 				<div class="field">
@@ -61,7 +68,7 @@
 <div id="prerequisiteField" class="field">
 	<div class="control has-icons-right">
 		<input type="text" class="input" placeholder="BBB 1101 - Computer Programming">
-		<span class="icon is-right is-hidden"><i class="fas fa-times"></i></span>
+		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span>
 	</div>
 </div>
 <div class="field">
@@ -92,7 +99,7 @@
 	</div>
 	<div class="control is-expanded has-icons-right">
 		<input class="input" type="text">
-		<span class="icon is-right is-hidden"><i class="fas fa-times"></i></span>
+		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span> <!-- always shows 'x' on touch devices -->
 	</div>
 </div>
 

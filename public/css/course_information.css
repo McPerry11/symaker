@@ -2,23 +2,19 @@ h1 {
 	padding-bottom: 15px;
 }
 
-#courseCode {
-	flex-grow: 0;
-	width: 15%;
+@media only screen and (min-width: 769px) { /*for tablet*/
+	#courseCode {
+		flex-grow: 0;
+		width: 22%;
+	}
 }
 
-
-.w-100 {
-    width: 100%;
+@media only screen and (min-width: 1024px) { /*for desktop*/
+	#courseCode {
+		flex-grow: 0;
+		width: 15%;
+	}
 }
-
-/*.field.has-addons {
-    flex-wrap: wrap;
-}*/
-/*
-.input {
-	margin-bottom: 5px;
-}*/
 
 .x-icon {
 	cursor: pointer;
