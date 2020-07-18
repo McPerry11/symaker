@@ -26,6 +26,11 @@ $(function() {
 
     function deleteContent(contentID) {
         $('#content-'+contentID).remove();
+        // fixing bug for duplicate content id #s
+        let $next_rows = $('#row-content').children('tr').slice(content_id-1);
+        $.each($next_rows, function(i, row) {
+            $next_rows.eq(i).attr('id', 'content-'+(i + Number(content_id)))
+        });
     }
 
     function formHasNoChanges(content_id, form_id) {
@@ -103,6 +108,7 @@ $(function() {
                 deleteContent(content_id);
             };
         };
+        $('#add-content.modal, #confirm.modal').removeClass('is-deleting');
     });
 
     // activate modals
@@ -133,6 +139,7 @@ $(function() {
                 let field_value;
                 // set field values
                 content_id = $row_content.attr('id').match(/(\d+)/)[1]; // gets id #
+                console.log(content_id);
                 $.each(input_ids, function(i, field) {
                     field_value = $row_content.find('.'+field).html();
                     $form.find('#'+field).val(field_value);
