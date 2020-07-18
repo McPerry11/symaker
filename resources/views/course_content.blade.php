@@ -30,17 +30,25 @@
                 <th>Topics</th>
                 <th>Teaching Learning Activities</th>
                 <th>Assessments</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="row-content">
             <template id="row-template">
                 <tr id="content-@{{id}}">
-                    <td>@{{weeks}}</td>
-                    <td>@{{hours}}</td>
-                    <td>@{{learning_outcomes}}</td>
-                    <td>@{{topics}}</td>
-                    <td>@{{activities}}</td>
-                    <td>@{{assessment}}</td>
+                    <td class="weeks">@{{weeks}}</td>
+                    <td class="hours">@{{hours}}</td>
+                    <td class="learning_outcomes">@{{learning_outcomes}}</td>
+                    <td class="topics">@{{topics}}</td>
+                    <td class="activities">@{{activities}}</td>
+                    <td class="assessment">@{{assessment}}</td>
+                    <td>
+                        <button class="button edit-rowcontent btn-modal" modal-id="add-content">
+                            <span class="icon">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                        </button>
+                    </td>
                 </tr>
             </template>
         </tbody>
@@ -54,7 +62,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Add Content</p>
-            <button class="delete is-medium btn-modal" modal-id="confirm"></button>
+            <button class="delete is-medium btn-cancel btn-modal" modal-id="confirm"></button>
         </header>
         <section class="modal-card-body">
             <div class="content">
@@ -62,38 +70,38 @@
                     <div class="field">
                         <label class="label">Weeks</label>
                         <div class="control">
-                            <input id="weeks" type="number" class="input" min="1" max="99">
+                            <input id="weeks" type="number" class="input" min="1" max="99" required>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Hours</label>
                         <div class="control">
-                            <input id="hours" type="number" class="input" min="1" max="24"> <!-- max=3? -->
+                            <input id="hours" type="number" class="input" min="1" max="24" required> <!-- max=3? -->
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Learning Outcomes</label>
                         <div class="control">
-                            <textarea id="learning_outcomes" class="textarea" placeholder="At the end of the lesson, the learner will be able to:"></textarea>
+                            <textarea id="learning_outcomes" class="textarea" placeholder="At the end of the lesson, the learner will be able to:" required></textarea>
                             <!-- TODO: see if there's a default new line at the text area -->
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Topics</label>
                         <div class="control">
-                            <textarea id="topics" class="textarea"></textarea>
+                            <textarea id="topics" class="textarea" required></textarea>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Teaching Learning Activities</label>
                         <div class="control">
-                            <textarea id="activities" class="textarea"></textarea>
+                            <textarea id="activities" class="textarea" required></textarea>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Assessment</label>
                         <div class="control">
-                            <textarea id="assessment" class="textarea"></textarea>
+                            <textarea id="assessment" class="textarea" required></textarea>
                         </div>
                     </div>
                 </form>
@@ -102,7 +110,9 @@
         <footer class="modal-card-foot">
             <div class="buttons">
                 <button class="button is-link btn-submit" modal-id="confirm">Add</button>
-                <button class="button is-danger is-outlined btn-modal" modal-id="confirm">Cancel</button>
+                <button class="button is-danger is-outlined btn-cancel btn-modal" modal-id="confirm">Cancel</button>
+                <!-- TODO: modal for delete confirmation -->
+                <button id="delete-content" class="button is-pulled-right is-danger is-outlined btn-modal" modal-id="confirm">Delete Content</button>
             </div>
         </footer>
     </div>
@@ -118,7 +128,7 @@
                 </div>
                 <div class="buttons">
                     <button class="button is-danger is-outlined cancel">Yes</button>
-                    <button class="button ">No</button>
+                    <button class="button">No</button>
                 </div>
             </article>
         </div>
