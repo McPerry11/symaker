@@ -7,7 +7,7 @@ Syllabus Maker 2.0 is a system that opts to make the UE CCSS paperless in terms 
  - [Louis Altoveros](https://github.com/yulyen)
  - [Joshua Geraldes]()
 
-Copyright @ 2020 UE CCSS R&D
+Copyright © 2020 UE CCSS R&D
 
 # Framework Used
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
