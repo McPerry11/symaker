@@ -1,13 +1,10 @@
 # SyMaker 2.0
 
 ## Collaborators
- - [Mack Perry Co][github-mack]
- - [Virgilio Lopez Jr.]()
- - [Louis Altoveros]()
+ - [Mack Perry Co](https://github.com/McPerry11)
+ - [Virgilio Lopez Jr.](https://github.com/jebjebs)
+ - [Louis Altoveros](https://github.com/yulyen)
  - [Joshua Geraldes]()
- 
-<!-- Variables -->
-[github-mack]: https://github.com/McPerry11
 
 Copyright @ 2020 UE CCSS R&D
 
