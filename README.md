@@ -1,10 +1,10 @@
 # SyMaker 2.0
 
 ## Collaborators
- - [Mack Perry Co] [github-mack]
- - [Virgilio Lopez Jr.] [github-jev]
- - [Louis Altoveros] [github-louis]
- - [Joshua Geraldes] [github-mortem]
+ - [Mack Perry Co][github-mack]
+ - [Virgilio Lopez Jr.][github-jev]
+ - [Louis Altoveros][github-louis]
+ - [Joshua Geraldes][github-mortem]
  
 <!-- Variables -->
 [github-mack]: https://github.com/McPerry11
