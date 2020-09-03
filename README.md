@@ -2,9 +2,9 @@
 
 ## Collaborators
  - [Mack Perry Co][github-mack]
- - [Virgilio Lopez Jr.][github-jev]
- - [Louis Altoveros][github-louis]
- - [Joshua Geraldes][github-mortem]
+ - [Virgilio Lopez Jr.]()
+ - [Louis Altoveros]()
+ - [Joshua Geraldes]()
  
 <!-- Variables -->
 [github-mack]: https://github.com/McPerry11
