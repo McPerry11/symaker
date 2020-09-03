@@ -1,4 +1,4 @@
-#SyMaker 2.0
+# SyMaker 2.0
 
 ## Collaborators
  - [Mack Perry Co] [github-mack]
@@ -11,7 +11,7 @@
 
 Copyright @ 2020 UE CCSS R&D
 
-#Framework Used
+# Framework Used
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
