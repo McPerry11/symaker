@@ -1,4 +1,5 @@
 # SyMaker 2.0
+Syllabus Maker 2.0 is a system that opts to make the UE CCSS paperless in terms of course information or syllabus. This project makes use of Laravel PHP framework, Bulma CSS framework, JQuery, SweetAlert2, and FontAwesome; all of which are open-sources.
 
 ## Collaborators
  - [Mack Perry Co](https://github.com/McPerry11)
