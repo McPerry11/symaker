@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('login', 'IndexController@login');
+Route::post('login','LoginController@login')->name('post_login');
 
 Route::get('', 'IndexController@dashboard');
 
@@ -26,6 +27,7 @@ Route::get('courses', 'CoursesController@index');
 Route::get('accounts', 'UsersController@index');
 
 Route::get('colleges', 'CollegesController@index');
+
 
 Route::prefix('subjectcode/edit')->group(function() {
 	Route::get('learning_outcomes', 'CoursesController@edit');
