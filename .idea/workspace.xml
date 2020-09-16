@@ -23,10 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7fe2c5f-c598-4dd6-bd6d-1f06dde60e04" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/accounts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_scripts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/accounts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/accounts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,12 +40,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -146,11 +155,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../xampp-backup/htdocs/NR" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Laravel\symaker2\app" />
       <recent name="C:\xampp\htdocs\Laravel\symaker2\app\Http\Controllers" />
     </key>
   </component>
@@ -170,7 +187,12 @@
       <updated>1598784227073</updated>
       <workItem from="1598784229620" duration="22000" />
       <workItem from="1599478595870" duration="187000" />
-      <workItem from="1599539421663" duration="14919000" />
+      <workItem from="1599539421663" duration="15765000" />
+      <workItem from="1599556967900" duration="311000" />
+      <workItem from="1600143397662" duration="55000" />
+      <workItem from="1600146173896" duration="15434000" />
+      <workItem from="1600230224662" duration="9786000" />
+      <workItem from="1600257418209" duration="13298000" />
     </task>
     <servers />
   </component>
@@ -187,20 +209,37 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="733" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1599542597137">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="733" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1599542597137" />
-    <state x="708" y="294" key="FileChooserDialogImpl" timestamp="1599543304701">
+    <state x="713" y="242" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600158318635">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
-    <state x="708" y="294" key="FileChooserDialogImpl/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1599543304701" />
-    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1599555326802">
+    <state x="713" y="242" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600158318635" />
+    <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600150051629">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
-    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1599555326802" />
+    <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600150051629" />
+    <state x="708" y="294" key="FileChooserDialogImpl" timestamp="1600262678854">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="708" y="294" key="FileChooserDialogImpl/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600262678854" />
+    <state x="429" y="184" key="SettingsEditor" timestamp="1600148131124">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="429" y="184" key="SettingsEditor/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600148131124" />
+    <state x="585" y="250" width="672" height="677" key="run.anything.popup" timestamp="1600259303016">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="585" y="250" width="672" height="677" key="run.anything.popup/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600259303016" />
+    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1600267350005">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600267350005" />
     <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080@0.0.1857.1080" timestamp="1598784242636" />
   </component>
 </project>

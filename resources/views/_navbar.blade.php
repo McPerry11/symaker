@@ -4,7 +4,7 @@
 		{{-- #user is only visible on tablet viewport --}}
 		<a id="user" class="level is-hidden-desktop is-hidden-mobile is-mobile">
 			<div class="level-item">
-				<p>Username</p>
+				<p>username</p>
 			</div>
 			<div class="level-item">
 				<figure class="image is-32x32">
@@ -32,14 +32,14 @@
 		<div class="navbar-end">
 			<div id="profile" class="navbar-item has-dropdown">
 				<a class="navbar-link is-arrowless">
-					<p>Username</p>
+					<p>{{Auth::user()->username}}</p>
 					<figure id="avatar" class="image is-32x32">
 						<img class="is-rounded" src="{{ asset('img/Blank.JPG') }}">
 					</figure>
 				</a>
 				<div class="navbar-dropdown">
 					<a class="navbar-item"><span class="icon"><i class="fas fa-user"></i></span>Profile</a>
-					<a class="navbar-item"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a>
+					<a class="navbar-item" href="/logout"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a>
 				</div>
 			</div>
 		</div>

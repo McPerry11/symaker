@@ -45,4 +45,9 @@ class User extends Authenticatable
             $model->password = Hash::make($model->password);
         });
     }
+
+    public function college()
+    {
+        return $this->hasOne(College::class);
+    }
 }
