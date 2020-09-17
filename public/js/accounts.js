@@ -18,6 +18,7 @@ var addModal = document.getElementById('addModal');
 var addClose = document.getElementById('addCloseBtn')
 var deleteModal = document.getElementById('deleteModal');
 var editClose = document.getElementById('editCloseBtn');
+var deleteCloseButton = document.getElementById('deleteCloseBtn');
 addButton.onclick = function (){
     addModal.style.display= 'block';
 }

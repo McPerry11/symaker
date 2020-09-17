@@ -84,8 +84,11 @@
             <input type="text"  class="input" id="middleInitial" name="middleInitial">
             <h1>Last Name</h1>
             <input type="text"  class="input" id="lastName" name="lastName">
-                <h1>College</h1>
-                <input type="text"  class="input" id="college" name="college">
+                <select name="college" id="college">
+                    @foreach($collegeTable as $crow)
+                        <option value="{{$crow->abbrev}}">{{$crow->collegeName}}</option>
+                    @endforeach
+                </select>
             <h1>Username</h1>
             <input type="text"  class="input" id="username" name="username">
             <h1>Password</h1>
@@ -112,7 +115,12 @@
             <h1>Last Name</h1>
             <input type="text"  class="input" name="lastName" placeholder="Enter Last Name" required>
             <h1>College</h1>
-            <input type="text"  class="input" name="college" placeholder="Enter Username" required>
+            <!--<input type="text"  class="input" name="college" placeholder="Enter Username" required>-->
+            <select name="college" id="college">
+                @foreach($collegeTable as $crow)
+                <option value="{{$crow->abbrev}}">{{$crow->collegeName}}</option>
+                @endforeach
+            </select>
             <h1>Username</h1>
             <input type="text"  class="input" name="username" placeholder="Enter Username" required>
             <h1>Password</h1>
@@ -136,7 +144,6 @@
             <div class="box">
                 <h1>Are you sure to delete this row</h1>
                 <button type="submit">Yes</button>
-                <button id="deleteCloseBtn">no</button>
             </div>
         </div>
     </form>

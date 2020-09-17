@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Colleges extends Model
+class College extends Model
 {
     protected $fillable = [
-        'Abbrev', 'collegeName','colorCode',
+        'abbrev', 'collegeName','colorCode',
     ];
+
+    protected $primaryKey = 'collegeID';
 
     public function users()
     {

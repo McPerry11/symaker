@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\College;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +19,8 @@ class UsersController extends Controller
     public function index()
     {
         $table = user::all();
-        return view('accounts', compact('table'));
+        $collegeTable=College::all();
+        return view('accounts', compact('table','collegeTable'));
     }
 
     /**
@@ -47,7 +49,6 @@ class UsersController extends Controller
             'college'=>['required', 'string', 'max:255'],
             'password'=>['required', 'string'],
             'email'=>['required', 'string', 'max:255','unique:users'],
-
             ]);
       $user = new User;
         $user->firstName = $request->input('firstName');
@@ -92,16 +93,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$this->validate($request,[
-            'firstName'=> ['required', 'string'],
-            'middleInitial'=>['required', 'string'],
-            'lastName'=>['required', 'string'],
-            'username'=>['required', 'string','unique:users'],
-            'college'=>['required', 'string'],
-            'password'=>['required'],
-            'email'=>['required', 'string','unique:users'],
-
-        ]);*/
         $change = '';
         $user = User::find($id);
         if($user->firstName != $request->input('firstName')){

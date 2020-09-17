@@ -13,7 +13,7 @@ class CreateCollegeTable extends Migration
      */
     public function up()
     {
-        Schema::create('college', function (Blueprint $table) {
+        Schema::create('colleges', function (Blueprint $table) {
             $table->id('collegeID');
             $table->string('abbrev');
             $table->string('collegeName');
