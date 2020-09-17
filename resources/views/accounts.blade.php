@@ -93,7 +93,6 @@
             <h1>Email..</h1>
             <input type="text"  class="input" id="email" name="email">
             <button id="save">Save</button>
-            <button id="editCloseBtn">Close</button>
             </form>
          </div>
     </div>>
@@ -121,7 +120,7 @@
             <h1>Email</h1>
             <input type="text"  class="input" name="email" placeholder="Enter Email" required>
             <button type="submit">Add</button>
-            <button id="addCloseBtn">Close</button>
+            <button id="addCloseBtn" class="close">Close</button>
         </div>
     </div>
     </form>

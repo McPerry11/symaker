@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -91,27 +92,58 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'firstName'=> ['required', 'string', 'max:255'],
-            'middleInitial'=>['required', 'string', 'max:255'],
-            'lastName'=>['required', 'string', 'max:255'],
-            'username'=>['required', 'string', 'max:255','unique:users'],
-            'college'=>['required', 'string', 'max:255'],
-            'password'=>['required', 'string'],
-            'email'=>['required', 'string', 'max:255','unique:users'],
+        /*$this->validate($request,[
+            'firstName'=> ['required', 'string'],
+            'middleInitial'=>['required', 'string'],
+            'lastName'=>['required', 'string'],
+            'username'=>['required', 'string','unique:users'],
+            'college'=>['required', 'string'],
+            'password'=>['required'],
+            'email'=>['required', 'string','unique:users'],
 
-        ]);
+        ]);*/
+        $change = '';
         $user = User::find($id);
-        $user->firstName = $request->input('firstName');
-        $user->middleInitial = $request->input('middleInitial');
-        $user->lastName = $request->input('lastName');
-        $user->college = $request->input('college');
-        $user->username = $request->input('username');
-        $user->password = $request->input('password');
-        $user->email= $request->input('email');
-
+        if($user->firstName != $request->input('firstName')){
+            $this->validate($request,['firstName'=>['required','string']]);
+            $user->firstName = $request->input('firstName');
+            $change = $change . "First Name, ";
+        }
+        if ($user->middleInitial != $request->input('middleInitial')){
+            $this->validate($request,['middleInitial'=>['required','string']]);
+            $user->middleInitial = $request->input('middleInitial');
+            $change = $change . "Middle Initial, ";
+        }
+        if ($user->lastName != $request->input('lastName')){
+            $this->validate($request,['lastName'=>['required','string']]);
+            $user->lastName = $request->input('lastName');
+            $change = $change . "Last Name, ";
+        }
+        if ($user->college != $request->input('college')){
+            $this->validate($request,['college'=>['required','string']]);
+            $user->college = $request->input('college');
+            $change = $change . "College, ";
+        }
+        if ($user->username != $request->input('username')){
+            $this->validate($request,['username'=>['required','string','unique:users']]);
+            $user->username = $request->input('username');
+            $change = $change . "Username, ";
+        }
+        if ($request->input('password') == null){
+            $user->password=$user->password;
+        }else{
+            $this->validate($request,['password'=>['required','string']]);
+            $user->password = $request->input('password');
+            $user->password = Hash::make($user->password);
+            $change = $change . "Password, ";
+        }
+        if ($user->email != $request->input('email')){
+            $this->validate($request,['email'=>['required','string','unique:users']]);
+            $user->email= $request->input('email');
+            $change = $change . "Email, ";
+        }
+        $change = $change." Updated";
         $user->save();
-
         return redirect('accounts');
     }
 

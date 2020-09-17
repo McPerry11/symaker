@@ -17,6 +17,7 @@ var addButton = document.getElementById('addBtn');
 var addModal = document.getElementById('addModal');
 var addClose = document.getElementById('addCloseBtn')
 var deleteModal = document.getElementById('deleteModal');
+var editClose = document.getElementById('editCloseBtn');
 addButton.onclick = function (){
     addModal.style.display= 'block';
 }
@@ -26,7 +27,6 @@ addClose.onclick = function (){
 $('.edit').click(function (){
     editModal.style.display = 'block';
 });
-
 $('.delete').click(function (){
     deleteModal.style.display = 'block';
 });
