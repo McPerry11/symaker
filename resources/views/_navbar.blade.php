@@ -52,7 +52,7 @@
 		<div class="navbar-start">
 			<a id="nb-course-info" class="navbar-item"><span class="icon"><i class="fas fa-info"></i></span>Course Information</a>
 			<a id="nb-learning-outcomes" class="navbar-item" href="{{ url('subjectcode/edit/learning_outcomes') }}"><span class="icon"><i class="fas fa-lightbulb"></i></span>Learning Outcomes</a>
-			<a id="nb-course-content" class="navbar-item"><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a>
+			<a id="nb-course-content" class="navbar-item" href="{{ url('subjectcode/edit/course_content') }}"><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a>
 			<a id="nb-rcm" class="navbar-item"><span class="icon"><i class="fas fa-bookmark"></i></span>Reference & Classroom Management</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question"></i></span>Help</a>
 		</div>
@@ -60,8 +60,14 @@
 			<div class="navbar-divider"></div>
 			<div class="navbar-item">
 				<div class="buttons is-centered">
-					<button class="button is-success"><span class="icon"><i class="fas fa-check"></i></span>Submit</button>
-					<button class="button"><span class="icon"><i class="fas fa-times"></i></span>Cancel</button>
+					@if (!Request::is('subjectcode/edit/course_information'))
+					<a id="nb-previous" class="button"><span class="icon"><i class="fas fa-chevron-left"></i></span><span>Previous</span></a>
+					@endif
+					@if (Request::is('subjectcode/edit/rcm'))
+					<button class="button is-success"><span class="icon"><i class="fas fa-check"></i></span><span>Submit</span></button>
+					@else
+					<button id="nb-next" class="button"><span class="icon"><i class="fas fa-chevron-right"></i></span><span>Next</span></button>
+					@endif
 				</div>
 			</div>
 		</div>

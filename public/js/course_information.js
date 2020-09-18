@@ -4,7 +4,8 @@ $(function() {
 	let color = $('html').css('background-color');
 	$('h1').css('border-bottom', '2px solid ' + color); // Adds accent to sidebar
 	$('#nb-course-info').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
-	$('.breadcrumb ul').append('<li><a href="localhost/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><a>AAA 1101</a></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
+	$('.breadcrumb ul').append('<li><a href="/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><p class="mx-2">AAA 1101</p></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
+
 
 	$('.input, .textarea').val(''); //Clears all fields at the start
 
@@ -33,7 +34,7 @@ $(function() {
 			$outcomeInput.removeClass('is-danger');
 			$outcomeInput.next('.help').remove();
 			$('#outcomeButtonDiv').prev().clone(true).insertBefore('#outcomeButtonDiv')
-				.find('.input').val('').focus();
+			.find('.input').val('').focus();
 			$('#outcomeButtonDiv').prev().find('.button').text('CO' + $counter);
 			$counter++;
 		}
