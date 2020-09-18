@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\College;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class CollegesController extends Controller
 {
@@ -13,7 +16,8 @@ class CollegesController extends Controller
      */
     public function index()
     {
-        return view('colleges');
+        $table = College::all();
+        return view('colleges', compact('table'));
     }
 
     /**
@@ -34,7 +38,17 @@ class CollegesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'abbrev'=> ['required', 'string', 'max:255'],
+            'collegeName'=>['required', 'string', 'max:255'],
+            'colorCode'=>['required', 'string', 'max:255'],
+        ]);
+        $college = new College;
+        $college->abbrev = $request->input('abbrev');
+        $college->collegeName = $request->input('collegeName');
+        $college->colorCode = $request->input('colorCode');
+        $college->save();
+        return redirect('/colleges');
     }
 
     /**
@@ -68,7 +82,26 @@ class CollegesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $change = '';
+        $college = College::find($id);
+        if($college->abbrev != $request->input('abbrev')){
+            $this->validate($request,['abbrev'=>['required','string']]);
+            $college->abbrev = $request->input('abbrev');
+            $change = $change . "Abbrev, ";
+        }
+        if ($college->collegeName != $request->input('collegeName')){
+            $this->validate($request,['collegeName'=>['required','string']]);
+            $college->collegeName = $request->input('collegeName');
+            $change = $change . "College Name, ";
+        }
+        if ($college->colorCode != $request->input('colorCode')){
+            $this->validate($request,['colorCode'=>['required','string']]);
+            $college->colorCode = $request->input('colorCode');
+            $change = $change . "Color Code, ";
+        }
+        $change = $change." Updated";
+        $college->save();
+        return redirect('colleges');
     }
 
     /**
@@ -79,6 +112,8 @@ class CollegesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $college = College::find($id);
+        $college->delete();
+        return redirect('colleges');
     }
 }

@@ -28,50 +28,95 @@
 
 {{-- table --}}
 <div class="table-container">
-  <table class="table is-fullwidth is-striped">
+  <table class="table is-fullwidth is-striped" id="collegestable">
     <thead>
       <tr>
+          <th>CollegeID</th>
         <th>Abbrev.</th>
         <th>Name</th>
         <th>Color Code</th>
         <th>
-          <button class="button is-info is-fullwidth" title="Add College">
+          <button class="button is-info is-fullwidth" title="Add College" id="addBtn">
             <span class="icon is-small"><i class="fas fa-plus"></i></span>Add College
           </button>
         </th>
       </tr>
     </thead>
     <tbody>
+    @foreach($table as $rows)
       <tr>
-        <td>CCSS</td>
-        <td>College of Computer Studies and System</td>
+          <td>{{$rows->collegeID}}</td>
+        <td>{{$rows->abbrev}}</td>
+        <td>{{$rows->collegeName}}</td>
         <td>
-          <figure class="image is-16x16 is-inline-block" style="background-color: #27a80d;"></figure>
-          <span style="color: #27a80d">#27a80d</span>
+          <span style="color: {{$rows->colorCode}}">{{$rows->colorCode}}</span>
         </td>
         <td>
           <div class="buttons is-right">
-            <button class="button"><span class="icon"><i class="fas fa-edit"></i></span></button>
-            <button class="button is-danger is-inverted"><span class="icon"><i class="fas fa-trash"></i></span></button>
+            <button class="button edit"><span class="icon"><i class="fas fa-edit"></i></span></button>
+            <button class="button is-danger is-inverted delete"><span class="icon"><i class="fas fa-trash"></i></span></button>
           </div>
         </td>
       </tr>
-      <tr>
-        <td>CBA</td>
-        <td>College of Business Administration</td>
-        <td>
-          <figure class="image is-16x16 is-inline-block" style="background-color: #ffd143;"></figure>
-          <span style="color: #ffd143">#ffd143</span>
-        </td>
-        <td>
-          <div class="buttons is-right">
-            <button class="button"><span class="icon"><i class="fas fa-edit"></i></span></button>
-            <button class="button is-danger is-inverted"><span class="icon"><i class="fas fa-trash"></i></span></button>
-          </div>
-        </td>
-      </tr>
+    @endforeach
     </tbody>
   </table>
+</div>
+
+{{--Add Modal--}}
+<div id="addModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <form method="POST" enctype="multipart/form-data" action="{{action('CollegesController@store')}}" >
+        @csrf
+        <div class="modal-content">
+            <div class="box">
+                <h1>Abbrev</h1>
+                <input type="text"  class="input" name="abbrev" placeholder="Enter College Abbreviation" required>
+                <h1>College Name</h1>
+                <input type="text"  class="input" name="collegeName" placeholder="Enter College Name" required>
+                <h1>Color Code</h1>
+                <input type="text"  class="input" name="colorCode" placeholder="Enter Color Code" required>
+                <button type="submit">Add</button>
+                <button id="addCloseBtn" class="close">Close</button>
+            </div>
+        </div>
+    </form>
+    <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
+</div>
+{{--Edit Modal--}}
+<div id="editModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="colleges" enctype="multipart/form-data" method="POST" id="editForm">
+                @csrf
+                {{ method_field('PUT') }}
+                <h1>Abbrev</h1>
+                <input type="text"  class="input" id="abbrev" name="abbrev">
+                <h1>College Name</h1>
+                <input type="text"  class="input" id="collegeName" name="collegeName">
+                <h1>Color Code</h1>
+                <input type="text"  class="input" id="colorCode" name="colorCode">
+                <button id="save">Save</button>
+            </form>
+        </div>
+    </div>>
+    <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
+</div>
+{{--Delete Modal--}}
+<div id="deleteModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <form method="POST" enctype="multipart/form-data" action="/colleges" id="deleteForm">
+        @csrf
+        {{ method_field('DELETE') }}
+        <div class="modal-content">
+            <div class="box">
+                <h1>Are you sure to delete this row</h1>
+                <button type="submit">Yes</button>
+            </div>
+        </div>
+    </form>
+    <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
 </div>
 @endsection
 

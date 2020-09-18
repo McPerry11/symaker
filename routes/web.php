@@ -13,23 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('login', 'IndexController@login');
 
-Route::get('', 'IndexController@dashboard');
 
-Route::get('settings', 'IndexController@settings');
+Route::get('login', 'LoginController@getLogin')->name('login');
+Route::post('login','LoginController@login')->name('post_login')->middleware('throttle:10,5');
+Route::post('logout','LoginController@logout')->name('logout');
 
-Route::get('logs', 'IndexController@logs');
-
-Route::get('courses', 'CoursesController@index');
-
-Route::get('accounts', 'UsersController@index');
-
-Route::get('colleges', 'CollegesController@index');
-
-Route::prefix('subjectcode/edit')->group(function() {
-	Route::get('learning_outcomes', 'CoursesController@edit');
-	Route::get('course_information', 'CoursesController@edit');
-	// Add your module route here. Let the controller remain the same and check out CoursesController@edit
-	Route::get('course_content', 'CoursesController@edit');
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('', 'IndexController@dashboard');
+	Route::get('settings', 'IndexController@settings');
+	Route::get('logs', 'IndexController@logs');
+	Route::get('courses', 'CoursesController@index');
+	Route::prefix('subjectcode/edit')->group(function() {
+		Route::get('learning_outcomes', 'CoursesController@edit');
+		Route::get('course_information', 'CoursesController@edit');
+		Route::get('course_content', 'CoursesController@edit');
+        // Add your module route here. Let the controller remain the same and check out CoursesController@edit
+	});
+	Route::resource('accounts', 'UsersController');
+	Route::resource('colleges', 'CollegesController');
 });

@@ -5,6 +5,7 @@ $(function() {
 	let color = $('html').css('background-color');
 	$('#header').css('border-bottom', '2px solid ' + color);
 	$('#nb-dashboard').css('border-left', '3px solid ' + color);
+	$('.menu-list .is-active').css('background-color', color);
 	$('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li>');
 
 	// If the viewport is mobile, #filter will flex to provide better UI

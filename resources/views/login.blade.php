@@ -7,9 +7,10 @@
 @section('body')
 <div class="columns is-centered is-vcentered is-marginless is-mobile">
 	<div class="column is-5-tablet is-4-desktop is-3-widescreen">
-		<form class="box">
+		<form class="box" method="POST" action="{{route('post_login')}}">
+			@csrf
 			<div class="has-text-centered content">
-				<h1 class="title has-text-primary">SYMAKER 2.0</h1>
+				<h1 class="title has-text-primary">SYMAKER</h1>
 			</div>
 			{{-- Username --}}
 			<div class="field">
@@ -25,7 +26,7 @@
 					<span class="icon is-left"><i class="fas fa-key"></i></span>
 				</p>
 				<div class="control">
-					<button class="button has-background-grey-lighter"><i class="fas fa-eye"></i></button>
+					<button id="view" class="button has-background-grey-lighter" type="button"><span class="icon"><i class="fas fa-eye"></i></span></button>
 				</div>
 			</div>
 			<a class="has-text-right has-text-dark help">Forgot Password?</a>
@@ -36,4 +37,8 @@
 		</form>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/login.js') }}"></script>
 @endsection
