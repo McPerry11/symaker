@@ -65,6 +65,8 @@ class CoursesController extends Controller
         // This will prevent us from making more controller functions with the same motive.
         if (Route::current()->uri() == 'subjectcode/edit/learning_outcomes') {
             return view('learning_outcomes');
+        } else if (Route::current()->uri() == 'subjectcode/edit/course_content') {
+            return view('course_content');
         }
         // Add an else if for your module
     }
