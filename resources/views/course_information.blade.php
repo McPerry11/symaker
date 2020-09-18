@@ -65,12 +65,18 @@
 <div class="field">
 	<h2 class="subtitle is-5">Pre-requisites</h2>
 </div>
-<div id="prerequisiteField" class="field">
-	<div class="control has-icons-right">
-		<input type="text" class="input" placeholder="BBB 1101 - Computer Programming">
-		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span>
-	</div>
+
+<div class="field">
+<div class="select is-fullwidth">
+  <select>
+    <option value="0" selected>Select course pre-requisite</option>
+    <option>BBB 1101 - Computer Programming</option>
+    <option>BBB 1102 - Computer Programming 2</option>
+    <option>BBB 1103 - Computer Programming 3</option>
+  </select>
 </div>
+</div>
+
 <div class="field">
 	<p class="control">
 		<button id="addPrerequisite" class="button is-light">

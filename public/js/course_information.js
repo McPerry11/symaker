@@ -6,25 +6,20 @@ $(function() {
 	$('#nb-course-info').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
 	$('.breadcrumb ul').append('<li><a href="localhost/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><a>AAA 1101</a></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
 
-
 	$('.input, .textarea').val(''); //Clears all fields at the start
 
 	$('#addPrerequisite').click(function() { //Adds field when clicking add pre-requisite btn
-		var $prerequisiteInput = $('#prerequisiteField').find('.input').last();
-
-		if($prerequisiteInput.val().length === 0) { //if user did not fill-out the inputbox
-			$prerequisiteInput.addClass('is-danger').focus();
-			if(!$prerequisiteInput.next('p').length) { //Avoids duplication of error message every time button is clicked
-				$prerequisiteInput.after('<p class="help is-danger">This field is required.</p>');
+		if($('.select select').last().val() === "0") {
+			$('.select').last().addClass('is-danger');
+			if(!$('.select').next('p').length) { //Avoids duplication of error message every time button is clicked
+				$('.select').last().after('<p class="help is-danger">This field is required.</p>');
 			}
 		} else {
-			$prerequisiteInput.removeClass('is-danger');
-			$prerequisiteInput.next('.help').remove();
-			$prerequisiteInput.parent().clone(true).appendTo('#prerequisiteField').find('.input').val('').focus();
-			$('#prerequisiteField').children('.control').last().css('margin-top', '.25em');
+			$('.select').removeClass('is-danger');
+			$('.select').next('.help').remove();
+			$('.select').last().clone(true).insertAfter('.select:last').css('margin-top', '.25em');
 		}
 	});
-
 
 	var $counter = 2;
 	$('#addOutcome').click(function() { //Adds field when clicking add outcome btn

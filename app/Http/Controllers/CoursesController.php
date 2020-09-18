@@ -67,6 +67,8 @@ class CoursesController extends Controller
             return view('learning_outcomes');
         } else if (Route::current()->uri() == 'subjectcode/edit/course_information') {
             return view('course_information');
+        } else if (Route::current()->uri() == 'subjectcode/edit/references_classroom_management') {
+            return view('references_classroom_management');
         }
         // Add an else if for your module
     }
