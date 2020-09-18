@@ -156,6 +156,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/course_content.js') }}"></script>
+<script src="{{ asset('js/ckeditor.js') }}"></script>
 <!-- Mustache js templating, used cdn for trial -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"></script>
 @endsection
