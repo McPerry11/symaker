@@ -6,11 +6,11 @@ $(function() {
     let color = $('html').css('background-color');
     $('#header').css('border-bottom', '2px solid ' + color); // Adds accent to sidebar
     $('#nb-course-content').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
-    $('.breadcrumb ul').append('<li><a href="localhost/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><a>AAA 1101</a></li><li class="is-active"><a><span class="icon"><i class="fas fa-lightbulb"></i></span>Course Content</a></li>');
+    $('.breadcrumb ul').append('<li><a href="/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><p class="mx-2">AAA 1101</p></li><li class="is-active"><a><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a></li>');
 
     let content_form_id = 'course-content-form';
     let input_ids = ['weeks', 'hours', 'learning_outcomes',
-        'topics', 'activities', 'assessment'];
+    'topics', 'activities', 'assessment'];
 
     let $confirmation_text = $('.confirmation-text'); // for changing confirmation modal texts
     let $form_header = $('#add-content .modal-card-title'); // for changing header if adding or editing content
@@ -95,9 +95,9 @@ $(function() {
     }
 
    // cancel adding content
-    $('#confirm.modal .button').on('click', function () {
-        closeModal($(this));
-        if ($(this).hasClass('cancel')) {
+   $('#confirm.modal .button').on('click', function () {
+    closeModal($(this));
+    if ($(this).hasClass('cancel')) {
             // also closes form-modal if confirmed instead of
             // just the confirm-modal
             let $form_modal = $(this).closest('.modal').prev('.modal');

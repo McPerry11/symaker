@@ -60,8 +60,14 @@
 			<div class="navbar-divider"></div>
 			<div class="navbar-item">
 				<div class="buttons is-centered">
-					<button class="button is-success"><span class="icon"><i class="fas fa-check"></i></span>Submit</button>
-					<button class="button"><span class="icon"><i class="fas fa-times"></i></span>Cancel</button>
+					@if (!Request::is('subjectcode/edit/course_information'))
+					<a id="nb-previous" class="button"><span class="icon"><i class="fas fa-chevron-left"></i></span><span>Previous</span></a>
+					@endif
+					@if (Request::is('subjectcode/edit/rcm'))
+					<button class="button is-success"><span class="icon"><i class="fas fa-check"></i></span><span>Submit</span></button>
+					@else
+					<button id="nb-next" class="button"><span class="icon"><i class="fas fa-chevron-right"></i></span><span>Next</span></button>
+					@endif
 				</div>
 			</div>
 		</div>
