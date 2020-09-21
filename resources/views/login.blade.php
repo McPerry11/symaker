@@ -32,7 +32,7 @@
 			{{-- Login --}}
 			<p id="msg" class="help has-text-danger"></p>
 			<div class="field has-text-centered">
-				<button id="login" class="button is-primary" type="submit">LOGIN</button>
+				<button id="login" class="button is-primary" type="submit">LOG IN</button>
 			</div>
 		</form>
 	</div>

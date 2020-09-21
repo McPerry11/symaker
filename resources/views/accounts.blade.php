@@ -46,7 +46,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($table as $row)
+      {{-- @foreach($table as $row)
       <tr>
         <td>{{$row->id}}</td>
         <td>{{$row->college}}</td>
@@ -66,12 +66,12 @@
           </div>
         </td>
       </tr>
-      @endforeach
+      @endforeach --}}
     </tbody>
   </table>
 </div>
 {{--Edit Modal--}}
-<div id="editModal" class="modal" style="padding-top: 100px">
+{{-- <div id="editModal" class="modal" style="padding-top: 100px">
   <div class="modal-background"></div>
   <div class="modal-content">
     <div class="box">
@@ -100,9 +100,9 @@
     </div>
   </div>>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div>
+</div> --}}
 {{--Add Modal--}}
-<div id="addModal" class="modal" style="padding-top: 100px">
+{{-- <div id="addModal" class="modal" style="padding-top: 100px">
   <div class="modal-background"></div>
   <form method="POST" enctype="multipart/form-data" action="{{action('UsersController@store')}}" >
     @csrf
@@ -133,9 +133,9 @@
     </div>
   </form>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div>
+</div> --}}
 {{--Delete Modal--}}
-<div id="deleteModal" class="modal" style="padding-top: 100px">
+{{-- <div id="deleteModal" class="modal" style="padding-top: 100px">
   <div class="modal-background"></div>
   <form method="POST" enctype="multipart/form-data" action="/account" id="deleteForm">
     @csrf
@@ -148,7 +148,7 @@
     </div>
   </form>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div>
+</div> --}}
 {{-- Pagination --}}
 <nav class="pagination is-right">
   <a class="pagination-previous">Previous</a>
@@ -171,5 +171,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/accounts.js') }}"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+{{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> --}}
 @endsection
