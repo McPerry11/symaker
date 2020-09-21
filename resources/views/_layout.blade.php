@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+@if (Request::is('login'))
+<html lang="en" class="has-background-link"></html>
+@else
 <html lang="en" style="background-color:{{ App\College::select('colorCode')->where('id', Auth::user()->collegeID)->get()[0]['colorCode'] }}">
+@endif
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

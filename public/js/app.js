@@ -14,7 +14,7 @@ $(function() {
 		});
 	});
 
-	$('#profile a').click(function() {
+	$('#profile .navbar-link').click(function() {
 		$('.navbar-dropdown').slideToggle('fast', function() {
 			$('#profile').toggleClass('is-active');
 		});

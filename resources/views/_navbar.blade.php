@@ -38,10 +38,24 @@
 					</figure>
 				</a>
 				<div class="navbar-dropdown">
-					<a class="navbar-item"><span class="icon"><i class="fas fa-user"></i></span>Profile</a>
+					<button class="navbar-item button is-white is-fullwidth text-left">
+						<span class="icon">
+							<i class="fas fa-user"></i>
+						</span>
+						<span>
+							Profile
+						</span>
+					</button>
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<a class="navbar-item" type="submit"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a>
+						<button class="navbar-item has-text-danger button is-white is-fullwidth text-left" type="submit">
+							<span class="icon">
+								<i class="fas fa-sign-out-alt"></i>
+							</span>
+							<span>
+								Logout
+							</span>
+						</button>
 					</form>
 				</div>
 			</div>

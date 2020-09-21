@@ -13,5 +13,11 @@ $(function() {
 
 	$('form').submit(function() {
 		$('#login').addClass('is-loading');
+		$('input').attr('readonly', true);
+		if ($('#pass-control input').attr('type') == 'text') {
+			$('#pass-control input').attr('type', 'password');
+			$(this).removeClass('has-background-grey').addClass('has-background-grey-lighter').removeClass('has-text-white');
+			$('#view svg').removeClass('fa-eye-slash').addClass('fa-eye');	
+		}
 	});
 });

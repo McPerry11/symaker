@@ -72,6 +72,10 @@ body {
 	margin-right: 5px;
 }
 
+.navbar-dropdown button.text-left {
+	justify-content: flex-start;
+}
+
 /* Sidebar */
 #sidebar {
 	height: 100vh;
