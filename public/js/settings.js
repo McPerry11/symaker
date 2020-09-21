@@ -4,6 +4,7 @@ $(function() {
 	let color = $('html').css('background-color');
 	$('h1').css('border-bottom', '2px solid ' + color);
 	$('#nb-settings').css('border-left', '3px solid ' + color);
+	$('#sb-settings').css('background-color', color);
 	$('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-cog"></i></span>Settings</a></li>');
 
 	// Moved all mobile viewport adjustments to JQuery for cleaner codes

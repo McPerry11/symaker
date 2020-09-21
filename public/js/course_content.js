@@ -6,6 +6,7 @@ $(function() {
     let color = $('html').css('background-color');
     $('#header').css('border-bottom', '2px solid ' + color); // Adds accent to sidebar
     $('#nb-course-content').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
+    $('#sb-course-content').css('background-color', color);
     $('.breadcrumb ul').append('<li><a href="/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><p class="mx-2">AAA 1101</p></li><li class="is-active"><a><span class="icon"><i class="fas fa-clipboard-list"></i></span>Course Content</a></li>');
 
     let content_form_id = 'course-content-form';
