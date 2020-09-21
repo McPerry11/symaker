@@ -7,11 +7,10 @@
 @section('body')
 <div class="columns is-centered is-vcentered is-marginless is-mobile">
 	<div class="column is-5-tablet is-4-desktop is-3-widescreen">
-		<form class="box" method="POST" action="{{route('post_login')}}">
-			@csrf
-			<div class="has-text-centered content">
-				<h1 class="title has-text-primary">SYMAKER</h1>
-			</div>
+		<form class="box">
+			<figure class="image mb-4">
+				<img src="{{ asset('img/SyMakerExtended.PNG') }}" alt="SyMaker Logo">
+			</figure>
 			{{-- Username --}}
 			<div class="field">
 				<div class="control has-icons-left">
@@ -31,6 +30,7 @@
 			</div>
 			<a class="has-text-right has-text-dark help">Forgot Password?</a>
 			{{-- Login --}}
+			<p id="msg" class="help has-text-danger"></p>
 			<div class="field has-text-centered">
 				<button id="login" class="button is-primary" type="submit">LOGIN</button>
 			</div>
@@ -40,5 +40,51 @@
 @endsection
 
 @section('scripts')
+<script>
+	$('form').submit(function(e) {
+		e.preventDefault();
+		$('#login').addClass('is-loading');
+		$('input').attr('readonly', true);
+		if ($('#pass-control input').attr('type') == 'text') {
+			$('#pass-control input').attr('type', 'password');
+			$('#view').removeClass('has-background-grey').addClass('has-background-grey-lighter').removeClass('has-text-white');
+			$('#view svg').removeClass('fa-eye-slash').addClass('fa-eye');	
+		}
+		var data = $('form').serialize();
+		$.ajax({
+			url: 'login',
+			type: 'POST',
+			data: data,
+			datatype: 'JSON',
+			success: function(response) {
+				if (response.status == 'success') {
+					$('#login').removeClass('is-loading');
+					Swal.fire({
+						icon: 'success',
+						title: response.msg,
+						showConfirmButton: false,
+						timer: 2500
+					}).then(function() {
+						window.location.href = "{{ route('dashboard') }}";
+					});
+				} else {
+					$('#msg').text(response.msg);
+					$('input').val('');
+					$('input').removeAttr('readonly');
+					$('#login').removeClass('is-loading');
+				}
+			},
+			error: function(err) {
+				console.log(err);
+				Swal.fire({
+					icon: 'error',
+					title: 'Cannot Connect to Sserver',
+					text: 'Something went wrong. Please try again later.',
+					confirmButtonText: 'Try Again'
+				});
+			}
+		});
+	});
+</script>
 <script src="{{ asset('js/login.js') }}"></script>
 @endsection

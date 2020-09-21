@@ -1,3 +1,9 @@
+$.ajaxSetup({
+	headers: {
+		'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+	}
+});
+
 $(window).on('load', function() {
 	// Fetch color of background to match theme color.
 	let color = $('html').css('background-color');

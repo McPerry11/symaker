@@ -20,7 +20,7 @@ Route::post('login','LoginController@login')->name('post_login')->middleware('th
 Route::post('logout','LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('', 'IndexController@dashboard');
+	Route::get('', 'IndexController@dashboard')->name('dashboard');
 	Route::get('settings', 'IndexController@settings');
 	Route::get('logs', 'IndexController@logs');
 	Route::get('courses', 'CoursesController@index');
