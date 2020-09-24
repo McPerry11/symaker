@@ -44,6 +44,46 @@
 	flex-grow: 1;
 }
 
+.ribbon.cas {
+	background-color: #55DD33;
+	color: white;
+}
+
+.ribbon.cba {
+	background-color: #cFc702;
+	color: white;
+}
+
+.ribbon.ccss {
+	background-color: #48c774;
+	color: white;
+}
+
+.ribbon.cdent {
+	background-color: #DF73FF;
+	color: white;
+}
+
+.ribbon.ceduc {
+	background-color: #6CB4EE;
+	color: white;
+}
+
+.ribbon.ceng {
+	background-color: #FF9F00;
+	color: white;
+}
+
+.ribbon.cfa {
+	background-color: #CD853F;
+	color: white;
+}
+
+.ribbon.claw {
+	background-color: #DA70D6;
+	color: white;
+}
+
 /* Desktop Viewport*/
 @media screen and (max-width: 1215px) and (min-width: 1024px) {
 	form {

@@ -16,11 +16,17 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $table = user::all();
-        $collegeTable=College::all();
-        return view('accounts', compact('table','collegeTable'));
+        if ($request->data == 'users') {
+            $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->paginate(20);
+            $colleges = College::select('id', 'abbrev')->get();
+            return response()->json([
+                'users' => $users,
+                'colleges' => $colleges
+            ]);
+        }
+        return view('accounts');
     }
 
     /**
@@ -49,8 +55,8 @@ class UsersController extends Controller
             'college'=>['required', 'string', 'max:255'],
             'password'=>['required', 'string'],
             'email'=>['required', 'string', 'max:255','unique:users'],
-            ]);
-      $user = new User;
+        ]);
+        $user = new User;
         $user->firstName = $request->input('firstName');
         $user->middleInitial = $request->input('middleInitial');
         $user->lastName = $request->input('lastName');
@@ -59,7 +65,7 @@ class UsersController extends Controller
         $user->password = $request->input('password');
         $user->email= $request->input('email');
         $user->save();
-      return redirect('/accounts')->with('sucess','Data Saved');
+        return redirect('/accounts')->with('sucess','Data Saved');
     }
 
     /**

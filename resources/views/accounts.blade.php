@@ -12,9 +12,9 @@
     <div class="subtitle is-3">Accounts</div>
   </div>
   <div class="column">
-    <form>
+    <form id="search">
       <div class="field has-addons">
-        <div id="search" class="control">
+        <div class="control">
           <input type="text" class="input" placeholder="Search name or username...">
         </div>
         <div class="control">
@@ -26,47 +26,31 @@
     </form>
   </div>
 </div>
+<div>Results: <span id="results" class="has-text-weight-bold"></span></div>
 {{-- Accounts Table --}}
 <div class="table-container">
   <table class="table is-fullwidth" id="accountstable">
     <thead>
       <tr>
-        <th>ID</th>
         <th>College</th>
         <th>Username</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Middle Initial</th>
-        <th>Email</th>
+        <th>Name</th>
         <th>
           <div class="buttons is-right">
-            <button class="button is-info is-fullwidth" id="addBtn"><span class="icon"><i class="fas fa-plus"></i></span>Add Account</button>
+            <button class="button is-info is-fullwidth" id="add"><span class="icon"><i class="fas fa-plus"></i></span>Add Account</button>
           </div>
         </th>
       </tr>
     </thead>
     <tbody>
-      {{-- @foreach($table as $row)
-      <tr>
-        <td>{{$row->id}}</td>
-        <td>{{$row->college}}</td>
-        <td>{{$row->username}}</td>
-        <td>{{$row->lastName}}</td>
-        <td>{{$row->firstName}}</td>
-        <td>{{$row->middleInitial}}</td>
-        <td>{{$row->email}}</td>
-        <td>
-          <div class="buttons is-right">
-            <button class="button edit" title="Edit">
-              <span class="icon"><i class="icon fas fa-user-edit"></i></span>
-            </button>
-            <button class="button is-danger is-inverted delete" title="Delete">
-              <span class="icon"><i class="icon fas fa-user-times"></i></span>
-            </button>
-          </div>
+      <tr id="loading">
+        <td colspan="4" class="has-text-centered">
+          <span class="icon">
+            <i class="fas fa-spinner fa-spin"></i>
+          </span>
+          <div>Loading</div>
         </td>
       </tr>
-      @endforeach --}}
     </tbody>
   </table>
 </div>
@@ -149,27 +133,8 @@
   </form>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
 </div> --}}
-{{-- Pagination --}}
-<nav class="pagination is-right">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next</a>
-  <form class="pagination-list">
-    <div class="field has-addons">
-      <div class="control">
-        <button class="button is-info">Go to</button>
-      </div>
-      <div class="control">
-        <input type="number" id="page" class="input" placeholder="Page #">
-      </div>
-      <div class="control">
-        <a class="button is-static">/ 69</a>
-      </div>
-    </div>
-  </form>
-</nav>
 @endsection
 
 @section('scripts')
 <script src="{{ asset('js/accounts.js') }}"></script>
-{{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> --}}
 @endsection

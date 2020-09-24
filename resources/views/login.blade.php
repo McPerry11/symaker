@@ -65,7 +65,9 @@
 						showConfirmButton: false,
 						timer: 2500
 					}).then(function() {
-						window.location.href = "{{ route('dashboard') }}";
+						$('.pageloader .title').text('Loading Dashboard');
+						$('.pageloader').addClass('is-active');
+						window.location.href = "{{ URL::previous() }}";
 					});
 				} else {
 					$('#msg').text(response.msg);
@@ -75,6 +77,8 @@
 				}
 			},
 			error: function(err) {
+				$('input').removeAttr('readonly');
+				$('#login').removeClass('is-loading');
 				console.log(err);
 				Swal.fire({
 					icon: 'error',

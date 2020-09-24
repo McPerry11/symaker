@@ -46,6 +46,14 @@ class CollegesSeeder extends Seeder
         $college->save();
 
         $college = new College();
+        $college->abbrev = 'CEduc';
+        $college->collegeName = 'College of Education';
+        $college->colorCode = '#6CB4EE';
+        $college->created_at = Carbon::now('+8:00');
+        $college->updated_at = Carbon::now('+8:00');
+        $college->save();
+
+        $college = new College();
         $college->abbrev = 'CEng';
         $college->collegeName = 'College of Engineering';
         $college->colorCode = '#FF9F00';
@@ -62,7 +70,7 @@ class CollegesSeeder extends Seeder
         $college->save();
 
         $college = new College();
-        $college->abbrev = 'CEduc';
+        $college->abbrev = 'CLaw';
         $college->collegeName = 'College of Law';
         $college->colorCode = '#DA70D6';
         $college->created_at = Carbon::now('+8:00');

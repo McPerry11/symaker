@@ -21,6 +21,9 @@ Route::post('logout','LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('', 'IndexController@dashboard')->name('dashboard');
+
+	Route::get('accounts', 'UsersController@index')->name('accounts');
+	Route::post('accounts', 'UsersController@index');
 	Route::get('settings', 'IndexController@settings');
 	Route::get('logs', 'IndexController@logs');
 	Route::get('courses', 'CoursesController@index');
@@ -30,6 +33,6 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('course_content', 'CoursesController@edit');
         // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
-	Route::resource('accounts', 'UsersController');
+
 	Route::resource('colleges', 'CollegesController');
 });

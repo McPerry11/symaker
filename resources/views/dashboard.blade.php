@@ -59,7 +59,7 @@
 	<div class="columns">
 		<div class="column is-4-desktop">
 			<div class="box has-ribbon">
-				<div class="ribbon is-success">CCSS</div>
+				<div class="ribbon ccss">CCSS</div>
 				<p class="title">AAA 1101</p>
 				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
@@ -70,7 +70,7 @@
 		</div>
 		<div class="column is-4-desktop">
 			<div class="box has-ribbon">
-				<div class="ribbon is-primary">CAS</div>
+				<div class="ribbon cas">CAS</div>
 				<p class="title">BBB 2202</p>
 				<p class="subtitle">Subject Title</p>
 				<div class="buttons is-right">
@@ -81,7 +81,7 @@
 		</div>
 		<div class="column is-4-desktop">
 			<div class="box has-ribbon">
-				<div class="ribbon is-link">CEduc</div>
+				<div class="ribbon ceduc">CEduc</div>
 				<p class="title">CCC 3303</p>
 				<p class="subtitle">Subject Title More Title Here and There</p>
 				<div class="buttons is-right">
