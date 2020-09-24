@@ -93,7 +93,7 @@
 		</div>
 	</div>
 </div>
-<div class="help has-text-centered has-text-grey-light">V1.23.7</div>
+<div class="help has-text-centered has-text-grey-light">V1.23.8</div>
 @endsection
 
 @section('scripts')

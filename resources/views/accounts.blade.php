@@ -136,5 +136,8 @@
 @endsection
 
 @section('scripts')
+<script>
+  var access = '{{ Auth::user()->type }}';
+</script>
 <script src="{{ asset('js/accounts.js') }}"></script>
 @endsection

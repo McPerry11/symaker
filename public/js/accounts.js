@@ -36,19 +36,21 @@ $(function() {
             `);
         } else {
           for (user in data.users.data) {
+            let tag = actions = column = '';
             for (college in data.colleges) {
               if (data.colleges[college].id == data.users.data[user].collegeID) {
                 college = data.colleges[college].abbrev;
                 break;
               }
             }
-            $('tbody').append(`
-              <tr>
-              <td>${college}</td>
-              <td>${data.users.data[user].username}</td>
-              <td>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
-              <td>
-              <div class="buttons is-right">
+
+            if (data.users.data[user].type == 'SYSTEM_ADMIN')
+              tag = '<div class="tag is-dark">System Admin</div>';
+            else if (data.users.data[user].type == 'COLLEGE_ADMIN')
+              tag = '<div class="tag is-info">College Admin</div>';
+
+            if (access == 'SYSTEM_ADMIN' || (access == 'COLLEGE_ADMIN' && data.users.data[user].type != 'SYSTEM_ADMIN')) {
+              actions = `<div class="buttons is-right">
               <button class="button edit" data-id="${data.users.data[user].id}">
               <span class="icon">
               <i class="fas fa-edit"></i>
@@ -59,8 +61,15 @@ $(function() {
               <i class="fas fa-trash"></i>
               </span>
               </button>
-              </div>
-              </td>
+              </div>`;
+            }
+
+            $('tbody').append(`
+              <tr>
+              <td>${college}</td>
+              <td>${tag} ${data.users.data[user].username}</td>
+              <td ${column}>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
+              <td>${actions}</td>
               </tr>
               `);
           }
