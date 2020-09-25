@@ -12,7 +12,7 @@ $(function() {
 		$('.switch').addClass('is-small');
 		$('#settings .icon').removeClass('is-large').addClass('is-medium');
 		$('#settings svg').removeClass('fa-lg');
-	} 
+	}
 
 	$(window).resize(function() {
 		if (window.matchMedia('only screen and (max-width: 768px)').matches) {
@@ -27,8 +27,12 @@ $(function() {
 	});
 
 	// To determine whether the switches assigned in the settings were turned on or turned off
-	$('.switch').click(function() {
-		$(this).attr('checked') ? $(this).removeAttr('checked') : $(this).attr('checked', true);
-		$(this).attr('checked') ? alert($(this).attr('id') + ' turned on.') : alert($(this).attr('id') + ' turned off.');
-	});
+	//$('.switch').click(function() {
+	//	$(this).attr('checked') ? $(this).removeAttr('checked') : $(this).attr('checked', true);
+	//	$(this).attr('checked') ? alert($(this).attr('id') + ' turned on.') : alert($(this).attr('id') + ' turned off.');
+	//});
+});
+var passwordModal = document.getElementById('changePassword');
+$("#myBtn").click(function(){
+    passwordModal.style.display='block';
 });

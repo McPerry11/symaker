@@ -21,8 +21,11 @@ Route::post('logout','LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('', 'IndexController@dashboard')->name('dashboard');
-	Route::get('settings', 'IndexController@settings');
+	Route::get('settings', 'SettingsController@index');
 	Route::get('logs', 'IndexController@logs');
+	Route::patch('settings/{user}','SettingsController@updatePassword');
+    Route::patch('settings/notification/{user}','SettingsController@updateEmail');
+    Route::patch('settings/privacy/{user}','SettingsController@updatePrivacy');
 	Route::get('courses', 'CoursesController@index');
 	Route::prefix('subjectcode/edit')->group(function() {
 		Route::get('learning_outcomes', 'CoursesController@edit');

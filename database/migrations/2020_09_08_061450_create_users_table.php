@@ -28,6 +28,12 @@ class CreateUsersTable extends Migration
                 'COLLEGE_ADMIN',
                 'USER'
             ]);
+            $table->enum('emailNotification',[
+                'yes','no'
+            ]);
+            $table->enum('private',[
+                'yes','no'
+            ]);
             $table->rememberToken();
             $table->timestamps();
         });

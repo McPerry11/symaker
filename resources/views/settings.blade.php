@@ -22,8 +22,12 @@
 				<p class="subtitle is-7 has-text-grey">Once your email is verified, this setting will be turned on by default. Turning this setting off will make SyMaker stop notifying you for updates.</p>
 			</div>
 			<div class="column is-narrow">
-				<input id="emailNotification" type="checkbox" class="switch is-rounded">
+                <form action="settings/notification/{{Auth::user()->id}}" enctype="multipart/form-data" method="POST" id="emailNotificationForm" >
+                @csrf
+                {{ method_field('PATCH') }}
+				<input id="emailNotification" name="emailNotification" type="checkbox" class="switch is-rounded" @if(Auth::user()->emailNotification == 'yes') checked @endif>
 				<label for="emailNotification" class="is-pulled-right switch-m-top"></label>
+                </form>
 			</div>
 		</div>
 		{{-- Removed profile settings. Merong sariling module yung profile. --}}
@@ -35,7 +39,7 @@
 		<h2 class="subtitle is-size-4 is-marginless">Security</h2>
 		<hr class="settings-hr">
 		<!-- Change Password -->
-		<a class="columns is-mobile is-centered is-gapless has-text-grey-dark">
+		<a class="columns is-mobile is-centered is-gapless has-text-grey-dark" id="myBtn">
 			<div class="column is-narrow">
 				<span class="icon is-large"><i class="fas fa-key fa-lg"></i></span>
 			</div>
@@ -45,30 +49,51 @@
 			</div>
 		</a>
 	</div>
-
-	<!-------------------------------- PRIVACY ------------------------------>
-	<div class="settings-container">
-		<h2 class="subtitle is-size-4 is-marginless">Privacy</h2>
-		<hr class="settings-hr">
-		<!-- Hide Profile -->
-		<div class="columns is-mobile is-centered is-gapless">
-			<div class="column is-narrow">
-				<span class="icon is-large"><i class="fas fa-user-alt-slash fa-lg"></i></span>
-			</div>
-			<div class="column">
-				<p class="title is-size-6 is-spaced">Hide Profile</p>
-				<p class="subtitle is-7 has-text-grey">Your profile is visible in <a>ccssrnd.tech/symaker/username</a>. When this setting is enabled, other users won't be able to see your profile.</p>
-			</div>
-			<div class="column is-narrow">
-				<input id="hideProfile" type="checkbox" class="switch is-rounded">
-				<label for="hideProfile" class="is-pulled-right switch-m-top"></label>
-			</div>
-		</div>
-	</div>
-	<div class="settings-container">
-		<h2 class="subtitle is-size-4 is-marginless">About</h2>
-		<hr class="settings-hr">
-		{{-- About --}}
+    {{--Change Password Modal--}}
+    <div id="changePassword" class="modal" style="padding-top: 100px">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <form action="settings/{{Auth::user()->id}}" enctype="multipart/form-data" method="POST" id="changePasswordForm">
+                    @csrf
+                    {{ method_field('PATCH') }}
+                    <h1>Password:</h1>
+                    <input type="password"  class="input" id="password" name="password" required>
+                    <h1>Confirm Password:</h1>
+                    <input type="password"  class="input" id="confirmPassword" name="confirmPassword" required>
+                    <button id="save">Save</button>
+                </form>
+            </div>
+        </div>>
+        <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
+    </div>
+        <!-------------------------------- PRIVACY ------------------------------>
+        <div class="settings-container">
+            <h2 class="subtitle is-size-4 is-marginless">Privacy</h2>
+            <hr class="settings-hr">
+            <!-- Hide Profile -->
+            <div class="columns is-mobile is-centered is-gapless">
+                <div class="column is-narrow">
+                    <span class="icon is-large"><i class="fas fa-user-alt-slash fa-lg"></i></span>
+                </div>
+                <div class="column">
+                    <p class="title is-size-6 is-spaced">Hide Profile</p>
+                    <p class="subtitle is-7 has-text-grey">Your profile is visible in <a>ccssrnd.tech/symaker/username</a>. When this setting is enabled, other users won't be able to see your profile.</p>
+                </div>
+                <div class="column is-narrow">
+                    <form action="settings/privacy/{{Auth::user()->id}}" enctype="multipart/form-data" method="POST" id="privacyForm" >
+                        @csrf
+                        {{ method_field('PATCH') }}
+                    <input id="hideProfile" name="hideProfile" type="checkbox" class="switch is-rounded" @if(Auth::user()->private == 'yes') checked @endif>
+                    <label for="hideProfile" class="is-pulled-right switch-m-top"></label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="settings-container">
+            <h2 class="subtitle is-size-4 is-marginless">About</h2>
+            <hr class="settings-hr">
+            {{-- About --}}
 		<div class="columns is-mobile is-centered is-gapless">
 			<div class="column is-narrow">
 				<figure class="image is-32x32">
@@ -97,5 +122,24 @@
 @endsection
 
 @section('scripts')
+    <script>
+        $('#emailNotification').change(function (e){
+            if($('#emailNotification').is(':checked')){
+                $('#emailNotification').val($('#emailNotification').is(':checked'));
+            }else{
+                $('#emailNotification').val($('False'));
+            }
+
+            $('form#emailNotificationForm').submit();
+        });
+        $('#hideProfile').change(function (e){
+            if ($('#hideProfile').is(':checked')){
+                $('#hideProfile').val($('#hideProfile').is(':checked'));
+            }else {
+                $('#emailNotification').val($('false'));
+            }
+            $('form#privacyForm').submit();
+        });
+    </script>
 <script src="{{ asset('js/settings.js') }}"></script>
 @endsection
