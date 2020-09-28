@@ -14,10 +14,13 @@ class CollegesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $table = College::all();
-        return view('colleges', compact('table'));
+        if ($request->data == 'users') {
+            $colleges = College::select('id', 'abbrev')->get();
+            return $colleges;
+        }
+        return view('colleges');
     }
 
     /**

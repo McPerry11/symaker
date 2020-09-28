@@ -25,6 +25,20 @@ class UsersController extends Controller
                 'users' => $users,
                 'colleges' => $colleges
             ]);
+        } else if ($request->data == 'add' || $request->data == 'edit') {
+            if ($request->data == 'add')
+                $count = User::where('username', $request->username)->count();
+            else
+                $count = User::where('username', $request->username)->where('id', '<>', $request->id)->count();
+            if ($count > 0) {
+                return response()->json([
+                    'status' => 'error',
+                    'msg' => 'This username is already taken'
+                ]);
+            }
+            return response()->json([
+                'status' => 'success'
+            ]);
         }
         return view('accounts');
     }
@@ -87,7 +101,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::select('firstName', 'middleInitial', 'lastName', 'collegeID', 'username')->find($id);
+        return $user;
     }
 
     /**

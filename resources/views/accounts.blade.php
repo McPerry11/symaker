@@ -54,85 +54,93 @@
     </tbody>
   </table>
 </div>
+
 {{--Edit Modal--}}
-{{-- <div id="editModal" class="modal" style="padding-top: 100px">
+<div id="userform" class="modal">
   <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="box">
-      <form action="accounts" enctype="multipart/form-data" method="POST" id="editForm">
-        @csrf
-        {{ method_field('PUT') }}
-        <h1>First Name</h1>
-        <input type="text"  class="input" id="firstName" name="firstName">
-        <h1>Middle Name</h1>
-        <input type="text"  class="input" id="middleInitial" name="middleInitial">
-        <h1>Last Name</h1>
-        <input type="text"  class="input" id="lastName" name="lastName">
-        <select name="college" id="college">
-          @foreach($collegeTable as $crow)
-          <option value="{{$crow->abbrev}}">{{$crow->collegeName}}</option>
-          @endforeach
-        </select>
-        <h1>Username</h1>
-        <input type="text"  class="input" id="username" name="username">
-        <h1>Password</h1>
-        <input type="password"  class="input" id="password" name="password">
-        <h1>Email..</h1>
-        <input type="text"  class="input" id="email" name="email">
-        <button id="save">Save</button>
-      </form>
-    </div>
-  </div>>
-  <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div> --}}
-{{--Add Modal--}}
-{{-- <div id="addModal" class="modal" style="padding-top: 100px">
-  <div class="modal-background"></div>
-  <form method="POST" enctype="multipart/form-data" action="{{action('UsersController@store')}}" >
-    @csrf
-    <div class="modal-content">
-      <div class="box">
-        <h1>First Name</h1>
-        <input type="text"  class="input" name="firstName" placeholder="Enter First Name" required>
-        <h1>Middle Name</h1>
-        <input type="text"  class="input" name="middleInitial" placeholder="Enter Middle Name" required>
-        <h1>Last Name</h1>
-        <input type="text"  class="input" name="lastName" placeholder="Enter Last Name" required>
-        <h1>College</h1>
-        <!--<input type="text"  class="input" name="college" placeholder="Enter Username" required>-->
-        <select name="college" id="college">
-          @foreach($collegeTable as $crow)
-          <option value="{{$crow->abbrev}}">{{$crow->collegeName}}</option>
-          @endforeach
-        </select>
-        <h1>Username</h1>
-        <input type="text"  class="input" name="username" placeholder="Enter Username" required>
-        <h1>Password</h1>
-        <input type="password"  class="input" name="password" placeholder="Password" placeholder="Enter Password" required>
-        <h1>Email</h1>
-        <input type="text"  class="input" name="email" placeholder="Enter Email" required>
-        <button type="submit">Add</button>
-        <button id="addCloseBtn" class="close">Close</button>
+  <form class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"></p>
+      <button class="delete" type="button"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">College</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="select">
+              <select id="college" required>
+                {{-- Options are displayed in AJAX --}}
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
-  <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div> --}}
-{{--Delete Modal--}}
-{{-- <div id="deleteModal" class="modal" style="padding-top: 100px">
-  <div class="modal-background"></div>
-  <form method="POST" enctype="multipart/form-data" action="/account" id="deleteForm">
-    @csrf
-    {{ method_field('DELETE') }}
-    <div class="modal-content">
-      <div class="box">
-        <h1>Are you sure to delete this row</h1>
-        <button type="submit">Yes</button>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Full Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control is-expanded">
+              <input type="text" id="firstName" class="input" placeholder="First Name" required>
+            </div>
+          </div>
+          <div id="mifield" class="field">
+            <div class="control">
+              <input type="text" class="input" placeholder="M.I.">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control is-expanded">
+              <input type="text" id="lastName" class="input" placeholder="Last Name" required>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Username</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div id="username-control" class="control is-expanded">
+              <input type="text" id="username" class="input" required>
+              <div class="help">Only alphanumeric characters, underscore, and period are allowed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="pass-field" class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Password</label>
+        </div>
+        <div class="field-body">
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <input type="password" class="input" required>
+            </div>
+            <div class="control">
+              <button class="button has-background-grey-lighter" type="button">
+                <span class="icon">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <div class="buttons is-right">
+        <button id="submit" class="button is-success" type="submit"></button>
+        <button id="cancel" class="button is-danger is-inverted" type="button">Cancel</button>
+      </div>
+    </footer>
   </form>
-  <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div> --}}
+</div>
 @endsection
 
 @section('scripts')
