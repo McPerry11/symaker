@@ -55,6 +55,4 @@
 @section('scripts')
 <script src="{{ asset('js/learning_outcomes.js') }}"></script>
 <script src="{{ asset('js/mustache.min.js') }}"></script>
-<!-- Mustache js templating, used cdn for testing -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"></script> -->
 @endsection

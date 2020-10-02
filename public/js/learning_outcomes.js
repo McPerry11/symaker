@@ -114,10 +114,3 @@ $(function() {
     });
 
 });
-
-/*
-- js function for converting template
-- create another template at html file
-- change input into data cell
-
-*/
