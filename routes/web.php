@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('learning_outcomes', 'CoursesController@edit');
 		Route::get('course_information', 'CoursesController@edit');
 		Route::get('course_content', 'CoursesController@edit');
+		Route::post('course_content', 'CoursesController@index');
         // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
 

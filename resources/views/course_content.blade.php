@@ -36,12 +36,12 @@
         <tbody id="row-content">
             <template id="row-template">
                 <tr id="content-@{{id}}">
-                    <td class="weeks">@{{weeks}}</td>
+                    <td><span class="week1">@{{week1}}</span> to <span class="week2">@{{week2}}</span></td>
                     <td class="hours">@{{hours}}</td>
-                    <td class="learning_outcomes">@{{learning_outcomes}}</td>
-                    <td class="topics">@{{topics}}</td>
-                    <td class="activities">@{{activities}}</td>
-                    <td class="assessment">@{{assessment}}</td>
+                    <td class="content learning_outcomes" data-indices="">@{{learning_outcomes}}</td>
+                    <td class="content topics">@{{topics}}</td>
+                    <td class="content activities">@{{activities}}</td>
+                    <td class="content assessment">@{{assessment}}</td>
                     <td>
                         <button class="button edit-rowcontent btn-modal" modal-id="add-content">
                             <span class="icon">
@@ -58,7 +58,7 @@
 <!-- modals -->
 <div id="add-content" class="modal is-clipped">
     <br><br>
-    <div class="modal-background"></div>
+    <div class="modal-background btn-modal" modal-id="confirm"></div>
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Add Content</p>
@@ -70,7 +70,10 @@
                     <div class="field">
                         <label class="label">Weeks</label>
                         <div class="control">
-                            <input id="weeks" type="number" class="input" min="1" max="99" required>
+                            <input id="week1" type="number" class="input" min="1" max="99" required>
+                            <span class="is-size-5">to</span>
+                            <input id="week2" type="number" class="input" min="1" max="99" required>
+                            <p id="weeks-help" class="help is-danger is-hidden"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -81,29 +84,35 @@
                     </div>
                     <div class="field">
                         <label class="label">Learning Outcomes</label>
-                        <div class="control">
-                            <textarea id="learning_outcomes" class="textarea" placeholder="At the end of the lesson, the learner will be able to:" required></textarea>
-                            <!-- TODO: see if there's a default new line at the text area -->
+                        <div id="learning_outcomes" class="checkbox-input control">
+                            <template id="learning-outcomes-template">
+                                <label class="checkbox">
+                                    <input name="lo-@{{id}}" type="checkbox">
+                                    @{{learningOutcomeDescription}}
+                                </label> <br>
+                            </template>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Topics</label>
-                        <div class="control">
-                            <textarea id="topics" class="textarea" required></textarea>
+                        <div id="topics" class="editor-input control">
+                            <div id="topics-editor"></div>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Teaching Learning Activities</label>
-                        <div class="control">
-                            <textarea id="activities" class="textarea" required></textarea>
+                        <div id="activities" class="editor-input control">
+                            <div id="activities-editor"></div>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Assessment</label>
-                        <div class="control">
-                            <textarea id="assessment" class="textarea" required></textarea>
+                        <div id="assessment" class="editor-input control">
+                            <div id="assessment-editor"></div>
                         </div>
                     </div>
+                    <p id="form-help" class="help is-danger is-hidden"></p>
+                    <br><br>
                 </form>
             </div>
         </section>
@@ -155,8 +164,33 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/course_content.js') }}"></script>
 <script src="{{ asset('js/ckeditor.js') }}"></script>
-<!-- Mustache js templating, used cdn for trial -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"></script>
+<script src="{{ asset('js/mustache.min.js') }}"></script>
+<script>
+    ClassicEditor
+       .create( document.querySelector( '#topics-editor' ) )
+       .then( newEditor => {
+            window.topicsEditor = newEditor;
+       } )
+       .catch( error => {
+            console.error( error );
+       } );
+    ClassicEditor
+       .create( document.querySelector( '#activities-editor' ) )
+       .then( newEditor => {
+            window.activitiesEditor = newEditor;
+       } )
+       .catch( error => {
+            console.error( error );
+       } );
+    ClassicEditor
+       .create( document.querySelector( '#assessment-editor' ) )
+       .then( newEditor => {
+            window.assessmentEditor = newEditor;
+       } )
+       .catch( error => {
+            console.error( error );
+       } );
+</script>
+<script src="{{ asset('js/course_content.js') }}"></script>
 @endsection
