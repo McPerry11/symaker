@@ -123,6 +123,7 @@ $(function() {
         }
         Swal.close();
         $('#userform').addClass('is-active');
+        $('html').addClass('is-clipped');
       },
       error: function(err) {
         ajaxError(err);
@@ -186,7 +187,11 @@ $(function() {
         allowOutsideClick: false,
         allowEscapeKey: false
       });
+      if ($('#type option[value=""]').length == 0)
+        $('#type').prepend(`<option value="" selected disabled>Select a role</option>`);
       $('#username').removeClass('is-danger').removeClass('is-success').removeAttr('data-id');
+      $('#pass-field input').removeClass('is-danger');
+      $('#pass-field .help').removeClass('has-text-danger');
       $('#submit').removeAttr('disabled');
       $('#username-control .help').removeClass('has-text-danger').text('Username must be between 5 to 20 characters with at least 1 alphabetical character');
       $('#userform input').val('');
@@ -248,49 +253,53 @@ $(function() {
 
   $('.delete').click(function() {
     $('#userform').removeClass('is-active');
+    $('html').removeClass('is-clipped');
   });
 
   $('#cancel').click(function() {
     $('#userform').removeClass('is-active');
+    $('html').removeClass('is-clipped');
   });
 
   $('#username').focusout(function() {
-    let username = $(this).val(), input = this, id = $(this).attr('data-id');
-    let expr = /^(?=.{5,20})[\w\.]*[a-z0-9]+[\w\.]*$/i;
-    if (expr.test(username)) {
-      inputs['username'] = false;
-      checkInputs(inputs);
-      $('#username-control').addClass('is-loading');
-      $.ajax({
-        type: 'POST',
-        url: 'accounts',
-        data: {data:modal, username:username, id:id},
-        datatype: 'JSON',
-        success: function(response) {
-          $('#username-control').removeClass('is-loading');
-          if (response.status == 'success') {
-            $(input).addClass('is-success');
+    if (!$('#submit').hasClass('is-loading')) {
+      let username = $(this).val(), input = this, id = $(this).attr('data-id');
+      let expr = /^(?=.{5,20})[\w\.]*[a-z0-9]+[\w\.]*$/i;
+      if (expr.test(username)) {
+        inputs['username'] = false;
+        checkInputs(inputs);
+        $('#username-control').addClass('is-loading');
+        $.ajax({
+          type: 'POST',
+          url: 'accounts',
+          data: {data:modal, username:username, id:id},
+          datatype: 'JSON',
+          success: function(response) {
+            $('#username-control').removeClass('is-loading');
+            if (response.status == 'success') {
+              $(input).addClass('is-success');
+              inputs['username'] = true;
+              checkInputs(inputs);
+            } else {
+              $(input).addClass('is-danger');
+              $('#username-control .help').text(response.msg).addClass('has-text-danger');
+              inputs['username'] = false;
+              checkInputs(inputs);
+            }
+          },
+          error: function(err) {
+            ajaxError(err);
             inputs['username'] = true;
             checkInputs(inputs);
-          } else {
-            $(input).addClass('is-danger');
-            $('#username-control .help').text(response.msg).addClass('has-text-danger');
-            inputs['username'] = false;
-            checkInputs(inputs);
+            $('#username-control').removeClass('is-loading');
           }
-        },
-        error: function(err) {
-          ajaxError(err);
-          inputs['username'] = true;
-          checkInputs(inputs);
-          $('#username-control').removeClass('is-loading');
-        }
-      });
-    } else {
-      $(this).addClass('is-danger');
-      $('#username-control .help').addClass('has-text-danger');
-      inputs['username'] = false;
-      checkInputs(inputs);
+        });
+      } else {
+        $(this).addClass('is-danger');
+        $('#username-control .help').addClass('has-text-danger');
+        inputs['username'] = false;
+        checkInputs(inputs);
+      }
     }
   });
 
@@ -378,9 +387,16 @@ $(function() {
         } else  {
           Swal.fire({
             icon: 'success',
-            title: response.msg
+            title: response.msg,
+            showConfirmButton: false,
+            timer: 2500
           }).then(function() {
             $('#userform').removeClass('is-active');
+            $('html').removeClass('is-clipped');
+            $('#submit').removeClass('is-loading');
+            $('#userform select').removeAttr('disabled', true);
+            $('#userform input').removeAttr('readonly');
+            $('#userform button').removeAttr('disabled');
             retrieveUsers();
           });
         }
