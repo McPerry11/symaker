@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('username')->unique()->collation('utf8_bin');
             $table->foreignId('collegeID')->constrained('colleges')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('type', [

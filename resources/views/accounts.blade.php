@@ -64,6 +64,25 @@
       <button class="delete" type="button"></button>
     </header>
     <section class="modal-card-body">
+      @if (Auth::user()->type == 'SYSTEM_ADMIN')
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Role</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="select is-fullwidth">
+              <select id="type" name="type" required>
+                <option value="" selected disabled>Select a role</option>
+                <option value="SYSTEM_ADMIN">System Admin</option>
+                <option value="COLLEGE_ADMIN">College Admin</option>
+                <option value="USER">User</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endif
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">College</label>
@@ -71,7 +90,7 @@
         <div class="field-body">
           <div class="field">
             <div class="select is-fullwidth">
-              <select id="college" required>
+              <select id="college" name="college" required>
                 {{-- Options are displayed in AJAX --}}
               </select>
             </div>
@@ -85,17 +104,17 @@
         <div class="field-body">
           <div class="field">
             <div class="control is-expanded">
-              <input type="text" id="firstName" class="input" placeholder="First Name" required>
+              <input type="text" id="firstName" class="input name" name="firstName" placeholder="First Name" maxlength="50" required>
             </div>
           </div>
           <div id="mifield" class="field">
             <div class="control">
-              <input type="text" class="input" placeholder="M.I.">
+              <input type="text" class="input name" placeholder="M.I." name="middleInitial" maxlength="50">
             </div>
           </div>
           <div class="field">
             <div class="control is-expanded">
-              <input type="text" id="lastName" class="input" placeholder="Last Name" required>
+              <input type="text" id="lastName" class="input name" name="lastName" placeholder="Last Name" maxlength="50" required>
             </div>
           </div>
         </div>
@@ -107,8 +126,8 @@
         <div class="field-body">
           <div class="field">
             <div id="username-control" class="control is-expanded">
-              <input type="text" id="username" class="input" data-id="{{ Auth::id() }}" required>
-              <div class="help">Only alphanumeric characters, underscore, and period are allowed</div>
+              <input type="text" id="username" class="input" name="username" maxlength="20" minlength="5" required>
+              <div class="help">Username must be between 5 to 20 characters with at least 1 alphabetical character</div>
             </div>
           </div>
         </div>
@@ -120,7 +139,8 @@
         <div class="field-body">
           <div class="field has-addons">
             <div class="control is-expanded">
-              <input type="password" class="input" required>
+              <input type="password" class="input" name="password" minlength="8" required>
+              <div class="help">Password must have at least 8 characters</div>
             </div>
             <div class="control">
               <button class="button has-background-grey-lighter" type="button">

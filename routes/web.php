@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['middleware' => CheckAccess::class], function() {
 		Route::get('accounts', 'UsersController@index')->name('accounts');
 		Route::post('accounts', 'UsersController@index');
+		Route::post('accounts/create', 'UsersController@store');
 		Route::post('accounts/{id}', 'UsersController@edit');
 		Route::get('colleges', 'CollegesController@index')->name('colleges');
 		Route::post('colleges', 'CollegesController@index');

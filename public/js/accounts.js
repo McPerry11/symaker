@@ -8,6 +8,16 @@ $(function() {
     });
   }
 
+  function checkInputs(inputs) {
+    $('#submit').removeAttr('disabled');
+    for (let i in inputs) {
+      if (!inputs[i]) {
+        $('#submit').attr('disabled', true);
+        break;
+      }
+    }
+  }
+
   function pagination(current, prev, next, lastpage) {
     $('#body').append('<nav class="pagination is-right"></nav>');
     if (prev != null) $('.pagination').append('<a class="pagination-previous" data-url="' + prev + '">Previous</a>');
@@ -16,6 +26,8 @@ $(function() {
   }
 
   function retrieveUsers() {
+    $('#loading').removeClass('is-hidden');
+    $('#loading').siblings().remove();
     $.ajax({
       type: 'POST',
       url: 'accounts',
@@ -35,9 +47,10 @@ $(function() {
             `);
         } else {
           for (user in data.users.data) {
-            let tag = actions = '';
+            let tag = actions = '', color;
             for (college in data.colleges) {
               if (data.colleges[college].id == data.users.data[user].collegeID) {
+                color = data.colleges[college].colorCode;
                 college = data.colleges[college].abbrev;
                 break;
               }
@@ -65,7 +78,7 @@ $(function() {
 
             $('tbody').append(`
               <tr>
-              <td>${college}</td>
+              <td><div class="tag has-text-white" style="background-color:${color}">${college}</div></td>
               <td>${tag} ${data.users.data[user].username}</td>
               <td>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
               <td>${actions}</td>
@@ -125,7 +138,36 @@ $(function() {
   $('#sb-accounts').css('background-color', color);
   $('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-users"></i></span>Accounts</a></li>');
 
-  var modal;
+  $('#username').bind({
+    keydown: function(e) {
+      if (e.shiftKey == true) {
+        if (e.which == 189 || (e.which >= 65 && e.which <= 90) || e.which <= 40)
+          return true;
+      } else if (e.shiftKey == false && ((e.which >= 48 && e.which <= 57) || e.which == 190)) {
+        return true;
+      } else if ((e.which >= 65 && e.which <= 90) || e.which <= 40 || (e.which >= 96 && e.which <= 105) || (e.which >= 112 && e.which <= 123)) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  $('.name').bind({
+    keydown: function(e) {
+      if (e.shiftKey) {
+        if (e.which >= 65 && e.which <= 90 || e.which <= 40) {
+          return true;
+        }
+      } else if (e.shiftKey == false && (e.which == 222 || e.which == 189 || e.which == 190)) {
+        return true;
+      } else if ((e.which >= 65 && e.which <= 90) || e.which <= 40 || (e.which >= 96 && e.which <= 105) || (e.which >= 112 && e.which <= 123)) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  var modal, inputs = {'username':true, 'password':true};
   $('.pageloader .title').text('Loading Accounts');
   retrieveUsers();
   if (window.matchMedia('only screen and (min-width: 769px) and (max-width: 1023px)').matches) $('th button').addClass('is-small');
@@ -146,7 +188,7 @@ $(function() {
       });
       $('#username').removeClass('is-danger').removeClass('is-success').removeAttr('data-id');
       $('#submit').removeAttr('disabled');
-      $('.help').removeClass('has-text-danger').text('Only alphanumeric characters, underscore, and period are allowed');
+      $('#username-control .help').removeClass('has-text-danger').text('Username must be between 5 to 20 characters with at least 1 alphabetical character');
       $('#userform input').val('');
       retrieveCollege('add', null);
       $('#userform .modal-card-title').text('Add Account');
@@ -173,7 +215,7 @@ $(function() {
       });
       $('#username').removeClass('is-danger').removeClass('is-success').removeAttr('data-id');
       $('#submit').removeAttr('disabled');
-      $('.help').removeClass('has-text-danger').text('Only alphanumeric characters, underscore, and period are allowed');
+      $('#username-control .help').removeClass('has-text-danger').text('Username must be between 5 to 20 characters with at least 1 alphabetical character');
       let id = $(this).data('id');
       $('#username').attr('data-id', id);
       $('#userform .modal-card-title').text('Edit Account');
@@ -193,18 +235,14 @@ $(function() {
           $('#mifield input').val(data.middleInitial);
           $('#lastName').val(data.lastName);
           $('#username').val(data.username).attr('data-id', id);
+          $('#type option[value="' + data.type + '"]').attr('selected', true);
+          $('#type option[value=""]').remove();
           retrieveCollege('edit', data.collegeID);
         },
         error: function(err) {
           ajaxError(err);
         }
       });
-    }
-  });
-
-  $('.remove').click(function() {
-    if ($('#loading').hasClass('is-hidden')) {
-      // Do stuffs
     }
   });
 
@@ -216,37 +254,151 @@ $(function() {
     $('#userform').removeClass('is-active');
   });
 
-  $('#username').change(function() {
+  $('#username').focusout(function() {
     let username = $(this).val(), input = this, id = $(this).attr('data-id');
-    $('#submit').attr('disabled', true);
-    $('#username-control').addClass('is-loading');
-    $.ajax({
-      type: 'POST',
-      url: 'accounts',
-      data: {data:modal, username:username, id:id},
-      datatype: 'JSON',
-      success: function(response) {
-        $('#username-control').removeClass('is-loading');
-        if (response.status == 'success') {
-          $(input).addClass('is-success');
-          $('#submit').removeAttr('disabled');
-        } else {
-          $(input).addClass('is-danger');
-          $('.help').text(response.msg).addClass('has-text-danger');
+    let expr = /^(?=.{5,20})[\w\.]*[a-z0-9]+[\w\.]*$/i;
+    if (expr.test(username)) {
+      inputs['username'] = false;
+      checkInputs(inputs);
+      $('#username-control').addClass('is-loading');
+      $.ajax({
+        type: 'POST',
+        url: 'accounts',
+        data: {data:modal, username:username, id:id},
+        datatype: 'JSON',
+        success: function(response) {
+          $('#username-control').removeClass('is-loading');
+          if (response.status == 'success') {
+            $(input).addClass('is-success');
+            inputs['username'] = true;
+            checkInputs(inputs);
+          } else {
+            $(input).addClass('is-danger');
+            $('#username-control .help').text(response.msg).addClass('has-text-danger');
+            inputs['username'] = false;
+            checkInputs(inputs);
+          }
+        },
+        error: function(err) {
+          ajaxError(err);
+          inputs['username'] = true;
+          checkInputs(inputs);
+          $('#username-control').removeClass('is-loading');
         }
-      },
-      error: function(err) {
-        ajaxError(err);
-        $('#submit').removeAttr('disabled');
-        $('#username-control').removeClass('is-loading');
-      }
-    });
+      });
+    } else {
+      $(this).addClass('is-danger');
+      $('#username-control .help').addClass('has-text-danger');
+      inputs['username'] = false;
+      checkInputs(inputs);
+    }
   });
 
   $('#username').keyup(function() {
     $('#submit').removeAttr('disabled');
     $(this).removeClass('is-success').removeClass('is-danger');
-    $('.help').removeClass('has-text-danger').text('Only alphanumeric characters, underscore, and period are allowed');
+    $('#username-control .help').removeClass('has-text-danger').text('Username must be between 5 to 20 characters with at least 1 alphabetical character');
+    inputs['username'] = true;
+    checkInputs(inputs);
+  });
+
+  $('select').change(function() {
+    $(this).find('option[ value=""]').remove();
+  });
+
+  $('#pass-field input').focusout(function() {
+    if ($(this).val().length < 8) {
+      $(this).addClass('is-danger');
+      $('#pass-field').addClass('has-text-danger');
+      inputs['password'] = false;
+      checkInputs(inputs);
+    }
+  });
+
+  $('#pass-field input').keyup(function() {
+    $(this).removeClass('is-danger');
+    $('#pass-field').removeClass('has-text-danger');
+    inputs['password'] = true;
+    checkInputs(inputs);
+  });
+
+  $('#pass-field button').click(function() {
+    $('#pass-field input').attr('type', function() {
+      return $(this).attr('type') == 'password' ? 'text' : 'password';
+    });
+    if ($('#pass-field input').attr('type') == 'password') {
+      $(this).addClass('has-background-grey-lighter').removeClass('has-background-grey').removeClass('has-text-white');
+      $(this).find('svg').addClass('fa-eye').removeClass('fa-eye-slash');
+    } else {
+      $(this).removeClass('has-background-grey-lighter').addClass('has-background-grey').addClass('has-text-white');
+      $(this).find('svg').removeClass('fa-eye').addClass('fa-eye-slash');
+    }
+  });
+
+  $('#userform form').submit(function(e) {
+    e.preventDefault();
+    if ($('#pass-field input').attr('type') != 'password') {
+      $('#pass-field input').attr('type', 'password');
+      $('#pass-field button').addClass('has-background-grey-lighter').removeClass('has-background-grey').removeClass('has-text-white');
+      $('#pass-field button').find('svg').addClass('fa-eye').removeClass('fa-eye-slash');
+    }
+    let link = modal == 'add' ? 'accounts/create' : 'accounts' + $('#username').attr('data-id');
+    var data = $(this).serialize();
+    $('#submit').addClass('is-loading');
+    $('#userform select').attr('disabled', true);
+    $('#userform input').attr('readonly', true);
+    $('#userform button').attr('disabled', true);
+    $.ajax({
+      type: 'POST',
+      url: link,
+      data: data,
+      datatype: 'JSON',
+      success: function(response) {
+        if (response.status == 'error') {
+          $('#submit').removeClass('is-loading');
+          $('#userform select').removeAttr('disabled', true);
+          $('#userform input').removeAttr('readonly');
+          $('#userform button').removeAttr('disabled');
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid ' + response.data,
+            text: response.msg
+          });
+          if (response.data == 'username') {
+            $('#username').addClass('is-danger');
+            $('#username-control help').addClass('has-text-danger').text(response.msg);
+            inputs['username'] = false;
+            checkInputs(inputs);
+          } else if (response.data == 'password') {
+            $('#pass-field input').addClass('is-danger');
+            $('#pass-field .help').addClass('has-text-danger').text(response.msg);
+            inputs['password'] = false;
+            checkInputs(inputs);
+          }
+        } else  {
+          Swal.fire({
+            icon: 'success',
+            title: response.msg
+          }).then(function() {
+            $('#userform').removeClass('is-active');
+            retrieveUsers();
+          });
+        }
+      },
+      error: function(err) {
+        $('#submit').removeClass('is-loading');
+        $('#userform select').removeAttr('disabled', true);
+        $('#userform input').removeAttr('readonly');
+        $('#userform button').removeAttr('disabled');
+        ajaxError(err);
+      }
+    });
+  });
+
+  $('.remove').click(function() {
+    if ($('#loading').hasClass('is-hidden')) {
+      // Do stuffs
+    }
   });
 
   $('#search').submit(function(e) {
@@ -254,9 +406,5 @@ $(function() {
     if ($('#loading').hasClass('is-hidden')) {
       // Do stuffs
     }
-  });
-
-  $('select').change(function() {
-    $(this).find('option[ value=""]').remove();
   });
 });
