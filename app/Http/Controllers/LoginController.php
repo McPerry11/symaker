@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Log;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -25,7 +26,9 @@ class LoginController extends Controller
             Log::create([
                 'userID' => Auth::id(),
                 'ipAddress' => $request->ip(),
-                'details' => Auth::user()->username . ' has logged in.'
+                'details' => Auth::user()->username . ' has logged in.',
+                'created_at' => Carbon::now('+8:00'),
+                'updated_at' => Carbon::now('+8:00')
             ]);
             return response()->json([
                 'status' => 'success', 
@@ -44,7 +47,9 @@ class LoginController extends Controller
         Log::create([
             'userID' => Auth::id(),
             'ipAddress' => $request->ip(),
-            'details' => Auth::user()->username . ' has logged out.'
+            'details' => Auth::user()->username . ' has logged out.',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
         ]);
         Auth::logout();
         return redirect(route('login'));

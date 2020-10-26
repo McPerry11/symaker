@@ -175,6 +175,7 @@ $(function() {
       $('#submit').removeAttr('disabled');
       $('.help').removeClass('has-text-danger').text('Only alphanumeric characters, underscore, and period are allowed');
       let id = $(this).data('id');
+      $('#username').attr('data-id', id);
       $('#userform .modal-card-title').text('Edit Account');
       $('#pass-field').addClass('is-hidden');
       $('#submit').empty().append(`
@@ -253,5 +254,9 @@ $(function() {
     if ($('#loading').hasClass('is-hidden')) {
       // Do stuffs
     }
+  });
+
+  $('select').change(function() {
+    $(this).find('option[ value=""]').remove();
   });
 });

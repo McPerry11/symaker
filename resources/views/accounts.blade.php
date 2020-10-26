@@ -70,7 +70,7 @@
         </div>
         <div class="field-body">
           <div class="field">
-            <div class="select">
+            <div class="select is-fullwidth">
               <select id="college" required>
                 {{-- Options are displayed in AJAX --}}
               </select>
@@ -107,7 +107,7 @@
         <div class="field-body">
           <div class="field">
             <div id="username-control" class="control is-expanded">
-              <input type="text" id="username" class="input" required>
+              <input type="text" id="username" class="input" data-id="{{ Auth::id() }}" required>
               <div class="help">Only alphanumeric characters, underscore, and period are allowed</div>
             </div>
           </div>
@@ -135,8 +135,8 @@
     </section>
     <footer class="modal-card-foot">
       <div class="buttons is-right">
-        <button id="submit" class="button is-success" type="submit"></button>
         <button id="cancel" class="button is-danger is-inverted" type="button">Cancel</button>
+        <button id="submit" class="button is-success" type="submit"></button>
       </div>
     </footer>
   </form>

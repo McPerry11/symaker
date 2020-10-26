@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('middleInitial')->nullable();
             $table->string('lastName');
-            $table->string('username')->unique();
+            $table->string('username')->unique()->collation('utf8_bin');
             $table->foreignId('collegeID')->constrained('colleges')->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
