@@ -27,7 +27,7 @@
   <div class="field-body">
     <div class="field">
       <div class="control">
-        <textarea class="textarea"></textarea>
+        <textarea class="textarea" rows="3"></textarea>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
   <div class="field-body">
     <div class="field">
       <div class="control">
-        <textarea class="textarea" rows="3"></textarea>
+        <textarea class="textarea" rows="4"></textarea>
       </div>
     </div>
   </div>
