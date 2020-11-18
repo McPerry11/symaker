@@ -91,25 +91,62 @@
 </div>
 
 {{--Edit Modal--}}
-{{-- <div id="addModal" class="modal" style="padding-top: 100px">
+<div id="collegeForm" class="modal">
   <div class="modal-background"></div>
-  <form method="POST" enctype="multipart/form-data" action="{{action('CollegesController@store')}}" >
-    @csrf
-    <div class="modal-content">
-      <div class="box">
-        <h1>Abbrev</h1>
-        <input type="text"  class="input" name="abbrev" placeholder="Enter College Abbreviation" required>
-        <h1>College Name</h1>
-        <input type="text"  class="input" name="collegeName" placeholder="Enter College Name" required>
-        <h1>Color Code</h1>
-        <input type="text"  class="input" name="colorCode" placeholder="Enter Color Code" required>
-        <button type="submit">Add</button>
-        <button id="addCloseBtn" class="close">Close</button>
+  <form class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"></p>
+      <button class="delete" type="button"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Abbreviation</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="text" id="abbrev" class="input" name="abbrev" required>
+            </div>
+            <div class="help has-text-danger"></div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="text" id="name" class="input" name="name" required>
+            </div>
+            <div class="help has-text-danger"></div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <label class="label">Color Code</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input type="color" id="color" class="input" name="color" required>
+            </div>
+            <div class="help has-text-danger"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <div class="buttons is-right">
+        <button id="cancel" class="button is-danger is-inverted" type="button">Cancel</button>
+        <button id="submit" class="button is-success" type="submit"></button>
+      </div>
+    </footer>
   </form>
-  <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
-</div> --}}
+</div>
 @endsection
 
 @section('scripts')

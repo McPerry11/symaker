@@ -39,8 +39,14 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::post('accounts/{id}', 'UsersController@edit');
 		Route::post('accounts/{id}/update', 'UsersController@update');
 		Route::post('accounts/{id}/delete', 'UsersController@destroy');
+
 		Route::get('colleges', 'CollegesController@index')->name('colleges');
 		Route::post('colleges', 'CollegesController@index');
+		Route::post('colleges/create', 'CollegesController@store');
+		Route::post('colleges/{id}', 'CollegesController@edit');
+		Route::post('colleges/{id}/update', 'CollegesController@update');
+		Route::post('colleges/{id}/delete', 'CollegesController@destroy');
+
 		Route::get('logs', 'IndexController@logs');
 	});
 });

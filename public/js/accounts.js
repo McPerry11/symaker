@@ -108,7 +108,6 @@ $(function() {
       error: function(err) {
         $('#loading').addClass('is-hidden');
         $('#search').find('button').removeClass('is-loading');
-
         $('tbody').append(`
           <tr>
           <td colspan="${col}" class="has-text-centered">

@@ -153,8 +153,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::select('firstName', 'middleInitial', 'lastName', 'collegeID', 'username', 'type')->find($id);
-        return $user;
+        return User::select('firstName', 'middleInitial', 'lastName', 'collegeID', 'username', 'type')->find($id);
     }
 
     /**

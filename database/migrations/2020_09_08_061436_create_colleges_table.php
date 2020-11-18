@@ -16,8 +16,8 @@ class CreateCollegesTable extends Migration
         Schema::create('colleges', function (Blueprint $table) {
             $table->id();
             $table->string('abbrev')->unique();
-            $table->string('collegeName');
-            $table->string('colorCode');
+            $table->string('collegeName')->unique();
+            $table->string('colorCode')->unique();
             $table->timestamps();
         });
     }
