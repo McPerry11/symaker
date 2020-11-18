@@ -18,7 +18,7 @@
           <input type="text" class="input" placeholder="Search name or username...">
         </div>
         <div class="control">
-          <button class="button is-info" title="Search">
+          <button class="button is-info" type="submit" title="Search">
             <span><i class="fas fa-search"></i></span>
           </button>
         </div>
@@ -64,7 +64,7 @@
       <button class="delete" type="button"></button>
     </header>
     <section class="modal-card-body">
-      @if (Auth::user()->type == 'SYSTEM_ADMIN')
+      @if (Auth::user()->type == 'SYSTEM_ADMIN' || Auth::user()->type == 'COLLEGE_ADMIN')
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">Role</label>
@@ -74,7 +74,9 @@
             <div class="select is-fullwidth">
               <select id="type" name="type" required>
                 <option value="" selected disabled>Select a role</option>
+                @if (Auth::user()->type == 'SYSTEM_ADMIN')
                 <option value="SYSTEM_ADMIN">System Admin</option>
+                @endif
                 <option value="COLLEGE_ADMIN">College Admin</option>
                 <option value="USER">User</option>
               </select>

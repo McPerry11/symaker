@@ -21,7 +21,21 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         if ($request->data == 'users') {
-            $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->paginate(20);
+            if ($request->search == '') {
+                $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->orderBy('updated_at', 'desc')->paginate(20);
+            } else {
+                $collegeSearch = College::where('abbrev', $request->search)
+                ->orWhere('collegeName', $request->search)->first();
+                $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')
+                ->where('firstName', $request->search)
+                ->orWhere('middleInitial', $request->search)
+                ->orWhere('lastName', $request->search)
+                ->orWhere('username', $request->search)
+                ->orWhere('email', $request->search)
+                ->orWhere('type', $request->search)
+                ->orWhere('collegeID', $collegeSearch->id ?? '')
+                ->orderBy('updated_at', 'desc')->paginate(20);
+            }
             $colleges = College::select('id', 'abbrev', 'colorCode')->get();
             return response()->json([
                 'users' => $users,
@@ -129,49 +143,35 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $change = '';
         $user = User::find($id);
-        if($user->firstName != $request->input('firstName')){
-            $this->validate($request,['firstName'=>['required','string']]);
-            $user->firstName = $request->input('firstName');
-            $change = $change . "First Name, ";
+        $regex = '/^(?=.{5,20})[\w\.]*[a-z0-9]+[\w\.]*$/i';
+        if (preg_match($regex, $request->username)) {
+            if ($user->username != $request->username) {
+                $identical = User::where('username', $request->username)->count();
+                if ($identical > 0)
+                    return response()->json(['status' => 'error', 'data' => 'username', 'msg' => 'Username is already taken']);
+            }
+        } else {
+            return response()->json(['status' => 'error', 'data' => 'username', 'msg' => 'Username must be between 5 to 20 characters with at least 1 alphabetical character']);
         }
-        if ($user->middleInitial != $request->input('middleInitial')){
-            $this->validate($request,['middleInitial'=>['required','string']]);
-            $user->middleInitial = $request->input('middleInitial');
-            $change = $change . "Middle Initial, ";
-        }
-        if ($user->lastName != $request->input('lastName')){
-            $this->validate($request,['lastName'=>['required','string']]);
-            $user->lastName = $request->input('lastName');
-            $change = $change . "Last Name, ";
-        }
-        if ($user->college != $request->input('college')){
-            $this->validate($request,['college'=>['required','string']]);
-            $user->college = $request->input('college');
-            $change = $change . "College, ";
-        }
-        if ($user->username != $request->input('username')){
-            $this->validate($request,['username'=>['required','string','unique:users']]);
-            $user->username = $request->input('username');
-            $change = $change . "Username, ";
-        }
-        if ($request->input('password') == null){
-            $user->password=$user->password;
-        }else{
-            $this->validate($request,['password'=>['required','string']]);
-            $user->password = $request->input('password');
-            $user->password = Hash::make($user->password);
-            $change = $change . "Password, ";
-        }
-        if ($user->email != $request->input('email')){
-            $this->validate($request,['email'=>['required','string','unique:users']]);
-            $user->email= $request->input('email');
-            $change = $change . "Email, ";
-        }
-        $change = $change." Updated";
+
+        $user->username = strip_tags($request->username);
+        $user->firstName = strip_tags($request->firstName);
+        $user->middleInitial = strip_tags($request->middleInitial);
+        $user->lastName = strip_tags($request->lastName);
+        $user->collegeID = strip_tags($request->college);
+        $user->type = $request->type ? strip_tags($request->type) : 'USER';
         $user->save();
-        return redirect('accounts');
+
+        Log::create([
+            'userID' => Auth::id(),
+            'ipAddress' => $request->ip(),
+            'details' => Auth::user()->username . ' has updated user [' . $user->username . '].',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
+        ]);
+
+        return response()->json(['msg' => 'User [' . $user->username . '] has been updated']);
     }
 
     /**
@@ -180,10 +180,18 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
+        $username = $user->username;
+        Log::create([
+            'userID' => Auth::id(),
+            'ipAddress' => $request->ip(),
+            'details' => Auth::user()->username . ' has deleted user [' . $user->username . '].',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
+        ]);
         $user->delete();
-        return redirect('accounts');
+        return response()->json(['msg' => 'User [' . $username . '] has been deleted']);
     }
 }

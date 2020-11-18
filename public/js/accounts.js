@@ -25,19 +25,19 @@ $(function() {
     if (lastpage >= 3) $('.pagination').append('<form class="pagination-list"><div class="field has-addons"><div class="control"><button id="goto" class="button is-info" type="submit">Go to</button></div><div id="page" class="control"><input type="number" class="input" min="1" max="' + lastpage + '" value="' + current + '" placeholder="Page #"></div><div class="control"><a class="button is-static">/ ' + lastpage + '</a></div></div></form>');
   }
 
-  function retrieveUsers() {
+  function retrieveUsers(search) {
     $('#loading').removeClass('is-hidden');
     $('#loading').siblings().remove();
     $.ajax({
       type: 'POST',
       url: 'accounts',
-      data: {data:'users'},
+      data: {data:'users', search:search},
       datatype: 'JSON',
       success: function(data) {
-        if (data.length == 0) {
+        if (data.users.total == 0) {
           $('tbody').append(`
             <tr>
-            <td>
+            <td colspan="4" class="has-text-centered">
             <span class="icon">
             <i class="fas fa-info-circle"></i>
             </span>
@@ -85,15 +85,27 @@ $(function() {
               </tr>
               `);
           }
-          $('#results').text(data.users.total);
-
           if (data.users.total > 20) {
             pagination(data.users.current_page, data.users.last_page_url, data.users.next_page_url, data.users.last_page);
           }
         }
+        $('#results').text(data.users.total);
+        $('#search').find('button').removeClass('is-loading');
         $('#loading').addClass('is-hidden');
       },
       error: function(err) {
+        $('#loading').addClass('is-hidden');
+        $('#search').find('button').removeClass('is-loading');
+        $('tbody').append(`
+          <tr>
+          <td colspan="4" class="has-text-centered">
+          <span class="icon">
+          <i class="fas fa-info-circle"></i>
+          </span>
+          <div>Cannot retrieve accounts</div>
+          </td>
+          </tr>
+          `);
         ajaxError(err);
       }
     });
@@ -170,7 +182,7 @@ $(function() {
 
   var modal, inputs = {'username':true, 'password':true};
   $('.pageloader .title').text('Loading Accounts');
-  retrieveUsers();
+  retrieveUsers('');
   if (window.matchMedia('only screen and (min-width: 769px) and (max-width: 1023px)').matches) $('th button').addClass('is-small');
   $(window).resize(function() {
     window.matchMedia('only screen and (min-width: 769px) and (max-width: 1023px)').matches ? $('th button').addClass('is-small') : $('th button').removeClass('is-small');
@@ -178,6 +190,7 @@ $(function() {
 
   $('#add').click(function() {
     if ($('#loading').hasClass('is-hidden')) {
+      $('input[type="password"]').attr('required', true);
       modal = 'add';
       Swal.fire({
         html: `<span class="icon is-large">
@@ -209,6 +222,7 @@ $(function() {
 
   $('body').delegate('.edit', 'click', function() {
     if ($('#loading').hasClass('is-hidden')) {
+      $('input[type="password"]').removeAttr('required');
       modal = 'edit';
       Swal.fire({
         html: `<span class="icon is-large">
@@ -252,13 +266,17 @@ $(function() {
   });
 
   $('.delete').click(function() {
-    $('#userform').removeClass('is-active');
-    $('html').removeClass('is-clipped');
+    if (!$('#submit').hasClass('is-loading')) {
+      $('#userform').removeClass('is-active');
+      $('html').removeClass('is-clipped');
+    }
   });
 
   $('#cancel').click(function() {
-    $('#userform').removeClass('is-active');
-    $('html').removeClass('is-clipped');
+    if (!$('#submit').hasClass('is-loading')) {
+      $('#userform').removeClass('is-active');
+      $('html').removeClass('is-clipped');
+    }
   });
 
   $('#username').focusout(function() {
@@ -351,7 +369,7 @@ $(function() {
       $('#pass-field button').addClass('has-background-grey-lighter').removeClass('has-background-grey').removeClass('has-text-white');
       $('#pass-field button').find('svg').addClass('fa-eye').removeClass('fa-eye-slash');
     }
-    let link = modal == 'add' ? 'accounts/create' : 'accounts' + $('#username').attr('data-id');
+    let link = modal == 'add' ? 'accounts/create' : 'accounts/' + $('#username').attr('data-id') + '/update';
     var data = $(this).serialize();
     $('#submit').addClass('is-loading');
     $('#userform select').attr('disabled', true);
@@ -397,7 +415,7 @@ $(function() {
             $('#userform select').removeAttr('disabled', true);
             $('#userform input').removeAttr('readonly');
             $('#userform button').removeAttr('disabled');
-            retrieveUsers();
+            retrieveUsers('');
           });
         }
       },
@@ -411,16 +429,76 @@ $(function() {
     });
   });
 
-  $('.remove').click(function() {
+  $('body').delegate('.remove', 'click', function() {
     if ($('#loading').hasClass('is-hidden')) {
-      // Do stuffs
+      Swal.fire({
+        html: `<span class="icon is-large">
+        <i class="fas fa-spinner fa-spin fa-lg"></i>
+        </span>`,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      });
+      let id = $(this).attr('data-id');
+      $.ajax({
+        type: 'POST',
+        url: 'accounts/' + id,
+        datatype: 'JSON',
+        success: function(data) {
+          Swal.fire({
+            icon: 'question',
+            title: 'Confirm Delete',
+            html: `
+            <div>Are you sure you want to delete user [${data.username}]?</div>
+            <div class='help'>${data.lastName}, ${data.firstName} ${data.middleInitial}</div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                html: `<span class="icon is-large">
+                <i class="fas fa-spinner fa-spin fa-lg"></i>
+                </span>`,
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false
+              });
+              $.ajax({
+                type: 'POST',
+                url: 'accounts/' + id + '/delete',
+                datatype: 'JSON',
+                success: function(response) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: response.msg,
+                    showConfirmButton: false,
+                    timer: 2500
+                  }).then(function() {
+                    retrieveUsers('');
+                  });
+                },
+                error: function(err) {
+                  ajaxError(err);
+                }
+              });
+            }
+          });
+        },
+        error: function(err) {
+          ajaxError(err);
+        }
+      });
     }
   });
 
   $('#search').submit(function(e) {
     e.preventDefault();
     if ($('#loading').hasClass('is-hidden')) {
-      // Do stuffs
+      $(this).find('button').addClass('is-loading');
+      let search = $(this).find('input').val();
+      retrieveUsers(search);
     }
   });
 });

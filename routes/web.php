@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::post('accounts', 'UsersController@index');
 		Route::post('accounts/create', 'UsersController@store');
 		Route::post('accounts/{id}', 'UsersController@edit');
+		Route::post('accounts/{id}/update', 'UsersController@update');
+		Route::post('accounts/{id}/delete', 'UsersController@destroy');
 		Route::get('colleges', 'CollegesController@index')->name('colleges');
 		Route::post('colleges', 'CollegesController@index');
 		Route::get('logs', 'IndexController@logs');
