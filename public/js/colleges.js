@@ -1,9 +1,22 @@
 $(function() {
-	$('#sb-colleges').addClass('is-active').removeAttr('href');
-	$('#nb-colleges').addClass('is-active').removeAttr('href');
-	let color = $('html').css('background-color');
-	$('#header').css('border-bottom', '2px solid ' + color);
-	$('#nb-colleges').css('border-left', '3px solid ' + color);
+  function ajaxError(err) {
+    console.log(err);
+    Swal.fire({
+      icon: 'error',
+      title: 'Cannot Connect to Server',
+      text: 'Something went wrong. Please try again later.'
+    });
+  }
+
+  function retrieveColleges(search) {
+
+  }
+
+  $('#sb-colleges').addClass('is-active').removeAttr('href');
+  $('#nb-colleges').addClass('is-active').removeAttr('href');
+  let color = $('html').css('background-color');
+  $('#header').css('border-bottom', '2px solid ' + color);
+  $('#nb-colleges').css('border-left', '3px solid ' + color);
   $('#sb-colleges').css('background-color', color);
   $('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-chalkboard"></i></span>Colleges</a></li>')
 
@@ -12,51 +25,20 @@ $(function() {
     window.matchMedia('only screen and (min-width: 769px) and (max-width: 1023px)').matches ? $('th button').addClass('is-small') : $('th button').removeClass('is-small');
   });
 
-  var addBtn = document.getElementById('addBtn');
-  var addmodal = document.getElementById('addModal');
-  var addCloseBtn = document.getElementById('addCloseBtn');
-
-  addBtn.onclick = function() {
-    addmodal.style.display = 'block';
-  };
-  addCloseBtn.onclick = function() {
-    addmodal.style.display = 'none';
-  };
-  $('.edit').click(function (){
-    editModal.style.display = 'block';
+  $('#add').click(function() {
+    // do something
   });
-  $('.delete').click(function (){
-    deleteModal.style.display = 'block';
+
+  $('body').delegate('.edit', 'click', function() {
+    // do something
   });
-  var table = $('#collegestable').DataTable();
 
-  table.on('click','.edit', function() {
-
-    $tr = $(this).closest('tr');
-    if ($($tr).hasClass('child')) {
-      $tr = $tr.prev('parent');
-    }
-
-    var data = table.row($tr).data();
-    console.log(data);
-    $('#abbrev').val(data[1]);
-    $('#collegeName').val(data[2]);
-    $('#colorCode').val(data[3]);
-
-    $('#editForm').attr('action', '/colleges/' + data[0]);
-    $('#editModal').style.display = 'block';
+  $('body').delegate('.remove', 'click', function() {
+    // do something
   });
-  table.on('click','.delete', function(){
 
-    $tr = $(this).closest('tr');
-    if ($($tr).hasClass('child')){
-      $tr = $tr.prev('parent');
-    }
-
-    var data = table.row($tr).data();
-    console.log(data);
-
-    $('#deleteForm').attr('action','/colleges/'+data[0]);
-    $('#deleteModal').style.display='block';
+  $('#search').submit(function(e) {
+    e.preventDefault();
+    // do something
   });
 });

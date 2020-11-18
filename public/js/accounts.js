@@ -28,6 +28,7 @@ $(function() {
   function retrieveUsers(search) {
     $('#loading').removeClass('is-hidden');
     $('#loading').siblings().remove();
+    let col = access == 'SYSTEM_ADMIN' ? 4 : 3;
     $.ajax({
       type: 'POST',
       url: 'accounts',
@@ -37,7 +38,7 @@ $(function() {
         if (data.users.total == 0) {
           $('tbody').append(`
             <tr>
-            <td colspan="4" class="has-text-centered">
+            <td colspan="${col}" class="has-text-centered">
             <span class="icon">
             <i class="fas fa-info-circle"></i>
             </span>
@@ -48,11 +49,13 @@ $(function() {
         } else {
           for (user in data.users.data) {
             let tag = actions = '', color;
-            for (college in data.colleges) {
-              if (data.colleges[college].id == data.users.data[user].collegeID) {
-                color = data.colleges[college].colorCode;
-                college = data.colleges[college].abbrev;
-                break;
+            if (access == 'SYSTEM_ADMIN') {
+              for (college in data.colleges) {
+                if (data.colleges[college].id == data.users.data[user].collegeID) {
+                  color = data.colleges[college].colorCode;
+                  college = data.colleges[college].abbrev;
+                  break;
+                }
               }
             }
 
@@ -76,14 +79,23 @@ $(function() {
               </div>`;
             }
 
-            $('tbody').append(`
-              <tr>
-              <td><div class="tag has-text-white" style="background-color:${color}">${college}</div></td>
-              <td>${tag} ${data.users.data[user].username}</td>
-              <td>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
-              <td>${actions}</td>
-              </tr>
-              `);
+            if (access == 'SYSTEM_ADMIN')
+              $('tbody').append(`
+                <tr>
+                <td><div class="tag has-text-white" style="background-color:${color}">${college}</div></td>
+                <td>${tag} ${data.users.data[user].username}</td>
+                <td>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
+                <td>${actions}</td>
+                </tr>
+                `);
+            else
+              $('tbody').append(`
+                <tr>
+                <td>${tag} ${data.users.data[user].username}</td>
+                <td>${data.users.data[user].lastName}, ${data.users.data[user].firstName} ${data.users.data[user].middleInitial}</td>
+                <td>${actions}</td>
+                </tr>
+                `);
           }
           if (data.users.total > 20) {
             pagination(data.users.current_page, data.users.last_page_url, data.users.next_page_url, data.users.last_page);
@@ -96,9 +108,10 @@ $(function() {
       error: function(err) {
         $('#loading').addClass('is-hidden');
         $('#search').find('button').removeClass('is-loading');
+
         $('tbody').append(`
           <tr>
-          <td colspan="4" class="has-text-centered">
+          <td colspan="${col}" class="has-text-centered">
           <span class="icon">
           <i class="fas fa-info-circle"></i>
           </span>
@@ -112,35 +125,41 @@ $(function() {
   }
 
   function retrieveCollege(e, userCollege) {
-    $('#college').empty();
-    if (e == 'add') {
-      $('#college').append(`
-        <option value="" disabled selected>Select a college</option>
-        `);
-    }
-    $.ajax({
-      type: 'POST',
-      url: 'colleges',
-      data: {data:'users'},
-      datatype: 'JSON',
-      success: function(data) {
-        for (college in data) {
-          if (data[college].id == userCollege)
-            selected = 'selected';
-          else
-            selected = '';
-          $('#college').append(`
-            <option value="${data[college].id}" ${selected}>${data[college].abbrev}</option>
-            `);
-        }
-        Swal.close();
-        $('#userform').addClass('is-active');
-        $('html').addClass('is-clipped');
-      },
-      error: function(err) {
-        ajaxError(err);
+    if (access == 'SYSTEM_ADMIN') {
+      $('#college').empty();
+      if (e == 'add') {
+        $('#college').append(`
+          <option value="" disabled selected>Select a college</option>
+          `);
       }
-    });
+      $.ajax({
+        type: 'POST',
+        url: 'colleges',
+        data: {data:'users'},
+        datatype: 'JSON',
+        success: function(data) {
+          for (college in data) {
+            if (data[college].id == userCollege)
+              selected = 'selected';
+            else
+              selected = '';
+            $('#college').append(`
+              <option value="${data[college].id}" ${selected}>${data[college].abbrev}</option>
+              `);
+          }
+          Swal.close();
+          $('#userform').addClass('is-active');
+          $('html').addClass('is-clipped');
+        },
+        error: function(err) {
+          ajaxError(err);
+        }
+      });
+    } else {
+      Swal.close();
+      $('#userform').addClass('is-active');
+      $('html').addClass('is-clipped');
+    }
   }
 
   $('#sb-accounts').addClass('is-active').removeAttr('href');

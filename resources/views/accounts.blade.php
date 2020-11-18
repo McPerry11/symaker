@@ -14,7 +14,7 @@
   <div class="column">
     <form id="search">
       <div class="field has-addons">
-        <div class="control">
+        <div class="control is-expanded">
           <input type="text" class="input" placeholder="Search name or username...">
         </div>
         <div class="control">
@@ -29,13 +29,15 @@
 <div>Results: <span id="results" class="has-text-weight-bold"></span></div>
 {{-- Accounts Table --}}
 <div class="table-container">
-  <table class="table is-fullwidth" id="accountstable">
+  <table class="table is-fullwidth is-striped" id="accountstable">
     <thead>
       <tr>
-        <th>College</th>
+        @if (Auth::user()->type == 'SYSTEM_ADMIN')
+        <th style="width:80px">College</th>
+        @endif
         <th>Username</th>
-        <th>Name</th>
-        <th>
+        <th style="min-width:200px">Name</th>
+        <th style="min-width:135px; width:135px">
           <div class="buttons is-right">
             <button class="button is-info is-fullwidth" id="add"><span class="icon"><i class="fas fa-plus"></i></span>Add Account</button>
           </div>
@@ -85,6 +87,7 @@
         </div>
       </div>
       @endif
+      @if (Auth::user()->type == 'SYSTEM_ADMIN')
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">College</label>
@@ -99,6 +102,7 @@
           </div>
         </div>
       </div>
+      @endif
       <div class="field is-horizontal">
         <div class="field-label">
           <label class="label">Full Name</label>

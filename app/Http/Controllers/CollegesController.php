@@ -20,7 +20,9 @@ class CollegesController extends Controller
             $colleges = College::select('id', 'abbrev')->get();
             return $colleges;
         }
-        return view('colleges');
+        return view('colleges', [
+            'colleges' => College::all()
+        ]);
     }
 
     /**

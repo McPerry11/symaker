@@ -21,26 +21,49 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         if ($request->data == 'users') {
-            if ($request->search == '') {
-                $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->orderBy('updated_at', 'desc')->paginate(20);
+            if (Auth::user()->type == 'SYSTEM_ADMIN') {
+                if ($request->search == '') {
+                    $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->orderBy('updated_at', 'desc')->paginate(20);
+                } else {
+                    $collegeSearch = College::where('abbrev', $request->search)
+                    ->orWhere('collegeName', $request->search)->first();
+                    $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')
+                    ->where('firstName', $request->search)
+                    ->orWhere('middleInitial', $request->search)
+                    ->orWhere('lastName', $request->search)
+                    ->orWhere('username', $request->search)
+                    ->orWhere('email', $request->search)
+                    ->orWhere('type', $request->search)
+                    ->orWhere('collegeID', $collegeSearch->id ?? '')
+                    ->orderBy('updated_at', 'desc')->paginate(20);
+                }
+                $colleges = College::select('id', 'abbrev', 'colorCode')->get();
+                return response()->json([
+                    'users' => $users,
+                    'colleges' => $colleges
+                ]);
             } else {
-                $collegeSearch = College::where('abbrev', $request->search)
-                ->orWhere('collegeName', $request->search)->first();
-                $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')
-                ->where('firstName', $request->search)
-                ->orWhere('middleInitial', $request->search)
-                ->orWhere('lastName', $request->search)
-                ->orWhere('username', $request->search)
-                ->orWhere('email', $request->search)
-                ->orWhere('type', $request->search)
-                ->orWhere('collegeID', $collegeSearch->id ?? '')
-                ->orderBy('updated_at', 'desc')->paginate(20);
+                if ($request->search == '') {
+                    $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'type')
+                    ->where('collegeID', Auth::user()->collegeID)->orderBy('updated_at', 'desc')->paginate(20);
+                } else {
+                    $collegeSearch = College::where('abbrev', $request->search)
+                    ->orWhere('collegeName', $request->search)->first();
+                    $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'type')
+                    ->where('collegeID', Auth::user()->collegeID)
+                    ->where(function ($query) {
+                        $query->where('firstName', $request->search)
+                        ->orWhere('middleInitial', $request->search)
+                        ->orWhere('lastName', $request->search)
+                        ->orWhere('username', $request->search)
+                        ->orWhere('email', $request->search)
+                        ->orWhere('type', $request->search);
+                    })->orderBy('updated_at', 'desc')->paginate(20);
+                }
+                return response()->json([
+                    'users' => $users,
+                ]);
             }
-            $colleges = College::select('id', 'abbrev', 'colorCode')->get();
-            return response()->json([
-                'users' => $users,
-                'colleges' => $colleges
-            ]);
         } else if ($request->data == 'add' || $request->data == 'edit') {
             if ($request->data == 'add')
                 $identical = User::where('username', $request->username)->count();
@@ -94,7 +117,7 @@ class UsersController extends Controller
         $user->firstName = strip_tags($request->firstName);
         $user->middleInitial = strip_tags($request->middleInitial);
         $user->lastName = strip_tags($request->lastName);
-        $user->collegeID = strip_tags($request->college);
+        $user->collegeID = $request->college ? strip_tags($request->college) : Auth::user()->collegeID;
         $user->username = strip_tags($request->username);
         $user->password = strip_tags($request->password);
         $user->type = $request->type ? strip_tags($request->type) : 'USER';
@@ -159,7 +182,7 @@ class UsersController extends Controller
         $user->firstName = strip_tags($request->firstName);
         $user->middleInitial = strip_tags($request->middleInitial);
         $user->lastName = strip_tags($request->lastName);
-        $user->collegeID = strip_tags($request->college);
+        $user->collegeID = $request->college ? strip_tags($request->college) : Auth::user()->collegeID;
         $user->type = $request->type ? strip_tags($request->type) : 'USER';
         $user->save();
 
