@@ -27,6 +27,11 @@ $(function() {
 		});
 	});
 
+	$('aside .menu-list a').click(function() {
+		$('.pageloader .title').text('Loading ' + $(this).text());
+		$('.pageloader').addClass('is-active');
+	});
+
 	$('#logout').click(function() {
 		$('.pageloader .title').text('Logging Out');
 		$('.pageloader').addClass('is-active');

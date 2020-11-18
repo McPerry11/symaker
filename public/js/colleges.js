@@ -28,6 +28,7 @@ $(function() {
       datatype: 'JSON',
       success: function(data) {
         $('#loading').addClass('is-hidden');
+        $('#search button').removeClass('is-loading');
         if (data.length == 0) {
           $('tbody').append(`
             <tr>
@@ -70,6 +71,7 @@ $(function() {
       },
       error: function(err) {
         $('#loading').addClass('is-hidden');
+        $('#search button').removeClass('is-loading');
         $('tbody').append(`
           <tr>
           <td colspan="4" class="has-text-centered">
@@ -329,6 +331,10 @@ $(function() {
 
   $('#search').submit(function(e) {
     e.preventDefault();
-    // do something
+    if ($('#loading').hasClass('is-hidden')) {
+      $(this).find('button').addClass('is-loading');
+      let search = $(this).find('input').val();
+      retrieveColleges(search);
+    }
   });
 });

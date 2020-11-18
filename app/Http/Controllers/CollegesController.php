@@ -52,7 +52,13 @@ class CollegesController extends Controller
                 ]);
             }
         } else if ($request->data == 'colleges') {
-            return College::orderBy('updated_at', 'desc')->get();
+            if ($request->search == '')
+                return College::orderBy('updated_at', 'desc')->get();
+            else {
+                return College::where('abbrev', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('collegeName', 'LIKE', '%' . $request->search . '%')
+                ->orderBy('updated_at', 'desc')->get();
+            }
         }
 
         return view('colleges', [

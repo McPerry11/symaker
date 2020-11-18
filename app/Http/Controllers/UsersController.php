@@ -25,15 +25,15 @@ class UsersController extends Controller
                 if ($request->search == '') {
                     $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')->orderBy('updated_at', 'desc')->paginate(20);
                 } else {
-                    $collegeSearch = College::where('abbrev', $request->search)
-                    ->orWhere('collegeName', $request->search)->first();
+                    $collegeSearch = College::where('abbrev', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('collegeName', 'LIKE', '%' . $request->search . '%')->first();
                     $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'collegeID', 'type')
-                    ->where('firstName', $request->search)
-                    ->orWhere('middleInitial', $request->search)
-                    ->orWhere('lastName', $request->search)
-                    ->orWhere('username', $request->search)
-                    ->orWhere('email', $request->search)
-                    ->orWhere('type', $request->search)
+                    ->where('firstName', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('middleInitial', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('lastName', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('username', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('type', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('collegeID', $collegeSearch->id ?? '')
                     ->orderBy('updated_at', 'desc')->paginate(20);
                 }
@@ -47,17 +47,17 @@ class UsersController extends Controller
                     $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'type')
                     ->where('collegeID', Auth::user()->collegeID)->orderBy('updated_at', 'desc')->paginate(20);
                 } else {
-                    $collegeSearch = College::where('abbrev', $request->search)
-                    ->orWhere('collegeName', $request->search)->first();
+                    $collegeSearch = College::where('abbrev', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('collegeName', 'LIKE', '%' . $request->search . '%')->first();
                     $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'type')
                     ->where('collegeID', Auth::user()->collegeID)
                     ->where(function ($query) {
-                        $query->where('firstName', $request->search)
-                        ->orWhere('middleInitial', $request->search)
-                        ->orWhere('lastName', $request->search)
-                        ->orWhere('username', $request->search)
-                        ->orWhere('email', $request->search)
-                        ->orWhere('type', $request->search);
+                        $query->where('firstName', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('middleInitial', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('lastName', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('username', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                        ->orWhere('type', 'LIKE', '%' . $request->search . '%');
                     })->orderBy('updated_at', 'desc')->paginate(20);
                 }
                 return response()->json([
