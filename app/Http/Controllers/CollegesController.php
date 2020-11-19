@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class CollegesController extends Controller
 {
@@ -61,9 +62,12 @@ class CollegesController extends Controller
             }
         }
 
-        return view('colleges', [
-            'colleges' => College::orderBy('updated_at', 'desc')->get()
-        ]);
+        if (Auth::user()->type == 'SYSTEM_ADMIN')
+            return view('colleges', [
+                'colleges' => College::orderBy('updated_at', 'desc')->get()
+            ]);
+        else
+            return redirect(URL::previous());
     }
 
     /**

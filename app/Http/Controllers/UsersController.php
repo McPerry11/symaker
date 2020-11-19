@@ -51,7 +51,7 @@ class UsersController extends Controller
                     ->orWhere('collegeName', 'LIKE', '%' . $request->search . '%')->first();
                     $users = User::select('id', 'firstName', 'middleInitial', 'lastName', 'username', 'type')
                     ->where('collegeID', Auth::user()->collegeID)
-                    ->where(function ($query) {
+                    ->where(function ($query) use ($request) {
                         $query->where('firstName', 'LIKE', '%' . $request->search . '%')
                         ->orWhere('middleInitial', 'LIKE', '%' . $request->search . '%')
                         ->orWhere('lastName', 'LIKE', '%' . $request->search . '%')
