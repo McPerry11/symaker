@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLearningOutcomeTable extends Migration
+class CreateOtherContent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateLearningOutcomeTable extends Migration
      */
     public function up()
     {
-        Schema::create('learning_outcomes', function (Blueprint $table) {
+        Schema::create('other_content', function (Blueprint $table) {
             $table->id();
-            $table->longText('learningOutcomeDescription');
-            $table->foreignId('courseContentID')->constrained('course_content')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('title');
+            $table->longText('content');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateLearningOutcomeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('learning_outcome');
+        Schema::dropIfExists('other_content');
     }
 }

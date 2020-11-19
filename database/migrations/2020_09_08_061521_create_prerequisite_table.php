@@ -13,7 +13,7 @@ class CreatePrerequisiteTable extends Migration
      */
     public function up()
     {
-        Schema::create('prerequisite', function (Blueprint $table) {
+        Schema::create('prerequisites', function (Blueprint $table) {
             $table->string('courseCode');
             $table->string('prerequisites');
             $table->foreign('courseCode')->references('courseCode')->on('courses')->onDelete('cascade')->onUpdate('cascade');

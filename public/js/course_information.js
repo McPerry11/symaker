@@ -7,10 +7,10 @@ $(function() {
 	$('#sb-course-info').css('background-color', color);
 	$('.breadcrumb ul').append('<li><a href="/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><p class="mx-2">AAA 1101</p></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
 
-	$('.input, .textarea').val(''); //Clears all fields at the start
+	$('.textarea').val(''); //Clears all fields at the start
 
 	$('#addPrerequisite').click(function() { //Adds field when clicking add pre-requisite btn
-		var $prerequisiteInput = $('#prerequisiteField').find('.input').last();
+		var $prerequisiteInput = $('#prerequisiteField').find('.select').last();
 
 		if($prerequisiteInput.val().length === 0) { //if user did not fill-out the inputbox
 			$prerequisiteInput.addClass('is-danger').focus();
@@ -20,7 +20,7 @@ $(function() {
 		} else {
 			$prerequisiteInput.removeClass('is-danger');
 			$prerequisiteInput.next('.help').remove();
-			$prerequisiteInput.parent().clone(true).appendTo('#prerequisiteField').find('.input').val('').focus();
+			$prerequisiteInput.parent().clone(true).appendTo('#prerequisiteField').find('.select').val('').focus();
 			$('#prerequisiteField').children('.control').last().css('margin-top', '.25em');
 		}
 	});
@@ -46,11 +46,11 @@ $(function() {
 
 
 	$('.control.has-icons-right').hover(function() { //Toggles the 'x' icon when hovering
-		$(this).find('span.icon').toggleClass('is-hidden-desktop'); 
-		
+		$(this).find('span.icon').toggleClass('is-hidden-desktop');
+
 		if($(this).parents('.outcomeField').length) { //Removes course outcome field
 			if($(this).parents('.outcomeField').siblings('.outcomeField').length === 0) {
-				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one 
+				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one
 			} else {
 				$(this).find('span.icon').removeClass('x-icon-disabled').addClass('x-icon');
 				$('span.icon').click(function() {
@@ -65,7 +65,7 @@ $(function() {
 			}
 		} else { //Removes pre-requisite field
 			if($(this).siblings('.control.has-icons-right').length === 0) {
-				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of pre-requisite field when there is only one 
+				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of pre-requisite field when there is only one
 			} else {
 				$(this).find('span.icon').removeClass('x-icon-disabled').addClass('x-icon');
 				$('span.icon').click(function() {

@@ -14,8 +14,8 @@ class CreateLearningoutcomeCourseoutcomeTable extends Migration
     public function up()
     {
         Schema::create('learningoutcome_courseoutcome', function (Blueprint $table) {
-            $table->foreignId('learingOutcomeID')->constrained('learning_outcome')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('courseOutcomeID')->constrained('course_outcome')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('learingOutcomeID')->constrained('learning_outcomes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('courseOutcomeID')->constrained('course_outcomes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

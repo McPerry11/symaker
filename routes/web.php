@@ -18,19 +18,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', 'LoginController@getLogin')->name('login');
 Route::post('login','LoginController@login')->name('post_login')->middleware('throttle:10,5');
 Route::post('logout','LoginController@logout')->name('logout');
-
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('', 'IndexController@dashboard')->name('dashboard');
 	Route::get('settings', 'SettingsController@index');
 	Route::get('logs', 'IndexController@logs');
+	Route::get('othercontent','OtherContentController@index');
+	Route::patch('othercontent/{id}','OtherContentController@update');
+    Route::patch('othercontent/principle/{id}','OtherContentController@principleUpdate');
+    Route::post('othercontent/add','OtherContentController@addPrinciple');
+    Route::delete('othercontent/delete/{id}','OtherContentController@delete');
 	Route::patch('settings/{user}','SettingsController@updatePassword');
     Route::patch('settings/notification/{user}','SettingsController@updateEmail');
     Route::patch('settings/privacy/{user}','SettingsController@updatePrivacy');
-	Route::get('courses', 'CoursesController@index');
-	Route::prefix('subjectcode/edit')->group(function() {
-		Route::get('learning_outcomes', 'CoursesController@edit');
-		Route::get('course_information', 'CoursesController@edit');
+	Route::resource('courses', 'CoursesController');
+	Route::prefix('{courseCode}/edit')->group(function() {
+	    Route::get('course_information', 'CourseInformationController@index');
+		Route::get('learning_outcomes', 'LearningOutcomeController@index')->name('learning_outcome');
 		Route::get('course_content', 'CoursesController@edit');
+		Route::post('courseInfoSave', 'CourseInformationController@store');
         // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
 	Route::resource('accounts', 'UsersController');

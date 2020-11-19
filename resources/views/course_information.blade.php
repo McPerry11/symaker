@@ -16,7 +16,8 @@
 	</div>
 </div>
 
-
+<form id="Forms" action="courseInfoSave" enctype="multipart/form-data" method="POST">
+    @csrf
 <div class="columns is-desktop">
 	<div class="column is-9-desktop">
 		<div class="field is-hidden-desktop">
@@ -27,13 +28,13 @@
 				<div id="courseCode" class="field">
 					<p class="control">
 						<label class="label">Course Code</label>
-						<input type="text" class="input" placeholder="AAA 1101">
+						<input class="input" id="courseID" name="courseID" value="{{$course->courseCode}}" readonly>
 					</p>
 				</div>
 				<div class="field">
 					<p class="control">
 						<label class="label">Course Title</label>
-						<input type="text" class="input">
+						<input type="text" class="input" id="courseTitle" name="courseTitle" value="{{$course->courseTitle}}" readonly>
 					</p>
 				</div>
 			</div>
@@ -48,13 +49,13 @@
 				<div class="field">
 					<p class="control">
 						<label class="label">Lecture</label>
-						<input type="number" class="input">
+						<input type="number" id="lecture" name="lecture" class="input">
 					</p>
 				</div>
 				<div class="field">
 					<p class="control">
 						<label class="label">Laboratory</label>
-						<input type="number" class="input">
+						<input type="number" id="laboratory" name="laboratory" class="input">
 					</p>
 				</div>
 			</div>
@@ -67,7 +68,13 @@
 </div>
 <div id="prerequisiteField" class="field">
 	<div class="control has-icons-right">
-		<input type="text" class="input" placeholder="BBB 1101 - Computer Programming">
+		{{--<input type="text" class="input" placeholder="BBB 1101 - Computer Programming">--}}
+        <select class="select" name="preRequisite" id="preRequisite">
+            <option value="">None</option>
+            @foreach($allCourses as $option)
+                <option value="{{$option->courseCode}}">{{$option->courseCode}} - {{$option->courseTitle}}</option>
+            @endforeach
+        </select>
 		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span>
 	</div>
 </div>
@@ -86,7 +93,7 @@
 	<h2 class="subtitle is-5">Course Description</h2>
 </div>
 <div class="field">
-	<textarea class="textarea" placeholder="This course aims to..."></textarea>
+	<textarea class="textarea" id="courseDesc" name="courseDesc" placeholder="This course aims to..."></textarea>
 </div>
 
 <div class="field">
@@ -98,7 +105,7 @@
 		<button class="button is-static">CO1</button>
 	</div>
 	<div class="control is-expanded has-icons-right">
-		<input class="input" type="text">
+		<input class="input" id="courseOutcome" name="courseOutcome" type="text">
 		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span> <!-- always shows 'x' on touch devices -->
 	</div>
 </div>
@@ -113,8 +120,14 @@
 		</button>
 	</p>
 </div>
+</form>
 @endsection
 
 @section('scripts')
 <script src="{{ asset('js/course_information.js') }}"></script>
+<script>
+    $('#sb-next').click(function (){
+        $('form#Forms').submit();
+    });
+</script>
 @endsection
