@@ -72,7 +72,7 @@
         </ul>
         </p>
     </div>
-    <button class="button is-info" id="addBtn" style="float: right"><span class="icon"></span>Edit</button>
+    <button class="button is-info" id="outcomeEdit" style="float: right"><span class="icon"></span>Edit</button>
 </div>
 {{--Mission Statement Edit Modal--}}
 <div id="missionStatementModal" class="modal" style="padding-top: 100px">
@@ -199,7 +199,7 @@
                 </div>
                 <h1>Type</h1>
                 <select name="Type" id="Type">
-                    <option value="Univeristy">University</option>
+                    <option value="University">University</option>
                     @foreach($collegeTable as $option)
                         <option value="{{$option->abbrev}}">{{$option->abbrev}}</option>
                     @endforeach
@@ -213,18 +213,116 @@
         </div>
     </div>>
 </div>
-{{--Delete Modal--}}
+{{--Delete Principle Modal--}}
 <div id="deleteModal" class="modal" style="padding-top: 100px">
     <div class="modal-background"></div>
     <div class="modal-content">
         <div class="box">
             Are you sure You want to delete this entry?
-            <form method="POST" enctype="multipart/form-data" action="/othercontent" id="deleteForm">
+            <form method="POST" enctype="multipart/form-data" action="" id="deleteForm">
                 @csrf
                 {{ method_field('DELETE') }}
                 <button id="yes">yes</button>
             </form>
             <button id="backBtn" class="back">Back</button>
+            <button id="closeBtn" class="cls">close</button>
+        </div>
+    </div>
+</div>
+{{--Institutional Outcome Edit Modal--}}
+<div id="OutcomeModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <table class="table is-fullwidth is-striped" id="outcomeTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>content</th>
+                    <th>
+                        <button class="button is-info is-fullwidth" title="Add Outcome" id="outcomeAdd">
+                            <span class="icon is-small"><i class="fas fa-plus"></i></span>Add Outcome
+                        </button>
+                        <button id="closeBtn" class="cls">close</button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($outcomeTable as $rows)
+                    <tr>
+                        <td>{{$rows->id}}</td>
+                        <td>{{$rows->content}}</td>
+                        <td>
+                            <div class="buttons is-right">
+                                <button class="button edit2"><span class="icon"><i class="fas fa-edit"></i></span></button>
+                                <button class="button is-danger is-inverted deleteOutcome"><span class="icon"><i class="fas fa-trash"></i></span></button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{--Institutional Outcome Edit Entry Modal--}}
+<div id="outcomeEditModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="othercontent" enctype="multipart/form-data" method="POST" id="editOutcome">
+                @csrf
+                {{ method_field('PATCH') }}
+                <div class="subtitle is-3">Institutional Outcome
+                    <hr class="settings-hr">
+                </div>
+                <h1></h1>
+                <textarea name="outcomeContent" id="outcomeContent" cols="30" rows="10" style="width: 45em" required></textarea>
+                <button id="save">Save</button>
+            </form>
+            <button id="backBtn" class="back2">Back</button>
+            <button id="closeBtn" class="cls">close</button>
+        </div>
+    </div>>
+</div>
+{{--Outcome Add Modal--}}
+<div id="addOutcome" class="modal set" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <form action="othercontent/add2" enctype="multipart/form-data" method="POST" id="editMissionStatement">
+                @csrf
+                <div class="subtitle is-3">Guiding Principle
+                    <hr class="settings-hr">
+                </div>
+                <h1>Type</h1>
+                <select name="Type" id="Type">
+                    <option value="University">University</option>
+                    @foreach($collegeTable as $option)
+                        <option value="{{$option->abbrev}}">{{$option->abbrev}}</option>
+                    @endforeach
+                </select>
+                <h1>Content</h1>
+                <textarea name="content" id="cntnt" cols="30" rows="10" style="width: 45em" required></textarea>
+                <button id="save">Save</button>
+            </form>
+            <button id="backBtn" class="back2">Back</button>
+            <button id="closeBtn" class="cls">close</button>
+        </div>
+    </div>>
+</div>
+{{--Delete delete Outcome Modal--}}
+<div id="deleteOutcomeModal" class="modal" style="padding-top: 100px">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            Are you sure you want to delete?
+            <form method="POST" enctype="multipart/form-data" action="" id="deleteForm2">
+            @csrf
+            {{ method_field('DELETE') }}
+            <button id="yes">yes</button>
+            </form>
+            <button id="backBtn" class="back2">back</button>
             <button id="closeBtn" class="cls">close</button>
         </div>
     </div>

@@ -14,7 +14,7 @@ class OtherContentController extends Controller
     {
         $contentTable = OtherContent::all();
         $principleTable= guidingPrinciple::Where('type','=','University')->get();
-        $outcomeTable=institutionalOutcome::all();
+        $outcomeTable=institutionalOutcome::Where('type','=','University')->get();
         $collegeTable=College::all();
         return view('other',compact('contentTable','principleTable','outcomeTable','collegeTable'));
     }
@@ -51,6 +51,32 @@ class OtherContentController extends Controller
     public function delete($id)
     {
         $principle = guidingPrinciple::find($id);
+        $principle->delete();
+        return redirect('othercontent');
+    }
+
+    public function outcomeUpdate(Request $request,$id)
+    {
+        $table = institutionalOutcome::find($id);
+        if ($table->content != $request->input('outcomeContent')){
+            $table->content = $request->input('outcomeContent');
+        }
+        $table->save();
+        return redirect('othercontent');
+    }
+
+    public function addOutcome(Request $request)
+    {
+        $outcome = new institutionalOutcome;
+        $outcome->type = $request->input('Type');
+        $outcome->content = $request->input('content');
+        $outcome->save();
+        return redirect('othercontent');
+    }
+
+    public function deleteOutcome($id)
+    {
+        $principle = institutionalOutcome::find($id);
         $principle->delete();
         return redirect('othercontent');
     }

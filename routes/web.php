@@ -25,8 +25,11 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('othercontent','OtherContentController@index');
 	Route::patch('othercontent/{id}','OtherContentController@update');
     Route::patch('othercontent/principle/{id}','OtherContentController@principleUpdate');
+    Route::patch('othercontent/outcome/{id}','OtherContentController@outcomeUpdate');
     Route::post('othercontent/add','OtherContentController@addPrinciple');
+    Route::post('othercontent/add2','OtherContentController@addOutcome');
     Route::delete('othercontent/delete/{id}','OtherContentController@delete');
+    Route::delete('othercontent/delete2/{id}','OtherContentController@deleteOutcome');
 	Route::patch('settings/{user}','SettingsController@updatePassword');
     Route::patch('settings/notification/{user}','SettingsController@updateEmail');
     Route::patch('settings/privacy/{user}','SettingsController@updatePrivacy');
