@@ -8,6 +8,7 @@ class UsersSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     *
      * @return void
      */
     public function run()
@@ -30,6 +31,17 @@ class UsersSeeder extends Seeder
         $user->username = 'McPerry_';
         $user->collegeID = 3;
         $user->email = 'co.mackperry@ue.edu.ph';
+        $user->password = 'abc123';
+        $user->type = 'SYSTEM_ADMIN';
+        $user->save();
+
+        $user = new User;
+        $user->firstName = 'Louis Angelo';
+        $user->middleInitial = 'D.';
+        $user->lastName = 'Altoveros';
+        $user->username = 'louisaltoveros';
+        $user->collegeID = 3;
+        $user->email = 'altoveros.louisangelo@ue.edu.ph';
         $user->password = 'abc123';
         $user->type = 'SYSTEM_ADMIN';
         $user->save();

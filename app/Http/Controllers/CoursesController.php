@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\LearningOutcome;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Route;
@@ -13,8 +15,14 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // if ($request->data == 'learning_outcome') {
+        //     $learning_outcome = LearningOutcome::select('id', 'learningOutcomeDescription')->get();
+        //     return response()->json([
+        //         'learning_outcome' => $learning_outcome
+        //     ]);
+        // }
         return view('courses');
     }
 
