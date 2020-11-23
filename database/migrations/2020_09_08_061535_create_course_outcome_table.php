@@ -13,7 +13,7 @@ class CreateCourseOutcomeTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_outcome', function (Blueprint $table) {
+        Schema::create('course_outcomes', function (Blueprint $table) {
             $table->id();
             $table->string('courseCode');
             $table->foreign('courseCode')->references('courseCode')->on('courses')->onDelete('cascade')->onUpdate('cascade');

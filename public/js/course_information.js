@@ -42,7 +42,7 @@ $(function() {
 		$(this).find('span.icon').toggleClass('is-hidden-desktop'); 
 		if($(this).parents('.outcomeField').length) { //Removes course outcome field
 			if($(this).parents('.outcomeField').siblings('.outcomeField').length === 0) {
-				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one 
+				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one
 			} else {
 				$(this).find('span.icon').removeClass('x-icon-disabled').addClass('x-icon');
 				$('span.icon').click(function() {
@@ -57,7 +57,7 @@ $(function() {
 			}
 		} else { //Removes pre-requisite field
 			if($(this).siblings('.control.has-icons-right').length === 0) {
-				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of pre-requisite field when there is only one 
+				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of pre-requisite field when there is only one
 			} else {
 				$(this).find('span.icon').removeClass('x-icon-disabled').addClass('x-icon');
 				$('span.icon').click(function() {

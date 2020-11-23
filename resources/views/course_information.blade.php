@@ -113,4 +113,9 @@
 
 @section('scripts')
 <script src="{{ asset('js/course_information.js') }}"></script>
-@endsection
+	{{-- <script>
+		$('#sb-next').click(function (){
+			$('form#Forms').submit();
+		});
+	</script> --}}
+	@endsection

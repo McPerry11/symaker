@@ -31,7 +31,7 @@ class LoginController extends Controller
                 'updated_at' => Carbon::now('+8:00')
             ]);
             return response()->json([
-                'status' => 'success', 
+                'status' => 'success',
                 'msg' => 'Log In Successful'
             ]);
         } else {

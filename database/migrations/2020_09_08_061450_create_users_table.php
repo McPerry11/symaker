@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
                 'COLLEGE_ADMIN',
                 'USER'
             ]);
+            $table->boolean('emailNotification');
+            $table->boolean('private');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -24,16 +24,19 @@
   <component name="ChangeListManager">
     <list default="true" id="b7fe2c5f-c598-4dd6-bd6d-1f06dde60e04" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Colleges.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/College.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CollegesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CollegesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_061436_create_college_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_061436_create_college_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_061501_create_courses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_061501_create_courses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/College.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/College.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CoursesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CoursesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_061521_create_prerequisite_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_061521_create_prerequisite_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_061535_create_course_outcome_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_061535_create_course_outcome_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_061610_create_learning_outcome_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_061610_create_learning_outcome_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_18_114043_create_learningoutcome_courseoutcome_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_18_114043_create_learningoutcome_courseoutcome_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/accounts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/accounts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/colleges.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/colleges.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/accounts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/accounts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/colleges.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/colleges.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/course_information.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/course_information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/course_information.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/course_information.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/courses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/courses.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +47,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -156,7 +166,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../thesisarchiving" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -164,10 +174,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Laravel\symaker2\public\img" />
+      <recent name="C:\xampp\htdocs\Laravel\symaker2\resources\views" />
       <recent name="C:\xampp\htdocs\Laravel\symaker2\app" />
       <recent name="C:\xampp\htdocs\Laravel\symaker2\app\Http\Controllers" />
     </key>
@@ -194,7 +206,20 @@
       <workItem from="1600146173896" duration="15434000" />
       <workItem from="1600230224662" duration="9786000" />
       <workItem from="1600257418209" duration="13899000" />
-      <workItem from="1600345699883" duration="11010000" />
+      <workItem from="1600345699883" duration="11357000" />
+      <workItem from="1600927377806" duration="10964000" />
+      <workItem from="1601013620176" duration="9217000" />
+      <workItem from="1602043846613" duration="11167000" />
+      <workItem from="1602134514592" duration="14505000" />
+      <workItem from="1602149100777" duration="136000" />
+      <workItem from="1602485446403" duration="1363000" />
+      <workItem from="1604473573344" duration="6948000" />
+      <workItem from="1604568072316" duration="3244000" />
+      <workItem from="1604643438091" duration="6639000" />
+      <workItem from="1604745072632" duration="2095000" />
+      <workItem from="1605605914785" duration="3565000" />
+      <workItem from="1605691202081" duration="4820000" />
+      <workItem from="1605787151015" duration="1431000" />
     </task>
     <servers />
   </component>
@@ -222,26 +247,36 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="713" y="242" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600354346603" />
-    <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600353865671">
-      <screen x="0" y="0" width="1857" height="1080" />
+    <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602146017026">
+      <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600353865671" />
-    <state x="708" y="294" key="FileChooserDialogImpl" timestamp="1600355712862">
-      <screen x="0" y="0" width="1857" height="1080" />
+    <state x="658" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1858.1080/1982.-113.1474.864@0.0.1858.1080" timestamp="1602146017026" />
+    <state x="708" y="294" key="FileChooserDialogImpl" timestamp="1602138932824">
+      <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="708" y="294" key="FileChooserDialogImpl/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600355712862" />
-    <state x="429" y="184" key="SettingsEditor" timestamp="1600148131124">
-      <screen x="0" y="0" width="1857" height="1080" />
+    <state x="708" y="294" key="FileChooserDialogImpl/0.0.1858.1080/1982.-113.1474.864@0.0.1858.1080" timestamp="1602138932824" />
+    <state x="387" y="167" key="SettingsEditor" timestamp="1605606186047">
+      <screen x="0" y="0" width="1677" height="978" />
     </state>
+    <state x="387" y="167" key="SettingsEditor/0.0.1677.978/1982.-113.1677.978@0.0.1677.978" timestamp="1605606186047" />
     <state x="429" y="184" key="SettingsEditor/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600148131124" />
-    <state x="585" y="250" width="672" height="677" key="run.anything.popup" timestamp="1600259303016">
-      <screen x="0" y="0" width="1857" height="1080" />
+    <state x="746" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604643588468">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="746" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1858.1080/1982.-113.1474.864@0.0.1858.1080" timestamp="1604643588468" />
+    <state x="585" y="250" width="673" height="677" key="run.anything.popup" timestamp="1604476467108">
+      <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="585" y="250" width="672" height="677" key="run.anything.popup/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600259303016" />
-    <state x="591" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1600356231468">
-      <screen x="0" y="0" width="1857" height="1080" />
+    <state x="585" y="250" width="673" height="677" key="run.anything.popup/0.0.1858.1080/1982.-113.1474.864@0.0.1858.1080" timestamp="1604476467108" />
+    <state x="744" y="213" width="672" height="614" key="search.everywhere.popup" timestamp="1605788093647">
+      <screen x="0" y="0" width="1677" height="978" />
     </state>
+    <state x="744" y="213" width="672" height="614" key="search.everywhere.popup/0.0.1677.978/1982.-113.1677.978@0.0.1677.978" timestamp="1605788093647" />
     <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080/1982.-113.1474.864@0.0.1857.1080" timestamp="1600356231468" />
     <state x="591" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1857.1080@0.0.1857.1080" timestamp="1598784242636" />
+    <state x="824" y="235" width="673" height="678" key="search.everywhere.popup/0.0.1858.1080/1982.-113.1474.864@0.0.1858.1080" timestamp="1604650243866" />
   </component>
 </project>

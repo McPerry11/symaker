@@ -22,6 +22,8 @@ class UsersSeeder extends Seeder
         $user->email = 'geraldes.rolandjoshua@ue.edu.ph';
         $user->password = 'abc123';
         $user->type = 'SYSTEM_ADMIN';
+        $user->emailNotification='yes';
+        $user->private='yes';
         $user->save();
 
         $user = new User;
@@ -33,6 +35,8 @@ class UsersSeeder extends Seeder
         $user->email = 'co.mackperry@ue.edu.ph';
         $user->password = 'abc123';
         $user->type = 'SYSTEM_ADMIN';
+        $user->emailNotification='no';
+        $user->private='no';
         $user->save();
 
         $user = new User;

@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\LearningOutcome;
 
+use App\College;
+use App\Course;
+use App\CourseInformation;
+use App\LearningOutcome;
+use App\CourseOutcome;
+use App\PreRequisite;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use voku\helper\ASCII;
 
 class CoursesController extends Controller
 {
@@ -17,13 +24,11 @@ class CoursesController extends Controller
      */
     public function index(Request $request)
     {
-        // if ($request->data == 'learning_outcome') {
-        //     $learning_outcome = LearningOutcome::select('id', 'learningOutcomeDescription')->get();
-        //     return response()->json([
-        //         'learning_outcome' => $learning_outcome
-        //     ]);
-        // }
-        return view('courses');
+        $collegeTable = college::all();
+        $joinedTable = DB::Table('courses')
+        ->join('colleges','colleges.id','=','courses.collegeID')
+        ->get();
+        return view('courses', compact('joinedTable','collegeTable'));
     }
 
     /**
@@ -44,7 +49,18 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'courseCode'=> ['required', 'string', 'max:255'],
+            'courseTitle'=>['required', 'string', 'max:255'],
+        ]);
+
+        $course = new course;
+        $course->courseCode = $request->input('courseCode');
+        $course->collegeID = $request->input('collegeID');
+        $course->courseTitle = $request->input('courseTitle');
+        $course->save();
+        return redirect('courses');
+
     }
 
     /**
@@ -64,16 +80,14 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         // To be used for determining if edit event was from dashboard or courses module
         // return redirect(url()->previous());
 
         // In this part, we will use the Illuminate\Support\Facades\Route to determine which module is in view
         // This will prevent us from making more controller functions with the same motive.
-        if (Route::current()->uri() == 'subjectcode/edit/learning_outcomes') {
-            return view('learning_outcomes');
-        } else if (Route::current()->uri() == 'subjectcode/edit/course_content') {
+        if (Route::current()->uri() == '{courseCode}/edit/course_content') {
             return view('course_content');
         } else if (Route::current()->uri() == 'subjectcode/edit/course_information') {
             return view('course_information');
@@ -83,7 +97,7 @@ class CoursesController extends Controller
         // Add an else if for your module
     }
 
-    /**
+    /** 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -92,7 +106,21 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $course = Course::find($id);
+        if($course->courseCode != $request->input('courseCode')){
+            $this->validate($request,['courseCode'=>['required','string']]);
+            $course -> courseCode = $request->input('courseCode');
+        }
+        if($course->collegeID != $request->input('collegeID')){
+            $this->validate($request,['collegeID'=>['required','int']]);
+            $course -> collegeID = $request->input('collegeID');
+        }
+        if($course->courseTitle != $request->input('courseTitle')){
+            $this->validate($request,['courseTitle'=>['required','string']]);
+            $course -> courseTitle = $request->input('courseTitle');
+        }
+        $course->save();
+        return redirect('courses');
     }
 
     /**
