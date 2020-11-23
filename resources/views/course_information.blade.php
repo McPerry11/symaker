@@ -5,114 +5,110 @@
 @endsection
 
 @section('body')
-<h1 class="subtitle is-3">Course Information</h1>
+<form>
+	<h1 class="subtitle is-3">Course Information</h1>
 
-<div class="columns is-hidden-touch">
-	<div class="column is-9">
-		<h2 class="subtitle is-5">Course Info</h2>
-	</div>
-	<div class="column">
-		<h2 class="subtitle is-5">Credit Units</h2>
-	</div>
-</div>
-
-
-<div class="columns is-desktop">
-	<div class="column is-9-desktop">
-		<div class="field is-hidden-desktop">
+	<div class="columns is-hidden-touch mb-0">
+		<div class="column is-9">
 			<h2 class="subtitle is-5">Course Info</h2>
 		</div>
-		<div class="field is-horizontal">
-			<div class="field-body">
-				<div id="courseCode" class="field">
-					<p class="control">
-						<label class="label">Course Code</label>
-						<input type="text" class="input" placeholder="AAA 1101">
-					</p>
-				</div>
-				<div class="field">
-					<p class="control">
-						<label class="label">Course Title</label>
-						<input type="text" class="input">
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="column">
-		<div class="field is-hidden-desktop">
+		<div class="column">
 			<h2 class="subtitle is-5">Credit Units</h2>
 		</div>
-		<div class="field is-horizontal">
-			<div class="field-body">
-				<div class="field">
-					<p class="control">
-						<label class="label">Lecture</label>
-						<input type="number" class="input">
-					</p>
+	</div>
+
+	<div class="columns is-desktop">
+		<div class="column is-9-desktop">
+			<h2 class="subtitle is-5 is-hidden-desktop">Course Info</h2>
+			<div class="field is-horizontal">
+				<div class="field-body">
+					<div id="courseCode" class="field">
+						<p class="control">
+							<label class="label">Course Code</label>
+							<input type="text" class="input" placeholder="AAA 1101">
+						</p>
+					</div>
+					<div class="field">
+						<p class="control">
+							<label class="label">Course Title</label>
+							<input type="text" class="input">
+						</p>
+					</div>
 				</div>
-				<div class="field">
-					<p class="control">
-						<label class="label">Laboratory</label>
-						<input type="number" class="input">
-					</p>
+			</div>
+		</div>
+		<div class="column">
+			<h2 class="subtitle is-5 is-hidden-desktop">Credit Units</h2>
+			<div class="field is-horizontal">
+				<div class="field-body">
+					<div class="field">
+						<p class="control">
+							<label class="label">Lecture</label>
+							<input type="number" class="input">
+						</p>
+					</div>
+					<div class="field">
+						<p class="control">
+							<label class="label">Laboratory</label>
+							<input type="number" class="input">
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="field">
 	<h2 class="subtitle is-5">Pre-requisites</h2>
-</div>
-<div id="prerequisiteField" class="field">
-	<div class="control has-icons-right">
-		<input type="text" class="input" placeholder="BBB 1101 - Computer Programming">
-		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span>
+	<div class="field">
+		<div class="select is-fullwidth">
+			<select>
+				<option value="" selected disabled>Select course pre-requisite</option>
+				<option value="rem" disabled>Remove pre-requisite</option>
+				<option>BBB 1101 - Computer Programming</option>
+				<option>BBB 1102 - Computer Programming 2</option>
+				<option>BBB 1103 - Computer Programming 3</option>
+			</select>
+		</div>
 	</div>
-</div>
-<div class="field">
-	<p class="control">
-		<button id="addPrerequisite" class="button is-light">
-			<span class="icon">
-				<i class="fas fa-plus"></i>
-			</span>
-			<span>Add a pre-requisite</span>
-		</button>
-	</p>
-</div>
+	<div class="field">
+		<p class="control">
+			<button id="addPrerequisite" class="button is-light" type="button">
+				<span class="icon">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span>Add a pre-requisite</span>
+			</button>
+		</p>
+	</div>
 
-<div class="field">
 	<h2 class="subtitle is-5">Course Description</h2>
-</div>
-<div class="field">
-	<textarea class="textarea" placeholder="This course aims to..."></textarea>
-</div>
+	<div class="field">
+		<textarea class="textarea" placeholder="This course aims to..."></textarea>
+	</div>
 
-<div class="field">
 	<h2 class="subtitle is-5">Course Outcomes</h2>
-</div>
-
-<div class="outcomeField field has-addons">
-	<div class="control">
-		<button class="button is-static">CO1</button>
+	<div class="outcomeField field has-addons">
+		<div class="control">
+			<button class="button is-static">CO1</button>
+		</div>
+		<div class="control is-expanded has-icons-right">
+			<input class="input" type="text">
+			<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span> <!-- always shows 'x' on touch devices -->
+		</div>
 	</div>
-	<div class="control is-expanded has-icons-right">
-		<input class="input" type="text">
-		<span class="icon is-right is-hidden-desktop"><i class="fas fa-times"></i></span> <!-- always shows 'x' on touch devices -->
-	</div>
-</div>
 
-<div id="outcomeButtonDiv" class="field">
-	<p class="control">
-		<button id="addOutcome" class="button is-light">
-			<span class="icon">
-				<i class="fas fa-plus"></i>
-			</span>
-			<span>Add a course outcome</span>
-		</button>
-	</p>
-</div>
+	<div id="outcomeButtonDiv" class="field">
+		<p class="control">
+			<button id="addOutcome" class="button is-light" type="button">
+				<span class="icon">
+					<i class="fas fa-plus"></i>
+				</span>
+				<span>Add a course outcome</span>
+			</button>
+		</p>
+	</div>
+	<button type="submit" hidden></button>
+</form>
 @endsection
 
 @section('scripts')

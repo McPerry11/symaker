@@ -14,8 +14,6 @@ use App\Http\Middleware\CheckAccess;
 |
 */
 
-
-
 Route::get('login', 'LoginController@getLogin')->name('login');
 Route::post('login','LoginController@login')->name('post_login')->middleware('throttle:10,5');
 Route::post('logout','LoginController@logout')->name('logout');
@@ -29,7 +27,8 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('learning_outcomes', 'CoursesController@edit');
 		Route::get('course_information', 'CoursesController@edit');
 		Route::get('course_content', 'CoursesController@edit');
-        // Add your module route here. Let the controller remain the same and check out CoursesController@edit
+		Route::get('references_classroom_management', 'CoursesController@edit');
+    // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
 
 	Route::group(['middleware' => CheckAccess::class], function() {
