@@ -30,6 +30,88 @@ class otherContentSeeder extends Seeder
         $content->type = 'University';
         $content->save();
 
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CCSS';
+        $content->save();
 
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CCSS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CAS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CAS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CBA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CBA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CDent';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CDent';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEng';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEng';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CFA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CFA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEduc';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEduc';
+        $content->save();
     }
 }

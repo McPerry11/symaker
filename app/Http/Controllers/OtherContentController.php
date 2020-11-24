@@ -7,16 +7,20 @@ use App\guidingPrinciple;
 use App\institutionalOutcome;
 use App\OtherContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OtherContentController extends Controller
 {
     public function index()
     {
         $contentTable = OtherContent::all();
-        $principleTable= guidingPrinciple::Where('type','=','University')->get();
-        $outcomeTable=institutionalOutcome::Where('type','=','University')->get();
+        $principleTable= guidingPrinciple::all();
+        $outcomeTable=institutionalOutcome::all();
         $collegeTable=College::all();
-        return view('other',compact('contentTable','principleTable','outcomeTable','collegeTable'));
+        $joinedTable=DB::table('users')->
+        join('colleges','colleges.id','=','users.collegeID')->get();
+        return view('other',compact('contentTable','principleTable','outcomeTable','collegeTable','joinedTable'));
     }
 
     public function update(Request $request,$id)

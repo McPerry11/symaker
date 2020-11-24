@@ -37,5 +37,18 @@ class UsersSeeder extends Seeder
         $user->emailNotification='no';
         $user->private='no';
         $user->save();
+
+        $user = new User;
+        $user->firstName = 'College';
+        $user->middleInitial = 'Test';
+        $user->lastName = 'Profile';
+        $user->username = 'Test';
+        $user->collegeID = 3;
+        $user->email = 'test@test.com';
+        $user->password = 'abc123';
+        $user->type = 'COLLEGE_ADMIN';
+        $user->emailNotification='no';
+        $user->private='no';
+        $user->save();
     }
 }
