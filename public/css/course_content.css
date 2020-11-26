@@ -7,12 +7,16 @@
     width: 90px;
 }
 
+#content.box {
+    margin-right: 5%;
+}
+
 /*======== modal form ========*/
 .modal-card {
-    margin-top: 15px;
+    margin-top: 5%;
     margin-bottom: 15px;
 }
-#weeks, #hours {
+#week1, #week2, #hours {
     width: 60px;
 }
 #delete-content {
@@ -34,14 +38,14 @@
 }
 
 
-th:nth-child(-n+2) {
+th:nth-child(n) {
     width: 40px;
     min-width: 40px;
 }
 
 th:nth-child(2n+3) {
-    width: 240px;
-    min-width: 240px;
+    width: 220px;
+    min-width: 220px;
 }
 
 th:nth-child(2n+4) {

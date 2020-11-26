@@ -28,3 +28,7 @@ th:nth-child(4) {
 th .button .icon:first-child:last-child {
 	margin-right: 5px;
 }
+
+footer .buttons {
+	width: 100%;
+}

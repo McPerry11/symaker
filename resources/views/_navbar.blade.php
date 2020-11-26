@@ -48,7 +48,7 @@
 					</button>
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf
-						<button class="navbar-item has-text-danger button is-white is-fullwidth text-left" type="submit">
+						<button id="logout" class="navbar-item has-text-danger button is-white is-fullwidth text-left" type="submit">
 							<span class="icon">
 								<i class="fas fa-sign-out-alt"></i>
 							</span>
@@ -98,10 +98,12 @@
 			<a id="nb-courses" class="navbar-item" href="{{ url('courses') }}"><span class="icon"><i class="fas fa-book"></i></span>Courses</a>
 			<a id="nb-settings" class="navbar-item" href="{{ url('settings') }}"><span class="icon"><i class="fas fa-cog"></i></span>Settings</a>
 			<a id="nb-help" class="navbar-item"><span class="icon"><i class="fas fa-question-circle"></i></span>Help</a>
+			@if (Auth::user()->type != 'USER')
 			<a id="nb-accounts" class="navbar-item" href="{{ url('accounts') }}"><span class="icon"><i class="fas fa-users"></i></span>Accounts</a>
 			<a id="nb-colleges" class="navbar-item" href="{{ url('colleges') }}"><span class="icon"><i class="fas fa-chalkboard"></i></span>Colleges</a>
 			<a id="nb-others" class="navbar-item"><span class="icon"><i class="fas fa-plus-square"></i></span>Other Content</a>
 			<a id="nb-logs" class="navbar-item" href="{{ url('logs') }}"><span class="icon"><i class="fas fa-stream"></i></span>Logs</a>
+			@endif
 		</div>
 		<div class="navbar-end">
 			<a class="navbar-item">

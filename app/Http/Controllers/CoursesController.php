@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\College;
 use App\Course;
 use App\CourseInformation;
+use App\LearningOutcome;
 use App\CourseOutcome;
 use App\PreRequisite;
 use Illuminate\Http\Request;
@@ -20,11 +22,11 @@ class CoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $collegeTable = college::all();
         $joinedTable = DB::Table('courses')
-            ->join('colleges','colleges.id','=','courses.collegeID')
+        ->join('colleges','colleges.id','=','courses.collegeID')
         ->get();
         return view('courses', compact('joinedTable','collegeTable'));
     }
@@ -47,11 +49,11 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'courseCode'=> ['required', 'string', 'max:255'],
             'courseTitle'=>['required', 'string', 'max:255'],
         ]);
+
         $course = new course;
         $course->courseCode = $request->input('courseCode');
         $course->collegeID = $request->input('collegeID');
@@ -87,11 +89,15 @@ class CoursesController extends Controller
         // This will prevent us from making more controller functions with the same motive.
         if (Route::current()->uri() == '{courseCode}/edit/course_content') {
             return view('course_content');
+        } else if (Route::current()->uri() == 'subjectcode/edit/course_information') {
+            return view('course_information');
+        } else if (Route::current()->uri() == 'subjectcode/edit/references_classroom_management') {
+            return view('references_classroom_management');
         }
         // Add an else if for your module
     }
 
-    /**
+    /** 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

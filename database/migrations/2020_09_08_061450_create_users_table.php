@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('middleInitial')->nullable();
             $table->string('lastName');
-            $table->string('username')->unique();
+            $table->string('username')->unique()->collation('utf8_bin');
             $table->foreignId('collegeID')->constrained('colleges')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('type', [
@@ -28,12 +28,8 @@ class CreateUsersTable extends Migration
                 'COLLEGE_ADMIN',
                 'USER'
             ]);
-            $table->enum('emailNotification',[
-                'yes','no'
-            ]);
-            $table->enum('private',[
-                'yes','no'
-            ]);
+            $table->boolean('emailNotification');
+            $table->boolean('private');
             $table->rememberToken();
             $table->timestamps();
         });

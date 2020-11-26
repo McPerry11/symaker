@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\College;
+use App\Log;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class CollegesController extends Controller
 {
@@ -14,10 +18,56 @@ class CollegesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $table = College::all();
-        return view('colleges', compact('table'));
+        if ($request->data == 'users')
+            return College::select('id', 'abbrev')->get();
+        else if ($request->modal == 'add' || $request->modal == 'edit') {
+            if ($request->modal == 'add') {
+                if ($request->field == 'abbrev')
+                    $identical = College::where('abbrev', $request->data)->count();
+                else if ($request->field == 'name')
+                    $identical = College::where('collegeName', $request->data)->count();
+                else
+                    $identical = College::where('colorCode', $request->data)->count();
+            } else {
+                if ($request->field == 'abbrev')
+                    $identical = College::where('abbrev', $request->data)->where('id', '<>', $request->id)->count();
+                else if ($request->field == 'name')
+                    $identical = College::where('collegeName', $request->data)->where('id', '<>', $request->id)->count();
+                else
+                    $identical = College::where('colorCode', $request->data)->where('id', '<>', $request->id)->count();
+            }
+            if ($identical > 0)  {
+                if ($request->field == 'abbrev')
+                    $request->field = 'abbreviation';
+                else if ($request->field == 'color')
+                    $request->field == 'color code';
+                return response()->json([
+                    'status' => 'error',
+                    'msg' => 'This ' . $request->field . ' is already taken'
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'success'
+                ]);
+            }
+        } else if ($request->data == 'colleges') {
+            if ($request->search == '')
+                return College::orderBy('updated_at', 'desc')->get();
+            else {
+                return College::where('abbrev', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('collegeName', 'LIKE', '%' . $request->search . '%')
+                ->orderBy('updated_at', 'desc')->get();
+            }
+        }
+
+        if (Auth::user()->type == 'SYSTEM_ADMIN')
+            return view('colleges', [
+                'colleges' => College::orderBy('updated_at', 'desc')->get()
+            ]);
+        else
+            return redirect(URL::previous());
     }
 
     /**
@@ -38,17 +88,45 @@ class CollegesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'abbrev'=> ['required', 'string', 'max:255'],
-            'collegeName'=>['required', 'string', 'max:255'],
-            'colorCode'=>['required', 'string', 'max:255'],
-        ]);
+        $identical = College::where('abbrev', $request->abbrev)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'abbrev',
+                'msg' => 'This abbreviation is already taken'
+            ]);
+        $identical = College::where('collegeName', $request->name)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'name',
+                'msg' => 'This name is already taken'
+            ]);
+        $identical = College::where('colorCode', $request->color)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'color',
+                'msg' => 'This color code is already taken'
+            ]);
+
         $college = new College;
-        $college->abbrev = $request->input('abbrev');
-        $college->collegeName = $request->input('collegeName');
-        $college->colorCode = $request->input('colorCode');
+        $college->abbrev = strip_tags($request->abbrev);
+        $college->collegeName = strip_tags($request->name);
+        $college->colorCode = $request->color;
         $college->save();
-        return redirect('/colleges');
+
+        Log::create([
+            'userID' => Auth::id(),
+            'ipAddress' => $request->ip(),
+            'details' => Auth::user()->username . ' has added a new college [' . $college->abbrev . '].',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
+        ]);
+
+        return response()->json([
+            'msg' => 'A new college [' . $college->abbrev . '] has been added'
+        ]);
     }
 
     /**
@@ -70,7 +148,7 @@ class CollegesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return College::select('abbrev', 'collegeName', 'colorCode')->find($id);
     }
 
     /**
@@ -82,26 +160,45 @@ class CollegesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $change = '';
+        $identical = College::where('abbrev', $request->abbrev)->where('id', '<>', $id)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'abbrev',
+                'msg' => 'This abbreviation is already taken'
+            ]);
+        $identical = College::where('collegeName', $request->name)->where('id', '<>', $id)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'name',
+                'msg' => 'This name is already taken'
+            ]);
+        $identical = College::where('colorCode', $request->color)->where('id', '<>', $id)->count();
+        if ($identical > 0)
+            return response()->json([
+                'status' => 'error',
+                'data' => 'color',
+                'msg' => 'This color code is already taken'
+            ]);
+
         $college = College::find($id);
-        if($college->abbrev != $request->input('abbrev')){
-            $this->validate($request,['abbrev'=>['required','string']]);
-            $college->abbrev = $request->input('abbrev');
-            $change = $change . "Abbrev, ";
-        }
-        if ($college->collegeName != $request->input('collegeName')){
-            $this->validate($request,['collegeName'=>['required','string']]);
-            $college->collegeName = $request->input('collegeName');
-            $change = $change . "College Name, ";
-        }
-        if ($college->colorCode != $request->input('colorCode')){
-            $this->validate($request,['colorCode'=>['required','string']]);
-            $college->colorCode = $request->input('colorCode');
-            $change = $change . "Color Code, ";
-        }
-        $change = $change." Updated";
+        $college->abbrev = strip_tags($request->abbrev);
+        $college->collegeName = strip_tags($request->name);
+        $college->colorCode = $request->color;
         $college->save();
-        return redirect('colleges');
+
+        Log::create([
+            'userID' => Auth::id(),
+            'ipAddress' => $request->ip(),
+            'details' => Auth::user()->username . ' has updated college [' . $college->abbrev . '].',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
+        ]);
+        
+        return response()->json([
+            'msg' => 'College [' . $college->abbrev . '] has been updated'
+        ]);
     }
 
     /**
@@ -110,10 +207,22 @@ class CollegesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $college = College::find($id);
+        $abbrev = $college->abbrev;
+
+        Log::create([
+            'userID' => Auth::id(),
+            'ipAddress' => $request->ip(),
+            'details' => Auth::user()->username . ' has deleted college [' . $college->abbrev . '].',
+            'created_at' => Carbon::now('+8:00'),
+            'updated_at' => Carbon::now('+8:00')
+        ]);
+
         $college->delete();
-        return redirect('colleges');
+        return response()->json([
+            'msg' => 'College [' . $abbrev .'] has been deleted'
+        ]);
     }
 }

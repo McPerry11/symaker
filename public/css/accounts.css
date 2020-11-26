@@ -2,7 +2,7 @@
 	margin-bottom: 15px;
 }
 
-form, #search {
+form {
 	width: 100%;
 }
 
@@ -10,21 +10,16 @@ form, #search {
 	vertical-align: bottom;
 }
 
-th:nth-child(1) {
-	width: 80px;
-}
-
-th:nth-child(3) {
-	min-width: 200px;
-}
-
-th:nth-child(4) {
-	min-width: 135px;
-	width: 135px;
-}
-
 th .button .icon:first-child:last-child {
 	margin-right: 5px;
+}
+
+#mifield {
+	width: 50px;
+}
+
+footer .buttons {
+	width: 100%;
 }
 
 #page {
@@ -34,5 +29,11 @@ th .button .icon:first-child:last-child {
 @media screen and (min-width: 769px) and (max-width: 1023px) {
 	th:nth-child(3) {
 		min-width: 120px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	#mifield {
+		width: 100%;
 	}
 }

@@ -8,6 +8,7 @@ $(window).on('load', function() {
 	// Fetch color of background to match theme color.
 	let color = $('html').css('background-color');
 	$('.menu-list .is-active').css('background-color', color);
+	$('.pageloader').removeClass('is-active');
 });
 
 $(function() {
@@ -24,5 +25,15 @@ $(function() {
 		$('.navbar-dropdown').slideToggle('fast', function() {
 			$('#profile').toggleClass('is-active');
 		});
+	});
+
+	$('aside .menu-list a').click(function() {
+		$('.pageloader .title').text('Loading ' + $(this).text());
+		$('.pageloader').addClass('is-active');
+	});
+
+	$('#logout').click(function() {
+		$('.pageloader .title').text('Logging Out');
+		$('.pageloader').addClass('is-active');
 	});
 });

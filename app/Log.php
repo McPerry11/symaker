@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prerequisite extends Model
+class Log extends Model
 {
 	protected $fillable = [
-		'courseCode',
-		'prerequisites',
+		'details',
+		'ipAddress',
+		'userID'
 	];
 }

@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class institutionalOutcome extends Model
+class InstitutionalOutcome extends Model
 {
-    protected $table = 'institutional_outcome';
-    protected $fillable = [
-        'content',
-        'type',
-    ];
+	protected $table = 'institutional_outcome';
+	protected $fillable = [
+		'content',
+		'type',
+	];
 }

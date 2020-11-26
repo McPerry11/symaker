@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use \App\guidingPrinciple;
+use App\guidingPrinciple;
 
 class GuidingPrincipleSeeder extends Seeder
 {
