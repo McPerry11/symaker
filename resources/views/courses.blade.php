@@ -59,12 +59,12 @@
 {{--Add Modal--}}
 <div id="addModal" class="modal" style="padding-top: 100px">
   <div class="modal-background"></div>
-  <form method="POST" enctype="multipart/form-data" action="{{action('CoursesController@store')}}">
-    @csrf
     <div class="modal-content">
       <div class="box">
           <div><h1 style="font-size: 50px;">Add Courses</h1></div>
         <h1>Course Code</h1>
+          <form method="POST" enctype="multipart/form-data" action="{{action('CoursesController@store')}}">
+              @csrf
         <input type="text"  class="input" name="courseCode" placeholder="Enter " required>
           <h1>College</h1>
           <select name="collegeID" id="collegeID">
@@ -75,10 +75,10 @@
           <h1>Course Title</h1>
           <input type="text"  class="input" name="courseTitle" placeholder="Enter " required>
         <button type="submit">Add</button>
+          </form>
         <button id="addCloseBtn" class="close">Close</button>
       </div>
     </div>
-  </form>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
 </div>
 {{--Edit Modal--}}
@@ -102,6 +102,7 @@
           <input type="text"  class="input" id="courseTitle" name="courseTitle" placeholder="Enter " required>
         <button id="save">Save</button>
       </form>
+        <button id="addCloseBtn" class="close">Close</button>
     </div>
   </div>>
   <button class="modal-close is-large" aria-label="close" id="closeButton"></button>
@@ -137,7 +138,11 @@
         addModal.style.display = 'block';
     });
     $('.edit').click(function (){
-        editModal.style.display = 'block'
+        editModal.style.display = 'block';
+    });
+    $('.close').click(function () {
+        addModal.style.display= 'none';
+        editModal.style.display= 'none';
     });
     $(document).ready(function (){
 

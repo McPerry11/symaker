@@ -17,6 +17,90 @@ class OtherContentSeeder extends Seeder
     	$content->type = 'University';
     	$content->save();
 
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CCSS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CCSS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CAS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CAS';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CBA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CBA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CDent';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CDent';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEng';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEng';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CFA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CFA';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'MissionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEduc';
+        $content->save();
+
+        $content = new OtherContent();
+        $content->title = 'VisionStatement';
+        $content->content='Insert Here';
+        $content->type = 'CEduc';
+        $content->save();
+
     	$content = new OtherContent();
     	$content->title = 'VisionStatement';
     	$content->content = 'As a private non-sectarian institution of higher learning, the University of the East commits itself to producing, through relevant and affordable quality education, morally upright and competent leaders in various professions, imbued with a strong sense of service to their fellowmen and their country.';

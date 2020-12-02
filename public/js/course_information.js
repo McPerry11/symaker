@@ -1,4 +1,12 @@
 $(function() {
+    function ajaxError(err) {
+        console.log(err);
+        Swal.fire({
+            icon: 'error',
+            title: 'Cannot Connect to Server',
+            text: 'Something went wrong. Please try again later.'
+        });
+    }
 	$('#sb-course-info').addClass('is-active').removeAttr('href');
 	$('#nb-course-info').addClass('is-active').removeAttr('href');
 	let color = $('html').css('background-color');
@@ -6,7 +14,7 @@ $(function() {
 	$('#nb-course-info').css('border-left', '3px solid ' + color); // Adds accent to the navbar menu
 	$('#sb-course-info').css('background-color', color);
 	$('.breadcrumb ul').append('<li><a href="/symaker2/public"><span class="icon is-medium"><i class="fas fa-columns"></i></span>Dashboard</a></li><li><p class="mx-2">AAA 1101</p></li><li class="is-active"><a><span class="icon"><i class="fas fa-info"></i></span>Course Information</a></li>');
-	$('.input, .textarea').val(''); //Clears all fields at the start
+	//$('.input, .textarea').val(''); //Clears all fields at the start
 
 	$('#addPrerequisite').click(function() { //Adds field when clicking add pre-requisite btn
 		if($('.select select').last().val() === null) {
@@ -39,7 +47,7 @@ $(function() {
 	});
 
 	$('.control.has-icons-right').hover(function() { //Toggles the 'x' icon when hovering
-		$(this).find('span.icon').toggleClass('is-hidden-desktop'); 
+		$(this).find('span.icon').toggleClass('is-hidden-desktop');
 		if($(this).parents('.outcomeField').length) { //Removes course outcome field
 			if($(this).parents('.outcomeField').siblings('.outcomeField').length === 0) {
 				$(this).find('span.icon').removeClass('x-icon').addClass('x-icon-disabled').off('click'); //Disables removal of course outcome field when there is only one
@@ -79,4 +87,40 @@ $(function() {
 		$(this).removeClass('is-danger');
 		$(this).next('.help').remove();
 	});
+
+	$('form#Forms').on('submit',function (e){
+	    e.preventDefault();
+        var courseID = $('#courseID').val();
+        var courseTitle = $('#courseTitle').val();
+        var lecture = $('#lecture').val();
+        var laboratory = $('#laboratory').val();
+        var courseDesc =$('#courseDesc').val();
+        var preRequisite = [];
+        var courseOutcome = [];
+        $("#selector select").each(function (index){
+            var element = $(this).val();
+            preRequisite.push(element);
+        });
+        $("#courseOutcome input").each(function (index) {
+            var element = $(this).val();
+            courseOutcome.push(element)
+        })
+        var form_data = [courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome]
+        $.ajax({
+            type: 'POST',
+            url: "courseInfoSave",
+            data: {courseID: courseID, courseTitle: courseTitle,lecture:
+                lecture,laboratory: laboratory,courseDesc: courseDesc,preRequisite: preRequisite,courseOutcome: courseOutcome},
+            datatype: 'JSON',
+            success: function(data){
+                console.log(courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome)
+            },
+            error: function(err) {
+                ajaxError(err);
+            }
+        });
+    })
+    $('#sb-next').click(function (index){
+        $('form#Forms').submit();
+    });
 });

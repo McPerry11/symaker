@@ -40,6 +40,19 @@ class UsersSeeder extends Seeder
         $user->save();
 
         $user = new User;
+        $user->firstName = 'College';
+        $user->middleInitial = 'Test';
+        $user->lastName = 'Profile';
+        $user->username = 'Test';
+        $user->collegeID = 3;
+        $user->email = 'test@test.com';
+        $user->password = 'abc123';
+        $user->type = 'COLLEGE_ADMIN';
+        $user->emailNotification='no';
+        $user->private='no';
+        $user->save();
+
+        $user = new User;
         $user->firstName = 'Louis Angelo';
         $user->middleInitial = 'D.';
         $user->lastName = 'Altoveros';
@@ -48,6 +61,8 @@ class UsersSeeder extends Seeder
         $user->email = 'altoveros.louisangelo@ue.edu.ph';
         $user->password = 'abc123';
         $user->type = 'SYSTEM_ADMIN';
+        $user->emailNotification='no';
+        $user->private='no';
         $user->save();
     }
 }
