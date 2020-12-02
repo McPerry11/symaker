@@ -5,8 +5,8 @@
 @endsection
 
 @section('body')
-    <form id="Forms">
-        @csrf
+<form>
+	@csrf
 	<h1 class="subtitle is-3">Course Information</h1>
 
 	<div class="columns is-hidden-touch mb-0">
@@ -26,13 +26,13 @@
 					<div id="courseCode" class="field">
 						<p class="control">
 							<label class="label">Course Code</label>
-                            <input class="input" id="courseID" name="courseID" value=" {{$course->courseCode}}" placeholder="{{$course->courseCode}}" readonly>
+							<input class="input" id="courseID" name="courseID" value=" {{$course->courseCode}}" placeholder="{{$course->courseCode}}" readonly>
 						</p>
 					</div>
 					<div class="field">
 						<p class="control">
 							<label class="label">Course Title</label>
-                            <input type="text" class="input" id="courseTitle" name="courseTitle" value=" {{$course->courseTitle}}" placeholder="{{$course->courseTitle}}" readonly>
+							<input type="text" class="input" id="courseTitle" name="courseTitle" value=" {{$course->courseTitle}}" placeholder="{{$course->courseTitle}}" readonly>
 						</p>
 					</div>
 				</div>
@@ -65,9 +65,9 @@
 			<select class=".test1" id="test1">
 				<option value="" selected disabled>Select course pre-requisite</option>
 				<option value="rem" disabled>Remove pre-requisite</option>
-                @foreach($allCourses as $option)
+				@foreach($allCourses as $option)
 				<option value="{{$option->courseCode}}">{{$option->courseCode}} - {{$option->courseTitle}}</option>
-                @endforeach
+				@endforeach
 			</select>
 		</div>
 	</div>
@@ -114,7 +114,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/course_information.js') }}"></script>
-	<script>
+<script>
 
-	</script>
-	@endsection
+</script>
+@endsection

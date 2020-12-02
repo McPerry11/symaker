@@ -1,12 +1,13 @@
 $(function() {
-    function ajaxError(err) {
-        console.log(err);
-        Swal.fire({
-            icon: 'error',
-            title: 'Cannot Connect to Server',
-            text: 'Something went wrong. Please try again later.'
-        });
-    }
+	function ajaxError(err) {
+		console.log(err);
+		Swal.fire({
+			icon: 'error',
+			title: 'Cannot Connect to Server',
+			text: 'Something went wrong. Please try again later.'
+		});
+	}
+
 	$('#sb-course-info').addClass('is-active').removeAttr('href');
 	$('#nb-course-info').addClass('is-active').removeAttr('href');
 	let color = $('html').css('background-color');
@@ -88,39 +89,40 @@ $(function() {
 		$(this).next('.help').remove();
 	});
 
-	$('form#Forms').on('submit',function (e){
-	    e.preventDefault();
-        var courseID = $('#courseID').val();
-        var courseTitle = $('#courseTitle').val();
-        var lecture = $('#lecture').val();
-        var laboratory = $('#laboratory').val();
-        var courseDesc =$('#courseDesc').val();
-        var preRequisite = [];
-        var courseOutcome = [];
-        $("#selector select").each(function (index){
-            var element = $(this).val();
-            preRequisite.push(element);
-        });
-        $("#courseOutcome input").each(function (index) {
-            var element = $(this).val();
-            courseOutcome.push(element)
-        })
-        var form_data = [courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome]
-        $.ajax({
-            type: 'POST',
-            url: "courseInfoSave",
-            data: {courseID: courseID, courseTitle: courseTitle,lecture:
-                lecture,laboratory: laboratory,courseDesc: courseDesc,preRequisite: preRequisite,courseOutcome: courseOutcome},
-            datatype: 'JSON',
-            success: function(data){
-                console.log(courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome)
-            },
-            error: function(err) {
-                ajaxError(err);
-            }
-        });
-    })
-    $('#sb-next').click(function (index){
-        $('form#Forms').submit();
-    });
+	$('form').submit(function(e) {
+		e.preventDefault();
+		var courseID = $('#courseID').val();
+		var courseTitle = $('#courseTitle').val();
+		var lecture = $('#lecture').val();
+		var laboratory = $('#laboratory').val();
+		var courseDesc =$('#courseDesc').val();
+		var preRequisite = [];
+		var courseOutcome = [];
+		$("#selector select").each(function (index){
+			var element = $(this).val();
+			preRequisite.push(element);
+		});
+		$("#courseOutcome input").each(function (index) {
+			var element = $(this).val();
+			courseOutcome.push(element)
+		})
+		var form_data = [courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome]
+		$.ajax({
+			type: 'POST',
+			url: "courseInfoSave",
+			data: {courseID: courseID, courseTitle: courseTitle,lecture:
+				lecture,laboratory: laboratory,courseDesc: courseDesc,preRequisite: preRequisite,courseOutcome: courseOutcome},
+				datatype: 'JSON',
+				success: function(data){
+					console.log(courseID,courseTitle,lecture,laboratory,courseDesc,preRequisite,courseOutcome)
+				},
+				error: function(err) {
+					ajaxError(err);
+				}
+			});
+	});
+
+	$('#sb-next').click(function() {
+		$('form').submit();
+	});
 });
