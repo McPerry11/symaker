@@ -57,19 +57,19 @@
 </div>
 <div class="db-content is-hidden-touch">
 	<div class="columns">
-        {{-- @foreach($joinedTable as $column) --}}
+        @foreach($joinedTable as $column)
 		<div class="column is-4-desktop">
 			<div class="box has-ribbon">
-				<div class="ribbon ccss">CCSS</div>
-				<p class="title">AAA 1101</p>
-				<p class="subtitle">Subject Title</p>
+				<div class="ribbon {{mb_strtolower($column->abbrev)}}">{{$column->abbrev}}</div>
+				<p class="title">{{$column->courseCode}}</p>
+				<p class="subtitle">{{$column->courseTitle}}</p>
 				<div class="buttons is-right">
 					<a class="button" title="View"><span class="icon"><i class="fas fa-eye"></i></span></a>
-					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
+					<a class="button" href="{{$column->courseCode}}/edit/course_information" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
 			</div>
 		</div>
-		<div class="column is-4-desktop">
+		{{--<div class="column is-4-desktop">
 			<div class="box has-ribbon">
 				<div class="ribbon cas">CAS</div>
 				<p class="title">BBB 2202</p>
@@ -90,11 +90,11 @@
 					<a class="button" title="Edit"><span class="icon"><i class="fas fa-edit"></i></span></a>
 				</div>
 			</div>
-		</div>
-        {{-- @endforeach --}}
+		</div>--}}
+        @endforeach
 	</div>
 </div>
-{{-- <div class="db-content is-hidden-desktop">
+<div class="db-content is-hidden-desktop">
 	<div class="columns">
         @foreach($joinedTable as $column)
 		<div class="column is-6-tablet">
@@ -110,7 +110,7 @@
 		</div>
         @endforeach
 	</div>
-</div> --}}
+</div>
 @endsection
 
 @section('scripts')

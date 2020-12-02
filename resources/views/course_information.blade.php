@@ -5,7 +5,8 @@
 @endsection
 
 @section('body')
-<form>
+    <form id="Forms">
+        @csrf
 	<h1 class="subtitle is-3">Course Information</h1>
 
 	<div class="columns is-hidden-touch mb-0">
@@ -25,13 +26,13 @@
 					<div id="courseCode" class="field">
 						<p class="control">
 							<label class="label">Course Code</label>
-							<input type="text" class="input" placeholder="AAA 1101">
+                            <input class="input" id="courseID" name="courseID" value=" {{$course->courseCode}}" placeholder="{{$course->courseCode}}" readonly>
 						</p>
 					</div>
 					<div class="field">
 						<p class="control">
 							<label class="label">Course Title</label>
-							<input type="text" class="input">
+                            <input type="text" class="input" id="courseTitle" name="courseTitle" value=" {{$course->courseTitle}}" placeholder="{{$course->courseTitle}}" readonly>
 						</p>
 					</div>
 				</div>
@@ -44,13 +45,13 @@
 					<div class="field">
 						<p class="control">
 							<label class="label">Lecture</label>
-							<input type="number" class="input">
+							<input type="number" class="input" id="lecture">
 						</p>
 					</div>
 					<div class="field">
 						<p class="control">
 							<label class="label">Laboratory</label>
-							<input type="number" class="input">
+							<input type="number" class="input" id="laboratory">
 						</p>
 					</div>
 				</div>
@@ -60,13 +61,13 @@
 
 	<h2 class="subtitle is-5">Pre-requisites</h2>
 	<div class="field">
-		<div class="select is-fullwidth">
-			<select>
+		<div class="select is-fullwidth" id="selector">
+			<select class=".test1" id="test1">
 				<option value="" selected disabled>Select course pre-requisite</option>
 				<option value="rem" disabled>Remove pre-requisite</option>
-				<option>BBB 1101 - Computer Programming</option>
-				<option>BBB 1102 - Computer Programming 2</option>
-				<option>BBB 1103 - Computer Programming 3</option>
+                @foreach($allCourses as $option)
+				<option value="{{$option->courseCode}}">{{$option->courseCode}} - {{$option->courseTitle}}</option>
+                @endforeach
 			</select>
 		</div>
 	</div>
@@ -83,11 +84,11 @@
 
 	<h2 class="subtitle is-5">Course Description</h2>
 	<div class="field">
-		<textarea class="textarea" placeholder="This course aims to..."></textarea>
+		<textarea class="textarea" placeholder="This course aims to..." id="courseDesc"></textarea>
 	</div>
 
 	<h2 class="subtitle is-5">Course Outcomes</h2>
-	<div class="outcomeField field has-addons">
+	<div class="outcomeField field has-addons" id="courseOutcome">
 		<div class="control">
 			<button class="button is-static">CO1</button>
 		</div>
@@ -113,9 +114,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/course_information.js') }}"></script>
-	{{-- <script>
-		$('#sb-next').click(function (){
-			$('form#Forms').submit();
-		});
-	</script> --}}
+	<script>
+
+	</script>
 	@endsection

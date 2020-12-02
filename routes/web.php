@@ -35,11 +35,10 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('courses', 'CoursesController');
 	Route::get('courses', 'CoursesController@index');
 	Route::prefix('{courseCode}/edit')->group(function() {
-		Route::get('learning_outcomes', 'CoursesController@edit');
-		Route::get('course_information', 'CoursesController@edit');
+		Route::get('learning_outcomes', 'LearningOutcomeController@index');
+		Route::get('course_information', 'CourseinformationController@index');
 		Route::get('course_content', 'CoursesController@edit');
 		Route::get('references_classroom_management', 'CoursesController@edit');
-
 		Route::post('courseInfoSave', 'CourseInformationController@store');
     // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});

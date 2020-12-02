@@ -89,15 +89,15 @@ class CoursesController extends Controller
         // This will prevent us from making more controller functions with the same motive.
         if (Route::current()->uri() == '{courseCode}/edit/course_content') {
             return view('course_content');
-        } else if (Route::current()->uri() == 'subjectcode/edit/course_information') {
+        } else if (Route::current()->uri() == '{courseCode}/edit/course_information') {
             return view('course_information');
-        } else if (Route::current()->uri() == 'subjectcode/edit/references_classroom_management') {
+        } else if (Route::current()->uri() == '{courseCode}/edit/references_classroom_management') {
             return view('references_classroom_management');
         }
         // Add an else if for your module
     }
 
-    /** 
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
