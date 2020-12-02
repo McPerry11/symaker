@@ -169,35 +169,6 @@ $(function() {
   $('#sb-accounts').css('background-color', color);
   $('.breadcrumb ul').append('<li class="is-active"><a><span class="icon is-medium"><i class="fas fa-users"></i></span>Accounts</a></li>');
 
-  $('#username').bind({
-    keydown: function(e) {
-      if (e.shiftKey == true) {
-        if (e.which == 189 || (e.which >= 65 && e.which <= 90) || e.which <= 40)
-          return true;
-      } else if (e.shiftKey == false && ((e.which >= 48 && e.which <= 57) || e.which == 190)) {
-        return true;
-      } else if ((e.which >= 65 && e.which <= 90) || e.which <= 40 || (e.which >= 96 && e.which <= 105) || (e.which >= 112 && e.which <= 123)) {
-        return true;
-      }
-      return false;
-    }
-  });
-
-  $('.name').bind({
-    keydown: function(e) {
-      if (e.shiftKey) {
-        if (e.which >= 65 && e.which <= 90 || e.which <= 40) {
-          return true;
-        }
-      } else if (e.shiftKey == false && (e.which == 222 || e.which == 189 || e.which == 190)) {
-        return true;
-      } else if ((e.which >= 65 && e.which <= 90) || e.which <= 40 || (e.which >= 96 && e.which <= 105) || (e.which >= 112 && e.which <= 123)) {
-        return true;
-      }
-      return false;
-    }
-  });
-
   var modal, inputs = {'username':true, 'password':true};
   $('.pageloader .title').text('Loading Accounts');
   retrieveUsers('');
