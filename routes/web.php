@@ -65,4 +65,6 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('references_classroom_management', 'CoursesController@edit');
     // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
+
+	Route::get('{courseCode}/view', 'CoursesController@show');
 });

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-
+use PDF;
+use Auth;
 use App\College;
 use App\Course;
 use App\CourseInformation;
 use App\LearningOutcome;
 use App\CourseOutcome;
 use App\PreRequisite;
+use App\OtherContent;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\DB;
@@ -69,9 +73,21 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($coursecode)
     {
-        //
+        $umission = OtherContent::where('type', 'University')->where('title', 'Mission')->first();
+        $uvision = OtherContent::where('type', 'University')->where('title', 'Vision')->first();
+        $core = OtherContent::where('type', 'University')->where('title', 'CoreValues')->first();
+        // $cmission = OtherContent::where('type', Auth::user()->college->abbrev)->where('title', 'Mission')->pluck('content');
+        // $cvision = OtherContent::where('type', Auth::user()->college->abbrev)->where('title', 'Vision')->pluck('content');
+        $course = Course::find($coursecode);
+        $pdf = PDF::loadView('pdf', [
+            'course' => $course,
+            'umission' => $umission->content,
+            'uvision' => $uvision->content,
+            'core' => $core->content
+        ]);
+        return $pdf->stream($coursecode . '.pdf');
     }
 
     /**

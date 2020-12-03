@@ -13,104 +13,104 @@ class OtherContentSeeder extends Seeder
     public function run()
     {
     	$content = new OtherContent();
-    	$content->title = 'MissionStatement';
+    	$content->title = 'Mission';
     	$content->content = 'Imploring the aid of Divine Providence, the University of the East dedicates itself to the service of youth, country, and God, and declares adherence to academic freedom, progressive instruction, creative scholarship, goodwill among nations, and constructive educational leadership. Inspired and sustained by a deep sense of dedication and a compelling yearning for relevance, the University of the East hereby declares as its goal and addresses itself to the development of a just, progressive, and humane society.';
     	$content->type = 'University';
     	$content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CCSS';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CCSS';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CAS';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CAS';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CBA';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CBA';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CDent';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CDent';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CEng';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CEng';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CFA';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CFA';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'MissionStatement';
+        $content->title = 'Mission';
         $content->content='Insert Here';
         $content->type = 'CEduc';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content='Insert Here';
         $content->type = 'CEduc';
         $content->save();
 
         $content = new OtherContent();
-        $content->title = 'VisionStatement';
+        $content->title = 'Vision';
         $content->content = 'As a private non-sectarian institution of higher learning, the University of the East commits itself to producing, through relevant and affordable quality education, morally upright and competent leaders in various professions, imbued with a strong sense of service to their fellowmen and their country.';
         $content->type = 'University';
         $content->save();
 
         $content = new OtherContent();
         $content->title = 'CoreValues';
-        $content->content='As a private non-sectarian institution of higher learning, the University of the East commits itself to producing, through relevant and affordable quality education, morally upright and competent leaders in various professions, imbued with a strong sense of service to their fellowmen and their country.';
+        $content->content='The University adheres to the core values of Excellence, Integrity, Professionalism, Teamwork, Commitment, Transparency, Accountability and Social Responsibility.';
         $content->type = 'University';
         $content->save();
     }
