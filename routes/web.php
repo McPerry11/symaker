@@ -38,8 +38,9 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('learning_outcomes', 'LearningOutcomeController@index');
 		Route::get('course_information', 'CourseinformationController@index');
 		Route::get('course_content', 'CoursesController@edit');
-		Route::get('references_classroom_management', 'CoursesController@edit');
+		Route::get('references_classroom_management', 'rcmController@index');
 		Route::post('courseInfoSave', 'CourseInformationController@store');
+		Route::post('rcmSave','rcmController@store');
     // Add your module route here. Let the controller remain the same and check out CoursesController@edit
 	});
 

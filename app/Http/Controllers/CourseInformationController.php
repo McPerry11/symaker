@@ -39,33 +39,34 @@ class CourseInformationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        $courseInfo = new CourseInformation();
-        $courseInfo->courseCode = $request->courseID;
-        $courseInfo->courseTitle= $request->courseTitle;
-        $courseInfo->lectureUnits = $request->lecture;
-        $courseInfo->laboratoryUnits =$request->laboratory;
-        $courseInfo->courseDescription = $request->courseDesc;
-        $courseInfo->save();
-        $counter = 0;
-        $length = count($request->preRequisite);
-        for ($counter;$counter<$length;$counter++){
-            $prereq = new prerequisite();
-            $prereq->courseCode = $request->courseID;
-            $prereq->prerequisites = $request->preRequisite[$counter];
-            $prereq->save();
-        }
-        $counter2 = 0;
-        $length2 = count($request->courseOutcome);
-        for ($counter2;$counter2<$length2;$counter2++){
-            $courseOutcome = new CourseOutcome();
-            $courseOutcome->courseCode = $request->courseID;
-            $courseOutcome->courseDescription = $request->courseOutcome[$counter2];
-            $courseOutcome->save();
-        }
-
-        return view('learning_outcomes');
+        //$courseInfo = new CourseInformation();
+        //$courseInfo->courseCode = $request->courseID;
+        //$courseInfo->courseTitle= $request->courseTitle;
+        //$courseInfo->lectureUnits = $request->lecture;
+        //$courseInfo->laboratoryUnits =$request->laboratory;
+        //$courseInfo->courseDescription = $request->courseDesc;
+        //$courseInfo->save();
+        //$counter = 0;
+        //$length = count($request->preRequisite);
+        //for ($counter;$counter<$length;$counter++){
+        //    $prereq = new prerequisite();
+        //    $prereq->courseCode = $request->courseID;
+        //    $prereq->prerequisites = $request->preRequisite[$counter];
+        //    $prereq->save();
+        //}
+        //$counter2 = 0;
+        //$length2 = count($request->courseOutcome);
+        //for ($counter2;$counter2<$length2;$counter2++){
+        //    $courseOutcome = new CourseOutcome();
+        //    $courseOutcome->courseCode = $request->courseID;
+        //    $courseOutcome->courseDescription = $request->courseOutcome[$counter2];
+        //    $courseOutcome->save();
+        //}
+//
+        //return view('learning_outcomes');
+        return redirect(route('dashboard'));
     }
 
     /**
